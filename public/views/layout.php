@@ -10,7 +10,7 @@
     <title>Document</title>
 </head>
 <body>
-
+ 
     <?= $page_content;?>
     
 </body>

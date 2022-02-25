@@ -1,18 +1,34 @@
 <?php
-namespace App\entity;
-class Personne{
 
-    // Attributs
-    Protected $nom;
+namespace App;
+
+class Personne{
+    //attributes
+    protected $nom;
     protected $prenom;
 
+    //construct
+    public function __construct(string $nom, string $prenom){
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+    }
 
+    //getters & setters
+    
     /**
      * Get the value of nom
      */ 
     public function getNom()
     {
         return $this->nom;
+    }
+
+    /**
+     * Get the value of prenom
+     */ 
+    public function getPrenom()
+    {
+        return $this->prenom;
     }
 
     /**
@@ -25,14 +41,6 @@ class Personne{
         $this->nom = $nom;
 
         return $this;
-    }
-
-    /**
-     * Get the value of prenom
-     */ 
-    public function getPrenom()
-    {
-        return $this->prenom;
     }
 
     /**
