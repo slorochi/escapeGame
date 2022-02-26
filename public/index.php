@@ -5,17 +5,12 @@ $page_content ="";
 
 // Construction des routes
 $route->map('GET','/','accueil','accueil');
-/* $route->map('GET','/contact','contact','contact'); */
-/* $route->map('GET','/[*]-[i:id]',function($id){
-    ob_start();
-    if(file_exists('views/article-'.$id.'.php')){
-        require "views/article-".$id.".php";
-    }
-    else{
-        require_once "views/404.php";
-    }
-    return ob_get_clean();
-}); */
+$route->map('GET','/catalogue','catalogue','catalogue'); 
+$route->map('GET','/contact','contact','contact'); 
+$route->map('GET','/connexion','connexion','connexion'); 
+$route->map('GET','/leaderboard','leaderboard','leaderboard'); 
+
+
 
 // Récupère une route si match sinon false
 $match = $route->match();
