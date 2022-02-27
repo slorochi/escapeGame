@@ -17,7 +17,7 @@ class BddConnection{
 
     }
 
-    public fonction getPDO(): PDO{
+    public function getPDO(): PDO{
 
         if($this->pdo === null){
             $this->pdo = new PDO("mysql:dbname={$this->dbname};host={$this->host},$this->username,$this->password");
