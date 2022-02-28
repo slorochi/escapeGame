@@ -3,7 +3,7 @@
 // use Database\BddConnection;
 
 $serveur 	= "localhost";
-$bdd 		= "testblocb";
+$bdd 		= "blocb";
 $user 		= "root";
 $password 	= "root";
 
@@ -44,7 +44,7 @@ function specifique($table,$champ,$id){
 	return  $rst->fetchAll(PDO::FETCH_ASSOC);
 }
 
-$jetest = tous("test");
+$jetest = tous("avis");
 var_dump($jetest);
 
 ?>
