@@ -5,7 +5,7 @@
 $serveur 	= "localhost";
 $bdd 		= "blocb";
 $user 		= "root";
-$password 	= "root";
+$password 	= "";
 
 //test la connect.
 try{
@@ -44,7 +44,7 @@ function specifique($table,$champ,$id){
 	return  $rst->fetchAll(PDO::FETCH_ASSOC);
 }
 
-$jetest = tous("avis");
+$jetest = specifique("user","nom","gaetan");
 var_dump($jetest);
 
 ?>
