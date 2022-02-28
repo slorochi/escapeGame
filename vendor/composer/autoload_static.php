@@ -17,6 +17,10 @@ class ComposerStaticInit052a674b9def4b47d345fdf5de07dba8
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\VarDumper\\' => 28,
         ),
+        'D' => 
+        array (
+            'Database\\' => 9,
+        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -31,6 +35,10 @@ class ComposerStaticInit052a674b9def4b47d345fdf5de07dba8
         'Symfony\\Component\\VarDumper\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
+        ),
+        'Database\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/database',
         ),
         'App\\' => 
         array (

@@ -54,6 +54,7 @@ header{
     z-index: 10;
     position: fixed;
     width: 100%;
+    z-index: 10;
     .header{
         width: 55vw;
         #hautmenu{
@@ -103,9 +104,6 @@ header{
                         img{
                             height: 40px;
                             border-radius: 50%;
-                        }
-                        span{
-                            
                         }
                     }
                 }
@@ -218,17 +216,31 @@ header{
     }
             /* Fin Scroll */
 }
-#catalogue{
-    padding-top:50px;
-    height: 100vh;
-    h2{
-        margin: auto;
-        text-align: center;
-    }
+
+
+
+
+
+/* Catalogue */
+
+#Catalogue{
+    padding-top: 200px;
     .row{
-        div{
-            background-color: #c3353e;
+        justify-content: space-around;
+        .card {
+            width: 40%;
+            margin: 10px 0;
+            background-color: #191919;
         }
-        
+        img{
+            width: 100%;
+            height: auto;
+        }
+            
+        .btn-primary {
+            color: #fff;
+            background-color: #c52630;
+            border-color: #c52630;
+        }
     }
 }
