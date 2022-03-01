@@ -12,7 +12,7 @@
                         <div class="niveau"><span>lvl  <?= $level ?></span></div>
                         <a href="#" class="connection">
                             <img src="views/style/img/Sans titre-1.png" alt="">
-                            <span class="user">User</span>
+                            <span class="user"><?= $userConnected ?></span>
                         </a>
                     </div>
                 </div>

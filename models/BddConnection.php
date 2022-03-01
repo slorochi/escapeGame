@@ -5,7 +5,7 @@ class BddConnection{
 	private $serveur = "localhost";
 	private $bdd 	= "blocb";
 	private $user = "root";
-	private $password = "";
+	private $password = "root";
 
 	//test la connect.
 	protected function getconnect(){

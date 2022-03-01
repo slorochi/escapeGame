@@ -3,11 +3,10 @@
  require("../models/entity/User.php");
 
 $user = new User;
-$user->setNom("theo");
+$user->setNom("anthony");
 $html = ($user->getNom()); 
 $level = $html[0]["niveau"];
-$user->setNiveau("theo");
-$lvl = $user->getNiveau();
+$userConnected = $html[0]["nom"];
 /* if (length(data)>=4){
     for ($i = 1; $i <= 4; $i++) {
         $html.= ' <div class="card col-md-6">
