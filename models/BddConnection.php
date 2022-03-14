@@ -2,11 +2,13 @@
 
 class BddConnection{
 
-	private $serveur = "localhost";
-	private $bdd 	= "blocb";
-	private $user = "root";
-	private $password = "";
 
+	//construct ou fichier config
+	protected $serveur = "localhost";
+	protected $bdd 	= "blocb";
+	protected $user = "root";
+	protected $password = "";  // null si wamp
+	
 	//test la connect.
 	protected function getconnect(){
 
@@ -48,8 +50,21 @@ class BddConnection{
 		return  $rst->fetchAll(PDO::FETCH_ASSOC);
 	}
 	
+	// méthode pour modifier les infos dans la base de données
+	public function modifyChamp($table, $champ, $element){
+		$db = $this->getconnect();
+		$sql = "ALTER TABLE $table * FROM $table WHERE $champ = :id";
+		//requête sql pour modifier le champ de la table sélectionnée
+	}
+
+	// méthode pour push les infos user dans la base de données lors d'une création de compte
+	public function createAccount($parametreAutiliserDansLeRepositoryQuiVaEtreReUtiliseeDansLeController){
+		$db = $this->getconnect();
+		$sql = "ALTER TABLE $table * FROM $table WHERE $champ = :id";
+		//requête sql pour créer un nouveau user dans la BDD
+	}
 }
 
-
+ $post->createAccount->
 
 ?>

@@ -1,6 +1,4 @@
 
-
-
 <section id="Catalogue">
     <div class="container">
         <div class="row">

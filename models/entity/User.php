@@ -27,8 +27,8 @@ class User extends BddConnection{
      */ 
     public function setIdUser($idUser)
     {
-        $i = new BddConnection;
-        $this->idUser = $i->specifique("user","idUser",$idUser);
+        $bdd = new BddConnection;
+        $this->idUser = $bdd->specifique("user","idUser",$idUser);
 
         return $this;
     }
@@ -46,14 +46,15 @@ class User extends BddConnection{
      *
      * @return  self
      */ 
-    public function setNom($nom)
+    public function setDataByUsername($nom)
     {
         $i = new BddConnection;
-        $this->nom = $i->specifique("user","nom",$nom);
+        $this->data = $i->specifique("user","nom",$nom);
 
         return $this;
     }
 
+    public function setAllDataByUsername()
     /**
      * Get the value of mail
      */ 
