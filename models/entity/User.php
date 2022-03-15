@@ -1,15 +1,20 @@
 <?php
-require("../models/BddConnection.php");
+
+namespace App;
+
+use App\BddConnection;
+
 class User extends BddConnection{
 
-    private $idUser;
-    private $nom;
-    private $mail;
-    private $mdp;
-    private $niveau;
-    private $adresse;
-    private $cp;
-    private $ville;
+    protected $idUser;
+    protected $nom;
+    protected $mail;
+    protected $mdp;
+    protected $niveau;
+    protected $adresse;
+    protected $cp;
+    protected $ville;
+
 
 
     /**
@@ -27,8 +32,7 @@ class User extends BddConnection{
      */ 
     public function setIdUser($idUser)
     {
-        $bdd = new BddConnection;
-        $this->idUser = $bdd->specifique("user","idUser",$idUser);
+        $this->idUser = $idUser;
 
         return $this;
     }
@@ -46,15 +50,13 @@ class User extends BddConnection{
      *
      * @return  self
      */ 
-    public function setDataByUsername($nom)
+    public function setNom($nom)
     {
-        $i = new BddConnection;
-        $this->data = $i->specifique("user","nom",$nom);
+        $this->nom = $nom;
 
         return $this;
     }
 
-    public function setAllDataByUsername()
     /**
      * Get the value of mail
      */ 
@@ -70,8 +72,7 @@ class User extends BddConnection{
      */ 
     public function setMail($mail)
     {
-        $i = new BddConnection;
-        $this->$mail = $i->specifique("user","mail",$mail);
+        $this->mail = $mail;
 
         return $this;
     }
@@ -91,8 +92,7 @@ class User extends BddConnection{
      */ 
     public function setMdp($mdp)
     {
-        $i = new BddConnection;
-        $this->$mdp = $i->specifique("user","mdp",$mdp);
+        $this->mdp = $mdp;
 
         return $this;
     }
@@ -112,8 +112,7 @@ class User extends BddConnection{
      */ 
     public function setNiveau($niveau)
     {
-        $i = new BddConnection;
-        $this->$niveau = $i->specifique("user","niveau",$niveau);
+        $this->niveau = $niveau;
 
         return $this;
     }
@@ -133,8 +132,7 @@ class User extends BddConnection{
      */ 
     public function setAdresse($adresse)
     {
-        $i = new BddConnection;
-        $this->$adresse = $i->specifique("user","adresse",$adresse);
+        $this->adresse = $adresse;
 
         return $this;
     }
@@ -154,8 +152,7 @@ class User extends BddConnection{
      */ 
     public function setCp($cp)
     {
-        $i = new BddConnection;
-        $this->$cp = $i->specifique("user","cp",$cp);
+        $this->cp = $cp;
 
         return $this;
     }
@@ -175,8 +172,7 @@ class User extends BddConnection{
      */ 
     public function setVille($ville)
     {
-        $i = new BddConnection;
-        $this->$ville = $i->specifique("user","ville",$ville);
+        $this->ville = $ville;
 
         return $this;
     }
