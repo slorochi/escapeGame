@@ -75,7 +75,8 @@ class UserRepo extends BddConnection{
         }
     }
 
-    
+    // THEO TEST
+
     // Routeur
     $userController = new userController();
     $userController->getUserRepo()->getAllUsers();
