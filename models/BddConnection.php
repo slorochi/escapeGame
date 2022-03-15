@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace bddConnection;
 
 use PDO;
 use PDOException;

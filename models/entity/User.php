@@ -1,8 +1,7 @@
 <?php
 
 namespace App;
-
-use App\BddConnection;
+use bddConnection\BddConnection;
 
 class User extends BddConnection{
 
@@ -14,7 +13,6 @@ class User extends BddConnection{
     protected $adresse;
     protected $cp;
     protected $ville;
-
 
 
     /**

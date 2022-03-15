@@ -1,7 +1,8 @@
 <?php
 namespace App;
 
-use App\BddConnection;
+use BddConnection\BddConnection;
+
 
 class Niveau extends BddConnection{
     
