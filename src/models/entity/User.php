@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
-use bddConnection\BddConnection;
+namespace App\models\entity;
+
+use App\models\BddConnection;
 
 class User extends BddConnection{
 

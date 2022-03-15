@@ -1,12 +1,13 @@
 <?php
- require("../models/entity/User.php");
+
+use App\models\entity\User;
 
  $user = new User;
- $user->setNom("Anthony");
+ /* $user->setNom("Anthony");
  
  $html = ($user->getNom()); 
  $level = $html[0]["niveau"];
- $currentUser = $html[0]["nom"];
+ $currentUser = $html[0]["nom"]; */
 
 
 
