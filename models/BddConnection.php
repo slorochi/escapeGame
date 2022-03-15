@@ -18,9 +18,9 @@ class BddConnection{
 	protected function getconnect(){
 
 		try{
-		//connect à la base
-		$db = new PDO("mysql:host=$this->serveur;dbname=$this->bdd",$this->user,$this->password);
-		return $db;
+			//connect à la base
+			$db = new PDO("mysql:host=$this->serveur;dbname=$this->bdd",$this->user,$this->password);
+			return $db;
 		}
 		//si connect impossible
 		catch(PDOException $erreur){
@@ -62,6 +62,18 @@ class BddConnection{
 		MODIFY $champ $element ";
 		//requête sql pour modifier le champ de la table sélectionnée
 	}
+
+	// méthode afin de créer un champ d'une table dans la base de données
+	public function createElement(string $table, object $elementToCreate){
+		$db = $this->getconnect();
+		foreach($elementToCreate as $info){
+			$elements .= $info ",";
+        }
+		$sql = " INSERT INTO $table VALUES ($elements);
+		$rst = $db->query($sql);
+		return $rst->fetchAll(PDO::FETCH_ASSOC);
+	}
+
 
 	/* // méthode pour push les infos user dans la base de données lors d'une création de compte
 	public function createAccount($parametreAutiliserDansLeRepositoryQuiVaEtreReUtiliseeDansLeController){
