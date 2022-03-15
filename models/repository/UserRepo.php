@@ -17,80 +17,65 @@ $currentUser = $html[0]["nom"]; */
 
 class UserRepo extends BddConnection{
 
-    protected $data;
-    protected $idUser;
+    protected $dataUserSelected;
+  /*   protected $idUser;
     protected $nom;
     protected $mail;
     protected $mdp;
     protected $niveau;
     protected $adresse;
     protected $cp;
-    protected $ville;
-    protected $tabUsers;
+    protected $ville; */
+    protected $tabUser;
 
     public function getAllUsers(){
-        $this->tabUsers = $this->tous("users");
+        $tab = $this->tous("User");
+        foreach($tab as $user1){
+            $user = new User($user1["nom"], $user1...);
+            $this->tabUser[] = $user;
+        }
     }
 
    /*  $user1 = $userRepo->getUser(1); */
-
-
-    /////////ID//////////
-    public function getIdUser()
-    {
-        return $this->idUser;
-    }
 
     public function insertUser($userToCreate){
         // variables définies dans le controller 
         // requête sql afin de créer un 
     }
 
+    public function getUserByUsername($table, $champ, $id){
+        $this->dataUserSelected = $this->specifique($table, $champ, $id);
+    }
+
+    public function getTabUser(){
+        return $this->$tabUser;
+    }
+
+    public function modifyUserElement($table, $champ, $element){
+        $this->modifyChamp($table, $champ, $element);
+    }
     //controller exemple
-   /*  $userTocreate = new User();
-    $userTocreate->setNom($postNom)
+/*     $userRepo = new UserRpo(): */
+    /* $userTocreate = new User();
+    $userTocreate->setNom($postNom);
+    $userTocreate->setMail($postMail);
     $userRepo->inserUser($userToCreate); */
-    /////////NOM//////////
-    public function getNom()
-    {
-        return $this->nom;
+   
+    // Controller
+    class UserController{
+        // attributs
+        private UserRepo $useRepo;
+
+        puclic function __construct()
+        {
+            $this->useRepo = new UserRepo();
+        }
     }
 
-    /////////MAIL//////////
-    public function getMail()
-    {
-        $user = new User;
-        $user->setNom($name); 
-    }
-
-    /////////MDP//////////
-    public function getMdp()
-    {
-        return $this->mdp;
-    }
-
-    /////////NIVEAU//////////
-    public function getNiveau()
-    {
-        return $this->niveau;
-    }
-
-    /////////ADRESSE//////////
-    public function getAdresse()
-    {
-        return $this->adresse;
-    }
-
-    /////////CP//////////
-    public function getCp()
-    {
-        return $this->cp;
-    }
-
-    /////////VILLE//////////
-    public function getVille()
-    {
-        return $this->ville;
-    }
+    
+    // Routeur
+    $userController = new userController();
+    $userController->getUserRepo()->getAllUsers();
+    print_r($userController->getUserRepo()->getTabUser());
 } 
 ?>

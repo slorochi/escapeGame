@@ -53,7 +53,8 @@ class BddConnection{
 	// méthode pour modifier les infos dans la base de données
 	public function modifyChamp($table, $champ, $element){
 		$db = $this->getconnect();
-		$sql = "ALTER TABLE $table * FROM $table WHERE $champ = :id";
+		$sql = " ALTER TABLE $table
+		MODIFY $champ $element ";
 		//requête sql pour modifier le champ de la table sélectionnée
 	}
 
@@ -65,6 +66,6 @@ class BddConnection{
 	}
 }
 
- $post->createAccount->
-
+/*  $post->createAccount->
+ */
 ?>
