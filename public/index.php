@@ -1,7 +1,11 @@
 <?php
+
+ini_set("display_errors",1);
+
 require_once "../vendor/autoload.php";
-$route = new AltoRouter();
-$page_content ="";
+
+require_once "../core/rooter.php";
+
 
 // Construction des routes
 $route->map('GET','/','accueil','accueil');
@@ -9,7 +13,6 @@ $route->map('GET','/catalogue','catalogue','catalogue');
 $route->map('GET','/contact','contact','contact'); 
 $route->map('GET','/connexion','connexion','connexion'); 
 $route->map('GET','/leaderboard','leaderboard','leaderboard'); 
-
 
 
 // Récupère une route si match sinon false
@@ -30,6 +33,6 @@ else{
     $page_content = ob_get_clean();
 }
 
-require "views/layout.php"
+require "views/layout.php";
 
 ?>
