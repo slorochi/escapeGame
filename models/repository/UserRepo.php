@@ -1,21 +1,21 @@
 <?php
 
-require("../entity/User.php");
-
+require("../entity/UserCopy.php");
+/* 
 $user = new User;
 $user->setNom("theo");
-var_dump($user->getNom());
+var_dump($user->getNom()); */
 require("../models/BddConnection.php");
 
 
-$user = new User;
+/* $user = new User;
 $user->setNom("Anthony");
 
 $html = ($user->getData()); 
 $level = $html[0]["niveau"];
-$currentUser = $html[0]["nom"];
+$currentUser = $html[0]["nom"]; */
 
-class UserRepo extends User{
+class UserRepo extends BddConnection{
 
     protected $data;
     protected $idUser;
@@ -26,17 +26,30 @@ class UserRepo extends User{
     protected $adresse;
     protected $cp;
     protected $ville;
+    protected $tabUsers;
 
-    public function setData(string $nom){
-        $user = new User
-        $user->setDataByusername($nom)
+    public function getAllUsers(){
+        $this->tabUsers = $this->tous("users");
     }
+
+   /*  $user1 = $userRepo->getUser(1); */
+
+
     /////////ID//////////
     public function getIdUser()
     {
         return $this->idUser;
     }
 
+    public function insertUser($userToCreate){
+        // variables définies dans le controller 
+        // requête sql afin de créer un 
+    }
+
+    //controller exemple
+   /*  $userTocreate = new User();
+    $userTocreate->setNom($postNom)
+    $userRepo->inserUser($userToCreate); */
     /////////NOM//////////
     public function getNom()
     {

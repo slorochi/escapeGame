@@ -1,1 +1,9 @@
 https://periwinkle-eustoma-db4.notion.site/On-verra-plus-tard-31586f7d2cb24bdd9f381e29d5076c16
+
+
+
+
+
+Entity -> getter setter 
+Repo -> Appel de la bdd + stockage
+controller -> la logique 
