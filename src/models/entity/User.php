@@ -2,9 +2,8 @@
 
 namespace App\models\entity;
 
-use App\models\BddConnection;
 
-class User extends BddConnection{
+class User{
 
     protected $idUser;
     protected $nom;

@@ -2,9 +2,7 @@
 
 namespace App;
 
-use App\BddConnection;
-
-class Escapegame extends BddConnection{
+class Escapegame{
     
     protected $idEscape;
     protected $nom;

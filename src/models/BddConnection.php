@@ -58,20 +58,25 @@ class BddConnection{
 	// méthode pour modifier les infos dans la base de données
 	public function modifyChamp($table, $champ, $element){
 		$db = $this->getconnect();
-		$sql = " ALTER TABLE $table
-		MODIFY $champ $element ";
+		$sql = " ALTER TABLE $table MODIFY $champ $element ";
 		//requête sql pour modifier le champ de la table sélectionnée
 	}
 
 	// méthode afin de créer un champ d'une table dans la base de données
 	public function createElement(string $table, object $elementToCreate){
+		
+		$elements = "";
 		$db = $this->getconnect();
 		foreach($elementToCreate as $info){
-			$elements .= $info ",";
+
+			$elements .= $info.",";
+
         }
-		$sql = " INSERT INTO $table VALUES ($elements);
+		$elements = rtrim($elements,",");
+		$sql = " INSERT INTO $table VALUES ($elements) ";
 		$rst = $db->query($sql);
 		return $rst->fetchAll(PDO::FETCH_ASSOC);
+
 	}
 
 
