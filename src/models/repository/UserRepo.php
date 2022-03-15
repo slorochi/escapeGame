@@ -31,21 +31,29 @@ class UserRepo extends BddConnection{
 
     public function getAllUsers(){
         $tab = $this->tous("User");
-        foreach($tab as $user1){
-            $user = new User($user1["nom"], $user1...);
-            $this->tabUser[] = $user;
+        foreach($tab as $userInfo){
+            $user = new User($userInfo["idUser"], $userInfo["nom"], $userInfo["mail"], $userInfo["mdp"], $userInfo["niveau"], $userInfo["adresse"], $userInfo["cp"], $userInfo["ville"]);
+            $this->tabUser[] .= $user;
         }
     }
 
    /*  $user1 = $userRepo->getUser(1); */
 
-    public function insertUser($userToCreate){
+    public function insertUser(User $userToCreate){
         // variables définies dans le controller 
+        $this->createElement("User", $userToCreate);
         // requête sql afin de créer un 
     }
+        //controller exemple
+    /* $userRepo = new UserRpo(): */
+    /* $userTocreate = new User();
+    $userTocreate->setNom($postNom);
+    $userTocreate->setMail($postMail);
+    $userRepo->inserUser($userToCreate); */ 
+   
 
-    public function getUserByUsername($table, $champ, $id){
-        $this->dataUserSelected = $this->specifique($table, $champ, $id);
+    public function getUserByChamp($champ, $id){
+        $this->dataUserSelected = $this->specifique("User", $champ, $id);
     }
 
     public function getTabUser(){
@@ -55,13 +63,7 @@ class UserRepo extends BddConnection{
     public function modifyUserElement($table, $champ, $element){
         $this->modifyChamp($table, $champ, $element);
     }
-    //controller exemple
-/*     $userRepo = new UserRpo(): */
-    /* $userTocreate = new User();
-    $userTocreate->setNom($postNom);
-    $userTocreate->setMail($postMail);
-    $userRepo->inserUser($userToCreate); */
-   
+  
     // Controller
     class UserController{
         // attributs
@@ -73,7 +75,8 @@ class UserRepo extends BddConnection{
         }
     }
 
-    
+    // THEO TEST
+
     // Routeur
     $userController = new userController();
     $userController->getUserRepo()->getAllUsers();
