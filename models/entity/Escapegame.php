@@ -1,33 +1,35 @@
 <?php
-require("../models/BddConnection.php");
-class Usercopy {
 
-    private $idUser;
-    private $nom;
-    private $mail;
-    private $mdp;
-    private $niveau;
-    private $adresse;
-    private $cp;
-    private $ville;
+namespace App;
 
+use App\BddConnection;
+
+class Escapegame extends BddConnection{
+    
+    protected $idEscape;
+    protected $nom;
+    protected $idType;
+    protected $niveau;
+    protected $adresse;
+    protected $cp;
+    protected $ville;
 
     /**
-     * Get the value of idUser
+     * Get the value of idEscape
      */ 
-    public function getIdUser()
+    public function getIdEscape()
     {
-        return $this->idUser;
+        return $this->idEscape;
     }
 
     /**
-     * Set the value of idUser
+     * Set the value of idEscape
      *
      * @return  self
      */ 
-    public function setIdUser($idUser)
+    public function setIdEscape($idEscape)
     {
-        $this->idUser = $idUser;
+        $this->idEscape = $idEscape;
 
         return $this;
     }
@@ -53,41 +55,21 @@ class Usercopy {
     }
 
     /**
-     * Get the value of mail
+     * Get the value of idType
      */ 
-    public function getMail()
+    public function getIdType()
     {
-        return $this->mail;
+        return $this->idType;
     }
 
     /**
-     * Set the value of mail
+     * Set the value of idType
      *
      * @return  self
      */ 
-    public function setMail($mail)
+    public function setIdType($idType)
     {
-        $this->mail = $mail;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of mdp
-     */ 
-    public function getMdp()
-    {
-        return $this->mdp;
-    }
-
-    /**
-     * Set the value of mdp
-     *
-     * @return  self
-     */ 
-    public function setMdp($mdp)
-    {
-        $this->mdp = $mdp;
+        $this->idType = $idType;
 
         return $this;
     }

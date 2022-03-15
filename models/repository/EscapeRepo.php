@@ -16,9 +16,9 @@ $html = ($user->getData());
 $level = $html[0]["niveau"];
 $currentUser = $html[0]["nom"]; */
 
-class UserRepo extends BddConnection{
+class EscapeRepo extends BddConnection{
 
-    protected $dataUserSelected;
+    protected $dataEscapeSelected;
   /*   protected $idUser;
     protected $nom;
     protected $mail;
@@ -27,19 +27,19 @@ class UserRepo extends BddConnection{
     protected $adresse;
     protected $cp;
     protected $ville; */
-    protected $tabUser;
+    protected $tabEscape;
 
-    public function getAllUsers(){
-        $tab = $this->tous("User");
-        foreach($tab as $user1){
-            $user = new User($user1["nom"], $user1...);
-            $this->tabUser[] = $user;
+    public function getAllEscape(){
+        $tab = $this->tous("EscapeGame");
+        foreach($tab as $escapes){
+            $escape = new Escapegame ($escapes["nom"], $escapes...);
+            $this->tabEscape[] = $escape;
         }
     }
 
    /*  $user1 = $userRepo->getUser(1); */
 
-    public function insertUser($userToCreate){
+    public function insertEscape($escapeToCreate){
         // variables définies dans le controller 
         // requête sql afin de créer un 
     }

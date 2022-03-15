@@ -1,5 +1,10 @@
 <?php
 
+namespace bddConnection;
+
+use PDO;
+use PDOException;
+
 class BddConnection{
 
 
@@ -58,12 +63,12 @@ class BddConnection{
 		//requête sql pour modifier le champ de la table sélectionnée
 	}
 
-	// méthode pour push les infos user dans la base de données lors d'une création de compte
+	/* // méthode pour push les infos user dans la base de données lors d'une création de compte
 	public function createAccount($parametreAutiliserDansLeRepositoryQuiVaEtreReUtiliseeDansLeController){
 		$db = $this->getconnect();
 		$sql = "ALTER TABLE $table * FROM $table WHERE $champ = :id";
 		//requête sql pour créer un nouveau user dans la BDD
-	}
+	} */
 }
 
 /*  $post->createAccount->
