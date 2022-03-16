@@ -1,5 +1,3 @@
-
-
 <section id="quisom">
     <div class="container-fluid">
         <div class="row elem" >

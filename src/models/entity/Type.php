@@ -1,9 +1,7 @@
 <?php
 namespace App;
 
-use App\BddConnection;
-
-class Type extends BddConnection{
+class Type{
 
     protected $idType;
     protected $nom;

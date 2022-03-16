@@ -34,7 +34,7 @@
                 <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
-           <?php var_dump ($html); ?>
+           <?php /* var_dump ($html);  */?>
         </div>
     </div>
     

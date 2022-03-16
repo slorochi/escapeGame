@@ -1,35 +1,36 @@
 <?php
 
-namespace App;
+namespace App\models\entity;
 
-use App\BddConnection;
 
-class Escapegame extends BddConnection{
-    
-    protected $idEscape;
+class User{
+
+    protected $idUser;
     protected $nom;
-    protected $idType;
+    protected $mail;
+    protected $mdp;
     protected $niveau;
     protected $adresse;
     protected $cp;
     protected $ville;
 
+
     /**
-     * Get the value of idEscape
+     * Get the value of idUser
      */ 
-    public function getIdEscape()
+    public function getIdUser()
     {
-        return $this->idEscape;
+        return $this->idUser;
     }
 
     /**
-     * Set the value of idEscape
+     * Set the value of idUser
      *
      * @return  self
      */ 
-    public function setIdEscape($idEscape)
+    public function setIdUser($idUser)
     {
-        $this->idEscape = $idEscape;
+        $this->idUser = $idUser;
 
         return $this;
     }
@@ -55,21 +56,41 @@ class Escapegame extends BddConnection{
     }
 
     /**
-     * Get the value of idType
+     * Get the value of mail
      */ 
-    public function getIdType()
+    public function getMail()
     {
-        return $this->idType;
+        return $this->mail;
     }
 
     /**
-     * Set the value of idType
+     * Set the value of mail
      *
      * @return  self
      */ 
-    public function setIdType($idType)
+    public function setMail($mail)
     {
-        $this->idType = $idType;
+        $this->mail = $mail;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of mdp
+     */ 
+    public function getMdp()
+    {
+        return $this->mdp;
+    }
+
+    /**
+     * Set the value of mdp
+     *
+     * @return  self
+     */ 
+    public function setMdp($mdp)
+    {
+        $this->mdp = $mdp;
 
         return $this;
     }

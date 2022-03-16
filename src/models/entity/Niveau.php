@@ -1,10 +1,7 @@
 <?php
 namespace App;
 
-use BddConnection\BddConnection;
-
-
-class Niveau extends BddConnection{
+class Niveau{
     
     protected $id;
     protected $titre;
