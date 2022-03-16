@@ -2,7 +2,9 @@
 <section>
     <div>
         <p>
-            <?php 
+            <?php
+            $session = $_SESSION;
+            $currentAccount = $_SESSION["compte"]; 
             $userRepo = new UserRepo();
             /* $userRepo->setAllUsers(); */
             var_dump($userRepo->setUserByChamp("niveau","2")->getDataUserSelected()); 
