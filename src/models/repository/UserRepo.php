@@ -4,12 +4,13 @@ namespace App\models\repository;
 use App\models\entity\User;
 use App\models\BddConnection;
 
-
 class UserRepo extends BddConnection{
 
     protected $dataUserSelected;
     protected $tabUser =[];
+    protected $userToCreate;
 
+    // récupérer les infos de tous les utilisateurs
     protected function getAllUsers(){
         return $this->tous("user");
     }
@@ -30,13 +31,11 @@ class UserRepo extends BddConnection{
         }
     }
 
-    public function insertUser(User $userToCreate){
-        // variables définies dans le controller 
-        $this->createElement("User", $userToCreate);
-        // requête sql afin de créer un 
+    public function getTabUser(){
+        return $this->tabUser;
     }
 
-
+    // récupère les infos d'un utilisateur selon un champ sélectionné
     public function getUserByChamp($champ, $nomChamp){
         return $this->specifique("user", $champ, $nomChamp);
     }
@@ -55,13 +54,30 @@ class UserRepo extends BddConnection{
         return $this;
    }
 
-    public function getTabUser(){
-        return $this->tabUser;
-    }
     public function getDataUserSelected(){
         return $this->dataUserSelected;
     }
+   
+    protected function getUserToCreate($idUser, $nom, $email, $mdp, $niveau, $adresse, $cp, $ville){
+        $userToC = new User($idUser, $nom, $email, $mdp, $niveau, $adresse, $cp, $ville);
+       /*  $userToC->setIdUser($idUser);
+        $userToC->setNom($nom);
+        $userToC->setMail($email);
+        $userToC->setMdp($mdp);
+        $userToC->setNiveau($niveau);
+        $userToC->setAdresse($adresse);
+        $userToC->setCp($cp);
+        $userToC->setVille($ville);  */
+        return $userToC;
+    }
 
+    public function setUserToCreate($idUser, $nom, $email, $mdp, $niveau, $adresse, $cp, $ville){
+        // variables définies dans le controller 
+        $this->userToCreate = $this->getUserToCreate($idUser, $nom, $email, $mdp, $niveau, $adresse, $cp, $ville);
+        $this->createElement("User", $this->userToCreate);
+        // requête sql afin de créer un 
+    }
+   
     public function modifyUserElement($table, $champ, $element){
         $this->modifyChamp($table, $champ, $element);
     }

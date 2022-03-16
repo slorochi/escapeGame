@@ -3,12 +3,12 @@
     <div>
         <p>
             <?php
-            $session = $_SESSION;
-            $currentAccount = $_SESSION["compte"]; 
+            /* $session = $_SESSION;
+            $currentAccount = $_SESSION["compte"];  */
             $userRepo = new UserRepo();
-            /* $userRepo->setAllUsers(); */
-            var_dump($userRepo->setUserByChamp("niveau","2")->getDataUserSelected()); 
-
+            /* var_dump($userRepo->setUserByChamp("nom","Theo")->getDataUserSelected());  */
+            $userRepo->setUserToCreate("6","TEST","test@gmail.com","TEST","5","rue des bg","29000","TEST",)
+            
             ?>
         </p>
     </div>

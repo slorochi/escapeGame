@@ -2,7 +2,7 @@
 
 use App\models\entity\User;
 
-$user = new User;
+/* $user = new User; */
 /* $user->setNom("Anthony"); */
 /* 
 $html = ($user->getNom()); 
