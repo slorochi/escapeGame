@@ -2,9 +2,7 @@
 
 namespace App;
 
-use App\BddConnection;
-
-class Jouer extends BddConnection{
+class Jouer{
    protected $idUser;
    protected $idEscape;
    protected $date;

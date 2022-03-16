@@ -1,13 +1,15 @@
 <?php
 
- require("../models/entity/User.php");
+use App\models\entity\User;
+
+
 
 $user = new User;
-$user->setNom("Anthony");
+/* $user->setNom("Anthony"); */
 
-$html = ($user->getNom()); 
+/* $html = ($user->getNom()); 
 $level = $html[0]["niveau"];
-$currentUser = $html[0]["nom"];
+$currentUser = $html[0]["nom"]; */
 /* if (length(data)>=4){
     for ($i = 1; $i <= 4; $i++) {
         $html.= ' <div class="card col-md-6">

@@ -25,28 +25,28 @@ if(isset($_GET["p"])){
 ob_start();
 switch($p){
 	case "accueil":
-		require("../controller/accueil.php");
+		require("../src/controller/accueil.php");
 	break;
 	case "catalogue":
-		require("../controller/catalogue.php");
+		require("../src/controller/catalogue.php");
 	break;
 	case "login":
-		require("../controller/login.php");
+		require("../src/controller/login.php");
 	break;
 	case "leaderboard":
-		require("../controller/leaderboard.php");
+		require("../src/controller/leaderboard.php");
 	break;
 	case "stats":
-		require("../controller/stats.php");
+		require("../src/controller/stats.php");
 	break;
 	case "infos":
-		require("../controller/infos.php");
+		require("../src/controller/infos.php");
 	break;
 	case "contact":
-		require("../controller/contact.php");
+		require("../src/controller/contact.php");
 	break;
 	default:
-        require("../controller/accueil.php");
+        require("../src/controller/accueil.php");
 }
 $page_content = ob_get_contents();
 ob_end_clean();
