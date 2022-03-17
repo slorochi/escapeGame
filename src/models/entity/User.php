@@ -14,7 +14,6 @@ class User{
     protected $cp;
     protected $ville;
 
-    
     /**
      * Get the value of idUser
      */ 
