@@ -56,38 +56,38 @@ class BddConnection{
 	}
 	
 	// méthode pour modifier les infos dans la base de données
+	// fonction à valider
 	public function modifyChamp($table, $champ, $element){
 		$db = $this->getconnect();
 		$sql = " ALTER TABLE $table MODIFY $champ $element ";
+		$rst = $db->query($sql);
+		return $rst->fetchAll(PDO::FETCH_ASSOC);
 		//requête sql pour modifier le champ de la table sélectionnée
 	}
 
 	// méthode afin de créer un champ d'une table dans la base de données
-	public function createElement(string $table, object $elementToCreate){
-		
+	// fonction à valider
+	public function createElement(string $table, $elementToCreate){
 		$elements = "";
 		$db = $this->getconnect();
-		foreach($elementToCreate as $info){
+		var_dump($elementToCreate->getidUser());
+		
+		// "INSERT INTO users SET nom_user = :nom_user, prenom_user = ?, adresse_user = ?, ville_user = ?, cp_user = ?, mail_user = ?, mdp_user = ?" 
+		$rst = $db->prepare($sql);
+		$rst->execute([":nom_user" => $elementToCreate->getNom()]);
+		return  $rst->fetchAll(PDO::FETCH_ASSOC);
 
+
+
+		/* foreach($elementToCreate as $info){
 			$elements .= $info.",";
-
         }
-		$elements = rtrim($elements,",");
-		$sql = " INSERT INTO $table VALUES ($elements) ";
+		$elements = rtrim($elements,","); */
+	/* 	$sql = " INSERT INTO $table VALUES ($elements) ";
+		$rst = $db->prepare($sql);
 		$rst = $db->query($sql);
-		return $rst->fetchAll(PDO::FETCH_ASSOC);
-
+		return $rst->fetchAll(PDO::FETCH_ASSOC); */ 
 	}
-
-
-	/* // méthode pour push les infos user dans la base de données lors d'une création de compte
-	public function createAccount($parametreAutiliserDansLeRepositoryQuiVaEtreReUtiliseeDansLeController){
-		$db = $this->getconnect();
-		$sql = "ALTER TABLE $table * FROM $table WHERE $champ = :id";
-		//requête sql pour créer un nouveau user dans la BDD
-	} */
 }
 
-/*  $post->createAccount->
- */
 ?>
