@@ -86,11 +86,10 @@ class BddConnection{
 	public function modifyChamp($table, $elementToPush, $nomChamp, $valeurChamp){
 		$db = $this->getconnect();
 		/* $sql = " ALTER TABLE $table MODIFY $champ $element "; */
-		$sql = " UPDATE $table SET $elementToPush WHERE $nomChamp = $valeurChamp";
+		/* $sql = " UPDATE $table SET $elementToPush WHERE $nomChamp = $valeurChamp";
 		$rst = $db->query($sql);
 		return $rst->fetchAll(PDO::FETCH_ASSOC);
-		//requête sql pour modifier le champ de la table sélectionnée
-	}
+	} */
 }
 
 ?>
