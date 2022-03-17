@@ -29,6 +29,7 @@ class UserRepo extends BddConnection{
                 ->setVille($tab[$i]["ville"]); 
             array_push($this->tabUser,$user);
         }
+        return $this;
     }
 
     public function getTabUser(){
@@ -82,20 +83,5 @@ class UserRepo extends BddConnection{
         $this->modifyChamp($table, $champ, $element);
     }
   
-/* // Controller
-class UserController{
-    // attributs
-    private UserRepo $userRepo;
-
-    puclic function __construct()
-    {
-        $this->userRepo = new UserRepo();
-    }
-}
-
-// Routeur
-$userController = new userController();
-$userController->getUserRepo()->getAllUsers();
-print_r($userController->getUserRepo()->getTabUser()); */
 } 
 ?>

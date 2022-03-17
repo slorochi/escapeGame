@@ -1,44 +1,37 @@
 <?php
 namespace App\models\repository;
 
-use App\Escapegame;
+
+use PDO;
 use App\models\BddConnection;
-
-/* 
-$user = new User;
-$user->setNom("theo");
-var_dump($user->getNom()); */
+use App\models\entity\Escapegame;
 
 
-/* $user = new User;
-$user->setNom("Anthony");
-
-$html = ($user->getData()); 
-$level = $html[0]["niveau"];
-$currentUser = $html[0]["nom"]; */
 
 class EscapeRepo extends BddConnection{
 
     protected $dataEscapeSelected;
-    protected $tabEscape;
+    protected $tabEscape=[];
     protected $escapeToCreate;
 
     protected function getAllEscape(){
-        return $this->tous("EscapeGame");
+        return $this->tous("escapegame");
     }
-    public function setAllUsers(){
+    public function setAllEscape(){
         $tab = $this->getAllEscape();
         foreach($tab as $i=>$value){
             $escape = new Escapegame();
             $escape->setIdEscape($tab[$i]["idEscape"])
                     ->setNom($tab[$i]["nom"])
                     ->setNiveau($tab[$i]["niveau"])
-                    ->setIdType($tab[$i]["idType"])
+                    ->setIdType($tab[$i]["type"])
                     ->setAdresse($tab[$i]["adresse"])
                     ->setCp($tab[$i]["cp"])
                     ->setVille($tab[$i]["ville"]);
-            array_push($this->tabEscape, $escape); 
+
+            array_push($this->tabEscape,$escape); 
         }
+        return $this;
     }
 
     public function getTabEscape(){
@@ -46,17 +39,17 @@ class EscapeRepo extends BddConnection{
     }
 
     //Récupère les infos d'un escape selon tri par champ
-    public function getEscapeByChamp($champ, $nomChamp){
-        $this->specifique("escape", $champ, $nomChamp);
+    protected function getEscapeByChamp($champ, $id){
+        return $this->specifique("escapegame", $champ, $id);
     }
 
-    public function setEscapeByChamp($champ , $nomChamp ){
-        $tab = $this->getEscapeByChamp($champ , $nomChamp);
-        $this->dataUserSelected = new Escapegame();
-        $this->dataUserSelected->setIdEscape($tab[0]["idEscape"])
+    public function setEscapeByChamp($champ, $id){
+        $tab = $this->getEscapeByChamp($champ , $id);
+        $this->dataEscapeSelected = new Escapegame();
+        $this->dataEscapeSelected->setIdEscape($tab[0]["idEscape"])
                  ->setNom($tab[0]["nom"])
                  ->setNiveau($tab[0]["niveau"])
-                 ->setIdType($tab[0]["idType"])
+                 ->setIdType($tab[0]["type"])
                  ->setAdresse($tab[0]["adresse"])
                  ->setCp($tab[0]["cp"])
                  ->setVille($tab[0]["ville"]);  
@@ -80,13 +73,34 @@ class EscapeRepo extends BddConnection{
         return $escapeToC;
     }
 
-    public function setUserToCreate($idEscape, $nom, $niveau, $idType, $adresse, $cp, $ville){
+    public function setEscapeToCreate($idEscape, $nom, $niveau, $idType, $adresse, $cp, $ville){
         $this->escapeToCreate = $this->getEscapeToCreate($idEscape, $nom, $niveau, $idType, $adresse, $cp, $ville);
         $this->createEscape("Escape", $this->escapeToCreate); 
     }
 
-    public function deleteEscape($table, $dataEscapeSelected){
-    
+    public function deleteEscape($id){
+
+        $objects = $this->setAllEscape()->getTabEscape();
+
+        foreach($objects as $i => $value){
+
+            if( $value->getNom() === $id ){
+
+                $db = $this->getconnect();
+                $sql = "DELETE FROM escapegame WHERE escapegame.nom = :id LIMIT 1";
+                //echo $sql;
+                //prepare la requête avant de l'executer
+                $rst = $db->prepare($sql);
+                //execute la requête
+                $rstok = $rst->execute([":id" => $id]);
+                if($rstok){
+                    return "cool";
+                }
+                else{
+                    return "pas cool";
+                }
+            }
+        }
     }
 
 
