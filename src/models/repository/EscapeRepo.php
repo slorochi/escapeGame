@@ -86,7 +86,7 @@ class EscapeRepo extends BddConnection{
     }
 
     public function deleteEscape($table, $dataEscapeSelected){
-
+        ouoii
     }
 
 
