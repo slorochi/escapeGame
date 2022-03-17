@@ -14,18 +14,7 @@ class User{
     protected $cp;
     protected $ville;
 
-
-    public function __construct($idUser="", $nom="", $mail="", $mdp="", $niveau="" ,$adresse="", $cp="", $ville="")
-    {
-        $this->idUser = $idUser;
-        $this->nom = $nom;
-        $this->mail = $mail;
-        $this->mdp = $mdp;
-        $this->niveau = $niveau;
-        $this->adresse = $adresse;
-        $this->cp = $cp;
-        $this->ville = $ville;
-    }
+    
     /**
      * Get the value of idUser
      */ 
