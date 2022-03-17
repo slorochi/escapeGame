@@ -55,47 +55,41 @@ class BddConnection{
 		return  $rst->fetchAll(PDO::FETCH_ASSOC);
 	}
 	
+
+	// méthode pour créer un élément d'une table dans la base de données
+
+		//////////////USER//////////////
+
+	public function createUser(string $table, $elementToCreate){
+		$db = $this->getconnect();
+		$sql = "INSERT INTO $table SET idUser = :idUser, nom = :nom, email = :email, mdp = :mdp, niveau = :niveau, adresse = :adresse, cp = :cp, ville = :ville" ;
+		$rst = $db->prepare($sql);
+		$rst->execute(
+			[":idUser" => $elementToCreate->getIdUser(), ":nom" => $elementToCreate->getNom(), ":email" => $elementToCreate->getMail(), ":mdp" => $elementToCreate->getMdp(), ":niveau" => $elementToCreate->getNiveau(), ":adresse" => $elementToCreate->getAdresse(), ":cp" => $elementToCreate->getCp(), ":ville" => $elementToCreate->getVille()]);
+		return  $rst->fetchAll(PDO::FETCH_ASSOC); 
+	}
+
+		//////////////ESCAPE GAME//////////////
+
+	public function createEscape(string $table, $escapeToCreate){
+		$db = $this->getconnect();
+		$sql = "INSERT INTO $table SET idEscape = :idEscape, nom = :nom, niveau = :niveau, idType = :idType, adresse = :adresse, cp = :cp, ville = :ville" ;
+		$rst = $db->prepare($sql);
+		$rst->execute(
+			[":idEscape" => $escapeToCreate->getIdEscape(), ":nom" => $escapeToCreate->getNom(), ":niveau" => $escapeToCreate->getNiveau(), ":idType" => $escapeToCreate->getidType(), ":adresse" => $escapeToCreate->getAdresse(), ":cp" => $escapeToCreate->getCp(), ":ville" => $escapeToCreate->getVille()]);
+		return  $rst->fetchAll(PDO::FETCH_ASSOC); 
+	}
+
+
 	// méthode pour modifier les infos dans la base de données
 	// fonction à valider
-	public function modifyChamp($table, $champ, $element){
+	public function modifyChamp($table, $elementToPush, $nomChamp, $valeurChamp){
 		$db = $this->getconnect();
-		$sql = " ALTER TABLE $table MODIFY $champ $element ";
+		/* $sql = " ALTER TABLE $table MODIFY $champ $element "; */
+		$sql = " UPDATE $table SET $elementToPush WHERE $nomChamp = $valeurChamp";
 		$rst = $db->query($sql);
 		return $rst->fetchAll(PDO::FETCH_ASSOC);
 		//requête sql pour modifier le champ de la table sélectionnée
-	}
-
-	// méthode afin de créer un champ d'une table dans la base de données
-	// fonction à valider
-	public function createElement(string $table, $elementToCreate){
-		$elements = "";
-		$db = $this->getconnect();
-		var_dump($elementToCreate->getidUser());
-		
-		// "INSERT INTO users SET nom_user = :nom_user, prenom_user = ?, adresse_user = ?, ville_user = ?, cp_user = ?, mail_user = ?, mdp_user = ?" 
-		$rst = $db->prepare($sql);
-		$rst->execute([":nom_user" => $elementToCreate->getNom()]);
-		return  $rst->fetchAll(PDO::FETCH_ASSOC);
-
-
-
-
-
-
-
-
-
-
-
-
-		/* foreach($elementToCreate as $info){
-			$elements .= $info.",";
-        }
-		$elements = rtrim($elements,","); */
-	/* 	$sql = " INSERT INTO $table VALUES ($elements) ";
-		$rst = $db->prepare($sql);
-		$rst = $db->query($sql);
-		return $rst->fetchAll(PDO::FETCH_ASSOC); */ 
 	}
 }
 

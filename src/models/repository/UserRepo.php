@@ -36,7 +36,7 @@ class UserRepo extends BddConnection{
     }
 
     // récupère les infos d'un utilisateur selon un champ sélectionné
-    public function getUserByChamp($champ, $nomChamp){
+    protected function getUserByChamp($champ, $nomChamp){
         return $this->specifique("user", $champ, $nomChamp);
     }
 
@@ -58,23 +58,23 @@ class UserRepo extends BddConnection{
         return $this->dataUserSelected;
     }
    
+    // Créations d'un utilisateur dans la base de données
     protected function getUserToCreate($idUser, $nom, $email, $mdp, $niveau, $adresse, $cp, $ville){
-        $userToC = new User($idUser, $nom, $email, $mdp, $niveau, $adresse, $cp, $ville);
-       /*  $userToC->setIdUser($idUser);
+        $userToC = new User();
+        $userToC->setIdUser($idUser);
         $userToC->setNom($nom);
         $userToC->setMail($email);
         $userToC->setMdp($mdp);
         $userToC->setNiveau($niveau);
         $userToC->setAdresse($adresse);
         $userToC->setCp($cp);
-        $userToC->setVille($ville);  */
+        $userToC->setVille($ville); 
         return $userToC;
     }
 
     public function setUserToCreate($idUser, $nom, $email, $mdp, $niveau, $adresse, $cp, $ville){
-        // variables définies dans le controller 
         $this->userToCreate = $this->getUserToCreate($idUser, $nom, $email, $mdp, $niveau, $adresse, $cp, $ville);
-        $this->createElement("User", $this->userToCreate);
+        $this->createUser("User", $this->userToCreate); 
         // requête sql afin de créer un 
     }
    
@@ -82,6 +82,23 @@ class UserRepo extends BddConnection{
         $this->modifyChamp($table, $champ, $element);
     }
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 /* // Controller
 class UserController{
     // attributs
