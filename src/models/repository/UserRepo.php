@@ -51,7 +51,7 @@ class UserRepo extends BddConnection{
                 ->setAdresse($tab[0]["adresse"])
                 ->setCp($tab[0]["cp"])
                 ->setVille($tab[0]["ville"]);  
-        return $this;
+        return $this; 
    }
 
     public function getDataUserSelected(){
