@@ -1,7 +1,7 @@
 <?php
 namespace App\models\repository;
 
-use App\models\entity\Escapegame;
+use App\Escapegame;
 use App\models\BddConnection;
 
 /* 
@@ -86,7 +86,7 @@ class EscapeRepo extends BddConnection{
     }
 
     public function deleteEscape($table, $dataEscapeSelected){
-        ouoii
+    
     }
 
 
