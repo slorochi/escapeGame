@@ -78,10 +78,10 @@ class UserRepo extends BddConnection{
         // requête sql afin de créer un 
     }
    
-    public function modifyUserElement($table, $champ, $element){
+  /*   public function modifyUserElement($table, $champ, $element){
         $this->modifyChamp($table, $champ, $element);
     }
-  
+   */
 
 
 

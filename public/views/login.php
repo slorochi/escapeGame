@@ -21,7 +21,7 @@
           <div class="d-flex justify-content-between align-items-center">
             <!-- Checkbox -->
             <div class="form-check mb-0">
-              <input class="form-check-input me-2" type="checkbox" value="" id="checkbox" />
+              <input class="form-check-input me-2" name = "checkbox" type="checkbox" value="" id="checkbox" />
               <label class="form-check-label" for="checkbox">
                 Créer un nouveau compte
               </label>

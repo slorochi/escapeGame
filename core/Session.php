@@ -1,8 +1,7 @@
 <?php
 namespace App\core;
 
-use App\models\repository\Repository\UserRepo;
-use App\models\BddConnection;
+use App\models\repository\UserRepo;
 
 class Session {
 
@@ -15,8 +14,9 @@ class Session {
     // Connexion 
     public function login($postMail, $postMdp){
         if (isset($postMail) && !empty($postMail) &&(isset($postMdp)) && !empty($postMdp)){ 
-            $urepo = new userRepo();
-            $tabUser = $urepo->setAllUsers()->getTabUser();
+            $urepo = new UserRepo();
+            $urepo->setAllUsers();
+            $tabUser = $urepo->getTabUser();
             foreach ($tabUser as $i=>$info){
                 $currentMail= $info->getMail();
                 $currentMdp = $info->getMdp();
@@ -25,7 +25,7 @@ class Session {
                     $_SESSION["password"] = $currentMdp;    
                 }
             }
-        };
+        }
         else{
             echo "Veuillez remplir le formulaire.";
         }
