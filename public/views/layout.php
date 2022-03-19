@@ -16,6 +16,7 @@
     <script src="js/script.js"></script>
 
 </head>
+
 <body>
 <!-- common header -->
 <header>
@@ -29,10 +30,22 @@
                     </div>
                     <div class="col-md-3 login">
                         <div class="niveau"><span>lvl 1</span></div>
-                        <a href="#" class="connection">
-                            <img src="views/style/img/Sans titre-1.png" alt="">
-                            <span class="user">bob</span>
-                        </a>
+
+                        <?php if ($session->getCompte()) : ?>
+                           <!--  <a href="?p=login" class="connection">
+                                <img src="views/style/img/Sans titre-1.png" alt="">
+                                <span class="user">bob</span>
+                            </a> -->
+                            
+                        <?php endif ?>
+                        <?php if (!$session->getCompte()) : ?>
+                            <!-- <a href="?p=login" class="connection">
+                                <img src="views/style/img/Sans titre-1.png" alt="">
+                                <span class="user">?</span>
+                            </a> -->
+                            <p>coucou</p>
+                        <?php endif ?>
+                        
                     </div>
                 </div>
             </div>

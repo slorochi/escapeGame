@@ -1,39 +1,83 @@
 <?php
-namespace App\core;
+namespace App;
 
 use App\models\repository\UserRepo;
 
 class Session {
 
-        // ATTRIBUTS
+    /////////////////////////////////////////////////////////
+    ////////////////////// METHODES /////////////////////////
+    /////////////////////////////////////////////////////////
 
+    //start session & end session
+    public function start(){
+        session_start(); 
+    }
 
+    public function unsetAcc(){
+        unset($_SESSION['compte']);
+        header("Location:" .$this->getBackpage());  
+    }
 
-    // METHODES
+    ////////////////////// CONNEXION ////////////////////////
 
-    // Connexion 
-    public function login($postMail, $postMdp){
-        if (isset($postMail) && !empty($postMail) &&(isset($postMdp)) && !empty($postMdp)){ 
-            $urepo = new UserRepo();
-            $urepo->setAllUsers();
-            $tabUser = $urepo->getTabUser();
-            foreach ($tabUser as $i=>$info){
-                $currentMail= $info->getMail();
-                $currentMdp = $info->getMdp();
-                if($postMail === $currentMail && $postMdp === $currentMdp){
-                    $_SESSION["email"] = $currentMail;
-                    $_SESSION["password"] = $currentMdp;    
-                }
+    public function login($tabUser, $postMail, $postMdp){
+        foreach ($tabUser as $i=>$info){
+            $currentMail= $info->getMail();
+            $currentMdp = $info->getMdp();
+            $compte =[$currentMail, $currentMdp];
+            if($postMail === $currentMail && $postMdp === $currentMdp){
+                $this->setCompte($compte);
+                header("Location:" .$this->getBackpage()); 
             }
-        }
-        else{
-            echo "Veuillez remplir le formulaire.";
         }
     }
 
-    // deconnexion
-    /* public function logout(){
-    } */
+    ////////////////////// INSCRIPTION ////////////////////////
+
+    public function signUp($tabUser, $postMail, $postMdp){
+        $accExist = false;
+        // on cherche si l'utilisateur existe déjà par vérification du mail
+        foreach ($tabUser as $i=>$info){
+            $currentMail= $info->getMail();
+            if($postMail === $currentMail){
+                $accExist = true;
+            }
+        }
+        // si le compte n'existe pas
+        if ($accExist == false){
+            /* $userRepo->setUserToCreate("idUser", "nom", $postMail, $postMdp,"niveau", "adresse", "cp", "ville"); */
+            $compte = [$postMail, $postMdp];
+            $this->setCompte($compte);
+            header("Location:" .$this->getBackpage()); 
+        }
+    }
+
+    
+
+    ////////////////////// GETTERS SETTERS ///////////////////////
+
+    ////////////////////// BACKPAGE ////////////////////////
+    public function getBackPage(){
+        return $_SESSION['backpage'];
+    }
+
+    public function setBackPage($backpage){
+        $_SESSION['backpage'] = $backpage;
+
+        return $this;
+    }
+
+    ////////////////////// COMPTE ////////////////////////
+    public function getCompte(){
+        return $_SESSION['compte'];
+    }
+
+    public function setCompte($compte){
+        $_SESSION['compte'] = $compte;
+
+        return $this;
+    }
 
 } 
 ?>

@@ -3,7 +3,6 @@
 require("../public/views/logout.php");
 
 if(isset($_POST)){
-    unset($_SESSION['compte']);
+    $session->unsetAcc();
 }
-/* unset($_SESSION['compte']); */
 ?>
