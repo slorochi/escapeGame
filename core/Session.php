@@ -25,7 +25,7 @@ class Session {
         foreach ($tabUser as $i=>$info){
             $currentMail= $info->getMail();
             $currentMdp = $info->getMdp();
-            $compte =[$currentMail, $currentMdp];
+            $compte = ["email"=> $postMail, "mdp"=> $postMdp];
             if($postMail === $currentMail && $postMdp === $currentMdp){
                 $this->setCompte($compte);
                 header("Location:" .$this->getBackpage()); 
@@ -47,7 +47,7 @@ class Session {
         // si le compte n'existe pas
         if ($accExist == false){
             /* $userRepo->setUserToCreate("idUser", "nom", $postMail, $postMdp,"niveau", "adresse", "cp", "ville"); */
-            $compte = [$postMail, $postMdp];
+            $compte = ["email"=> $postMail, "mdp"=> $postMdp];
             $this->setCompte($compte);
             header("Location:" .$this->getBackpage()); 
         }
@@ -71,6 +71,7 @@ class Session {
     ////////////////////// COMPTE ////////////////////////
     public function getCompte(){
         return $_SESSION['compte'];
+        
     }
 
     public function setCompte($compte){

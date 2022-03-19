@@ -3,8 +3,8 @@
 
 use App\models\repository\UserRepo;
 
-if(!$session->getCompte()){
-    echo "il n'y a pas de compte";
+// si $session ne fonctionne pas, rester sur isset($_SESSION['compte'])
+if(!isset($_SESSION['compte'])){
     require("../public/views/login.php");
 
     if (isset($_POST["email"]) && !empty($_POST["email"]) &&(isset($_POST["password"])) && !empty($_POST["password"])){
@@ -23,21 +23,7 @@ if(!$session->getCompte()){
     }
 }
 else {
-    echo "il y a un compte";
     require ("../src/controller/logout.php"); 
 }
-/* if(!isset($_SESSION["compte"])){
-    
-}
-else{
-     
-} */
-var_dump($_SESSION);
-// suite du code : créer une fonction qui appelle le leaderboard + informations perso seulement si $_SESSION est set; (donc faire des tests dans le header layout.php)
-// penser à faire un objet $_SESSION avec des méthodes de set Connexion et de unset;
-
-
-    
-    
    
 ?>
