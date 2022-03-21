@@ -25,5 +25,7 @@ if(!isset($_SESSION['compte'])){
 else {
     require ("../src/controller/logout.php"); 
 }
-   
+if(isset($_POST['submit'])){
+    echo "coucou";
+}
 ?>
