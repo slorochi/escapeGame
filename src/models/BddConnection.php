@@ -84,13 +84,16 @@ class BddConnection{
 	// méthode pour modifier les infos dans la base de données
 	// fonction à valider
 	public function modifyChamp($table, $elementToPush, $nomChamp, $valeurChamp){
-        $db = $this->getconnect();
-        /* $sql = " ALTER TABLE $table MODIFY $champ $element "; */
-        $sql = " UPDATE $table SET $elementToPush WHERE $nomChamp = $valeurChamp";
-        $rst = $db->query($sql);
-        return $rst->fetchAll(PDO::FETCH_ASSOC);
-        //requête sql pour modifier le champ de la table sélectionnée
-    }
+		$db = $this->getconnect();	
+		/* $sql = " ALTER TABLE $table MODIFY $champ $element "; */
+		/* UPDATE `user` SET `nom` = 'Theop' WHERE `user`.`idUser` = 2 */
+		$sql = " UPDATE $table SET $nomChamp = :elementToPush WHERE $table . 'idUser' = :valeurChamp";
+		$rst = $db->prepare($sql);
+		$rst->execute(
+			[":elementToPush" => $elementToPush, ":valeurChamp" => $valeurChamp]);
+		return  $rst->fetchAll(PDO::FETCH_ASSOC); 
+		//requête sql pour modifier le champ de la table sélectionnée
+	}
 }
 
 ?>

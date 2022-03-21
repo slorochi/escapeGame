@@ -37,8 +37,9 @@ class UserRepo extends BddConnection{
     }
 
     // récupère les infos d'un utilisateur selon un champ sélectionné
-    public function getUserByChamp($champ, $nomChamp){
-        return $this->specifique("user", $champ, $nomChamp);
+
+    public function getUserByChamp($typeChamp, $valueToSearch){
+        return $this->specifique("user", $typeChamp, $valueToSearch);
     }
 
    public function setUserByChamp($champ , $nomChamp ){
@@ -52,7 +53,12 @@ class UserRepo extends BddConnection{
                 ->setAdresse($tab[0]["adresse"])
                 ->setCp($tab[0]["cp"])
                 ->setVille($tab[0]["ville"]);  
-        return $this;
+        return $this; 
+   }
+
+   public function modifyInfoUser($elementToPush, $nomChamp, $valeurChamp){
+       $this->modifyChamp("user", $elementToPush, $nomChamp, $valeurChamp);
+
    }
 
     public function getDataUserSelected(){
@@ -79,9 +85,43 @@ class UserRepo extends BddConnection{
         // requête sql afin de créer un 
     }
    
-    public function modifyUserElement($table, $champ, $element){
+  /*   public function modifyUserElement($table, $champ, $element){
         $this->modifyChamp($table, $champ, $element);
     }
-  
+
+   */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+/* // Controller
+class UserController{
+    // attributs
+    private UserRepo $userRepo;
+
+    puclic function __construct()
+    {
+        $this->userRepo = new UserRepo();
+    }
+}
+
+// Routeur
+$userController = new userController();
+$userController->getUserRepo()->getAllUsers();
+print_r($userController->getUserRepo()->getTabUser()); */
+
 } 
 ?>

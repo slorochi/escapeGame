@@ -1,5 +1,8 @@
 <?php
 
+use App\Session;
+require_once("../core/Session.php");
+
 /* function afficher($view){
 	if($view == "header"){
 		require("controllers/header.php");
@@ -18,6 +21,12 @@
 /*
 Gestion des pages
 */
+
+
+$session = new Session();
+$session->start();
+
+
 $p = "";
 if(isset($_GET["p"])){
 	$p = $_GET["p"];

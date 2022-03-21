@@ -1,42 +1,31 @@
 <?php
-require("../public/views/login.php");
-/* require_once "../models/repository/UserRepo.php"; */
 
-// gestion de la connexion 
- // Logique formulaire
 
- /* if (isset($_POST) && !empty($_POST)) {
-    if (isset($_SESSION['compte']) && !empty($_SESSION['compte'])) {
-        $compte = comptePostToCompte($_POST, $_SESSION['compte']);
-        if (updateComptes($compte, 'email', COMPTE_FILE)) {
-            $alert = alert("Modification du compte effectué", true);
-            $_SESSION['compte'] = $compte;
-        } else {
-            $alert = alert("Erreur modification non effectuée", false);
-        };
+use App\models\repository\UserRepo;
+
+// si $session ne fonctionne pas, rester sur isset($_SESSION['compte'])
+if(!isset($_SESSION['compte'])){
+    require("../public/views/login.php");
+
+    if (isset($_POST["email"]) && !empty($_POST["email"]) &&(isset($_POST["password"])) && !empty($_POST["password"])){
+
+        $userRepo = new UserRepo();
+        $userRepo->setAllUsers();
+        $tabUser = $userRepo->getTabUser();
+
+        if(isset($_POST['checkbox']))
+        {
+            $session->signUp($tabUser, $_POST['email'], $_POST['password']);
+        }
+        else{
+            $session->login($tabUser, $_POST['email'], $_POST['password']);
+        }
     }
- }
-    class Login{
-
-        public function testPost($postMail, $postMdp){
-            if (isset($_POST) && !empty($_POST)) {
-                $this->login($postMail, $postMdp);
-            }
-        }
-
-        //attributs
-
-        public function login($postMail, $postMdp){
-            $urepo = new userRepo();
-            $urepo->setAllUsers()->getTabUser();
-            var_dump($urepo);
-            foreach($urepo as $i=>$value){
-                if($urepo[$i]["email"]=$postMail && $urepo[$i]["mdp"]=$postMdp){
-                    // commence la session
-                }
-            }
-        }
-    } */
-    
-   
+}
+else {
+    require ("../src/controller/logout.php"); 
+}
+if(isset($_POST['submit'])){
+    echo "coucou";
+}
 ?>
