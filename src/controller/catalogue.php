@@ -1,9 +1,14 @@
 <?php
 
 use App\models\entity\User;
+use App\models\repository\EscapeRepo;
 $backpage = "?p=" .str_replace(".php","", basename(__FILE__));
 $session->setBackpage($backpage);
 
+$escape = new EscapeRepo;
+$escape->SetAllEscape();
+$esc =$escape->getTabEscape();
+var_dump($esc[0]->getNom());
 
 
 $user = new User;

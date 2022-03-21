@@ -24,7 +24,7 @@ class EscapeRepo extends BddConnection{
             $escape->setIdEscape($tab[$i]["idEscape"])
                     ->setNom($tab[$i]["nom"])
                     ->setNiveau($tab[$i]["niveau"])
-                    ->setIdType($tab[$i]["type"])
+                    ->setIdType($tab[$i]["idType"])
                     ->setAdresse($tab[$i]["adresse"])
                     ->setCp($tab[$i]["cp"])
                     ->setVille($tab[$i]["ville"]);
@@ -49,7 +49,7 @@ class EscapeRepo extends BddConnection{
         $this->dataEscapeSelected->setIdEscape($tab[0]["idEscape"])
                  ->setNom($tab[0]["nom"])
                  ->setNiveau($tab[0]["niveau"])
-                 ->setIdType($tab[0]["type"])
+                 ->setIdType($tab[0]["idType"])
                  ->setAdresse($tab[0]["adresse"])
                  ->setCp($tab[0]["cp"])
                  ->setVille($tab[0]["ville"]);  

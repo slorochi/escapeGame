@@ -45,12 +45,12 @@
                                     <a href="?p=stats" class="connection">-stats-</a>
                                 <span>niveau </span></div>
                                 <a href="?p=login" class="connection">
-                                    <img src="views/style/img/Sans titre-1.png" alt="">
+                                    <img src="views/style/img/Sans titre-1.png" style="width:50px; height:50px" alt="">
                                     <span class="user">Déconnecter</span>
                                 </a> 
                         <?php else : ?>
                                 <a href="?p=login" class="connection">
-                                    <img src="views/style/img/Sans titre-1.png" alt="">
+                                    <img src="views/style/img/Sans titre-1.png"  style="width:50px; height:50px" alt="">
                                     <span class="user">Connecter ici</span>
                                 </a> 
                         
@@ -72,13 +72,13 @@
                     </div>
                 </div>
             </div> -->
-            <div class="col-2 deconnecter">
+            <!-- <div class="col-2 deconnecter">
                 <div class="userconnecter">
                     <div class="row">
                         <a href="#" class="col-12"><span>Connection</span><i class="fa-solid fa-right-to-bracket"></i></a>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </class>
     </div>
 </header>

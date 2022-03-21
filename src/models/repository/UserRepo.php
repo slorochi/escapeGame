@@ -81,7 +81,7 @@ class UserRepo extends BddConnection{
     public function setUserToCreate($idUser, $nom, $email, $mdp, $niveau, $adresse, $cp, $ville){
         // variables définies dans le controller 
         $this->userToCreate = $this->getUserToCreate($idUser, $nom, $email, $mdp, $niveau, $adresse, $cp, $ville);
-        $this->createElement("User", $this->userToCreate);
+        $this->createUser("User", $this->userToCreate);
         // requête sql afin de créer un 
     }
    
