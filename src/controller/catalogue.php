@@ -4,12 +4,29 @@ use App\models\entity\User;
 use App\models\repository\EscapeRepo;
 $backpage = "?p=" .str_replace(".php","", basename(__FILE__));
 $session->setBackpage($backpage);
-
+$option = "            <option value='valeur1'>Valeur 1</option>
+";
 $escape = new EscapeRepo;
 $escape->SetAllEscape();
 $esc =$escape->getTabEscape();
-var_dump($esc[0]->getNom());
-
+$htmlEscp="";
+foreach($esc as $key=>$value){
+    $nom =($value->getNom());
+    $adresse = $value->getAdresse();
+    $cp = $value->getCp();
+    $ville = $value->getVille();
+    $htmlEscp .= 
+    "<div class='card col-md-6'>
+        <img class='card-img-top' src='views/style/img/be4be3e0-5dae-11ec-bfae-50d2ca6eaeba.jfif' alt='Card image cap'>
+        <div class='card-body'>
+            <h5 class='card-title'>$nom</h5>
+            <p class='card-text'>$adresse $cp $ville.</p>
+            <a href='' class='btn btn-primary'>Go somewhere</a>
+        </div>
+    </div>";
+}
+/* var_dump($esc[0]->getNom());
+ */
 
 $user = new User;
 /* $user->setNom("Anthony"); */
