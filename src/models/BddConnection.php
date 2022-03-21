@@ -12,7 +12,7 @@ class BddConnection{
 	protected $serveur = "localhost";
 	protected $bdd 	= "blocb";
 	protected $user = "root";
-	protected $password = "";  // null si wamp
+	protected $password = "";
 	
 	//test la connect.
 	protected function getconnect(){

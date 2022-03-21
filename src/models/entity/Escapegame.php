@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\models\entity;
 
 class Escapegame{
