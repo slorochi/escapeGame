@@ -26,7 +26,7 @@ class EscapeRepo extends BddConnection{
     protected function getAllEscape(){
         return $this->tous("EscapeGame");
     }
-    public function setAllUsers(){
+    public function setAllEscape(){
         $tab = $this->getAllEscape();
         foreach($tab as $i=>$value){
             $escape = new Escapegame();
@@ -52,8 +52,8 @@ class EscapeRepo extends BddConnection{
 
     public function setEscapeByChamp($champ , $nomChamp ){
         $tab = $this->getEscapeByChamp($champ , $nomChamp);
-        $this->dataUserSelected = new Escapegame();
-        $this->dataUserSelected->setIdEscape($tab[0]["idEscape"])
+        $this->dataEscapeSelected = new Escapegame();
+        $this->dataEscapeSelected->setIdEscape($tab[0]["idEscape"])
                  ->setNom($tab[0]["nom"])
                  ->setNiveau($tab[0]["niveau"])
                  ->setIdType($tab[0]["idType"])
@@ -80,7 +80,7 @@ class EscapeRepo extends BddConnection{
         return $escapeToC;
     }
 
-    public function setUserToCreate($idEscape, $nom, $niveau, $idType, $adresse, $cp, $ville){
+    public function setEscapeToCreate($idEscape, $nom, $niveau, $idType, $adresse, $cp, $ville){
         $this->escapeToCreate = $this->getEscapeToCreate($idEscape, $nom, $niveau, $idType, $adresse, $cp, $ville);
         $this->createEscape("Escape", $this->escapeToCreate); 
     }
