@@ -70,7 +70,9 @@ class Session {
 
     ////////////////////// COMPTE ////////////////////////
     public function getCompte(){
-        return $_SESSION['compte'];
+        if(isset($_SESSION['compte'])){
+            return $_SESSION['compte'];
+        }
         
     }
 

@@ -4,24 +4,37 @@ use App\models\repository\UserRepo;
 if (isset($_SESSION['compte'])){
     $userRepo = new UserRepo();
     $user = $userRepo->getUserByChamp("email",$session->GetCompte()["email"])[0];
-    $lvl = $user["niveau"];
-    $id = $user["idUser"];
-    $pseudo = $user["nom"];
+    $userRepo->setUserByChamp("email",$session->GetCompte()["email"] );
+    $try = $userRepo->getDataUserSelected();
+    $lvl = $try->getNiveau();
+    $id = $try->getIdUser();
+    $pseudo = $try->getNom();
     $email = $user["email"];
     $mdp = $user["mdp"];
     $adresse = $user["adresse"];
     $cp = $user["cp"];
     $ville = $user["ville"];
 
-    $editPseudo ="<div class='row col-md-6 justify-content-evenly'> 
+    /* $editPseudo ="<div class='row col-md-6 justify-content-evenly'> 
         <input type='text' name ='pseudo' class='' style='width:250px'
         placeholder='Enter your new pseudo here'/>
         <input type='submit' style='width:100px' value='confirm' name='submitPseudo' class''>
-        </div>";
+        </div>"; */
     require("../public/views/infos.php");
     if(isset($_POST['submit'])){
         $newPseudo = $_POST['pseudo'];
+        $newEmail = $_POST['email'];
+        $newMdp = $_POST['mdp'];
+        $newAddress = $_POST['adresse'];
+        $newCp = $_POST['cp'];
+        $newVille= $_POST['ville'];
         $userRepo->modifyInfoUser($newPseudo, "nom", $id);
+        $userRepo->modifyInfoUser($newEmail, "email", $id);
+        $userRepo->modifyInfoUser($newMdp, "mdp", $id);
+        $userRepo->modifyInfoUser($newAddress, "adresse", $id);
+        $userRepo->modifyInfoUser($newCp, "cp", $id);
+        $userRepo->modifyInfoUser($newVille, "ville", $id);
+        header("Location:?p=infos"); 
     }
   
 }

@@ -33,6 +33,8 @@ else{
     $page_content = ob_get_clean();
 } */
 
+/* appel le controller pour test logique
+ *//* require "controller/layout.php"; */
 require "views/layout.php";
 
 ?>

@@ -9,24 +9,29 @@
             <input type="text" name="pseudo" class=" text-center" style='width:auto'value=<?= $pseudo?> >
         </div>
 
-        <div style="height:100px;margin-bottom:15px"class="row d-flex flex-column justify-content-evenly  align-items-center">
-            <span class="col-md-3 text-center">email : <?= $email?></span>
+        <div style="height:80px;margin-bottom:15px"class="row d-flex flex-column justify-content-evenly  align-items-center">
+            <span class="col-md-5 text-center">email :</span>
+            <input type="text" name="email" class=" text-center" style='width:auto'value=<?= $email?> >
         </div>
 
-        <div style="height:100px;margin-bottom:15px"class="row d-flex flex-column justify-content-evenly  align-items-center">
-            <span class="col-md-3 text-center">mot de passe : <?= $mdp?></span>
+        <div style="height:80px;margin-bottom:15px"class="row d-flex flex-column justify-content-evenly  align-items-center">
+            <span class="col-md-5 text-center">mot de passe :</span>
+            <input type="text" name="mdp" class=" text-center" style='width:auto'value=<?= $mdp?> >
         </div>
 
-        <div style="height:100px;margin-bottom:15px"class="row d-flex flex-column justify-content-evenly  align-items-center">
-            <span class=" text-center">adresse : <?= $adresse?></span>
+        <div style="height:80px;margin-bottom:15px"class="row d-flex flex-column justify-content-evenly  align-items-center">
+            <span class="col-md-5 text-center">adresse :</span>
+            <input type="text" name="adresse" class=" text-center" style='width:auto'value=<?= $adresse?> >
         </div>
 
-        <div style="height:100px;margin-bottom:15px"class="row d-flex flex-column justify-content-evenly  align-items-center">
-            <span class="col-md-5 text-center">cp : <?= $cp?></span>
+        <div style="height:80px;margin-bottom:15px"class="row d-flex flex-column justify-content-evenly  align-items-center">
+            <span class="col-md-5 text-center">cp :</span>
+            <input type="text" name="cp" class=" text-center" style='width:auto'value=<?= $cp?> >
         </div>
 
-        <div style="height:100px;margin-bottom:15px"class="row d-flex flex-column justify-content-evenly  align-items-center">
-            <span class="col-md-5 text-center">ville : <?= $ville?></span>
+        <div style="height:80px;margin-bottom:15px"class="row d-flex flex-column justify-content-evenly  align-items-center">
+            <span class="col-md-5 text-center">ville :</span>
+            <input type="text" name="ville" class=" text-center" style='width:auto'value=<?= $ville?> >
         </div>
         <button type="submit" name="submit" class=" col-md-2 btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" >Modifier </button>    
 

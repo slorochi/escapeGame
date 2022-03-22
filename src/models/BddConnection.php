@@ -87,7 +87,7 @@ class BddConnection{
 		$db = $this->getconnect();	
 		/* $sql = " ALTER TABLE $table MODIFY $champ $element "; */
 		/* UPDATE `user` SET `nom` = 'Theop' WHERE `user`.`idUser` = 2 */
-		$sql = " UPDATE $table SET $nomChamp = :elementToPush WHERE $table . 'idUser' = :valeurChamp";
+		$sql = " UPDATE $table SET $nomChamp = :elementToPush WHERE idUser = :valeurChamp";
 		$rst = $db->prepare($sql);
 		$rst->execute(
 			[":elementToPush" => $elementToPush, ":valeurChamp" => $valeurChamp]);

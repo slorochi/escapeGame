@@ -40,8 +40,11 @@ class UserRepo extends BddConnection{
 
     public function getUserByChamp($typeChamp, $valueToSearch){
         return $this->specifique("user", $typeChamp, $valueToSearch);
+        
     }
 
+    // crée l'objet selon getUserByChamp
+    
    public function setUserByChamp($champ , $nomChamp ){
        $tab = $this->getUserByChamp($champ , $nomChamp);
        $this->dataUserSelected = new User();
