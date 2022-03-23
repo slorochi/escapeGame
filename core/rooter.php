@@ -54,6 +54,9 @@ switch($p){
 	case "contact":
 		require("../src/controller/contact.php");
 	break;
+	case "test":
+		require("../src/controller/test.php");
+	break;
 	default:
         require("../src/controller/accueil.php");
 }
