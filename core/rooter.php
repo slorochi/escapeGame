@@ -1,7 +1,13 @@
 <?php
 
-use App\Session;
-require_once("../core/Session.php");
+use App\models\repository\UserRepo;
+
+use App\core\Session;
+use App\core\Leaderboard;
+require("../core/Session.php");
+require("../core/Leaderboard.php");
+
+
 
 /* function afficher($view){
 	if($view == "header"){
@@ -22,9 +28,11 @@ require_once("../core/Session.php");
 Gestion des pages
 */
 
-
+$leaderboard = new Leaderboard("../core/dataleaderboard.dt","r+");
 $session = new Session();
 $session->start();
+$leaderboard->SetNumberConnexions("");
+var_dump($leaderboard->getNumberConnexions());
 
 
 $p = "";

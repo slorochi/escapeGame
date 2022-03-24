@@ -22,6 +22,7 @@
         <div class="row">
             <?= $htmlEscp ?> 
         </div>
+        <?= $admin ?>
     </div>
     
 </section>

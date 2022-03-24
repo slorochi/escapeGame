@@ -38,19 +38,22 @@
                     <a href="?p=contact"class="col-3" >Contact</a>
                     </div>
                 </div>
+
+                
                 <?php  
                 
                 $compte = $_SESSION['compte'] ?? "";
-                $userRepo = new UserRepo();
                 
-                if($compte) : ?>
+                if($compte) :
+                    /* $userRepo = new UserRepo();
+                    $userRepo->setUserByChamp("email",$session->GetCompte()["email"] );
+                    $try = $userRepo->getDataUserSelected(); */  ?>
                 <!-- Si connecté -->
                         <div class="col-2 connecter">
                             <a href="?p=infos" class="avatar">
                                 <img src="views/style/img/avatar<?= $try->getNiveau();?>.png" alt="">
                                 <span class="user"><?php 
-                                $userRepo->setUserByChamp("email",$session->GetCompte()["email"] );
-                                $try = $userRepo->getDataUserSelected(); 
+                               
                                 echo($try->getNom()); ?></span>
                                 <span class="niveau">lvl&nbsp<?= $try->getNiveau(); ?></span>
                             </a>
@@ -71,6 +74,7 @@
                             </div>
                         </div>
                 <?php endif ?>
+                
             </div>
          </div>
     </div>

@@ -1,5 +1,5 @@
 <?php
-namespace App;
+namespace App\core;
 
 use App\models\repository\UserRepo;
 

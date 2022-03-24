@@ -97,38 +97,36 @@ else{
     }
 }
 
-/* var_dump($esc[0]->getNom());*/
 
-/* $user->setNom("Anthony"); */
+/* if admin */
+$admin = " <form method='post' class=' d-flex flex-column justify-content-evenly' style='width:300px; height:400px'action='?p=catalogue'> 
+<input text='text' name='nomAdmin' class='text-center' placeholder='escape name' style='width:auto'> 
+<input text='text' name='lvlAdmin' class='text-center' placeholder='escape lvl' style='width:auto'> 
+<input text='text' name='idAdmin' class='text-center' placeholder='escape type' style='width:auto'> 
+<input text='text' name='adresseAdmin' class='text-center' placeholder='escape adresse' style='width:auto'> 
+<input text='text' name='cpAdmin' class='text-center' placeholder='escape cp' style='width:auto'> 
+<input text='text' name='villeAdmin' class='text-center' placeholder='escape ville' style='width:auto'> 
+<button type='submit' class='btn btn-primary btn-lg'
+style='padding-left: 2.5rem; padding-right: 2.5rem;' name='submitAdmin' >ajouter </button>
+</form>";
 
-/* $html = ($user->getNom()); 
-$level = $html[0]["niveau"];
-$currentUser = $html[0]["nom"]; */
-/* if (length(data)>=4){
-    for ($i = 1; $i <= 4; $i++) {
-        $html.= ' <div class="card col-md-6">
-        <img class="card-img-top" src="views/style/img/be4be3e0-5dae-11ec-bfae-50d2ca6eaeba.jfif" alt="Card image cap">
-        <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-        </div> '
+if(isset($_POST['submitAdmin'])){
+    foreach($esc as $key=>$value){
+        $idEscape= $value->getIdEscape();
     }
-};
-else{
-    for($i = 1; $i <=length(data)){
-        $html.= ' <div class="card col-md-6">
-        <img class="card-img-top" src="views/style/img/be4be3e0-5dae-11ec-bfae-50d2ca6eaeba.jfif" alt="Card image cap">
-        <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the cards content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-        </div> '
-    }
-};
- */
+    $idEsc = strval($idEscape + 1);
+    var_dump($idEsc);
+    $nameEsc = $_POST['nomAdmin'];
+    $lvlEsc = $_POST['lvlAdmin'];
+    $idTypeEsc = $_POST['idAdmin'];
+    $adresseEsc = $_POST['adresseAdmin'];
+    $cpEsc = $_POST['cpAdmin'];
+    $villeEsc = $_POST['villeAdmin'];
+    var_dump($idEsc, $nameEsc, $lvlEsc, $idTypeEsc, $cpEsc, $villeEsc, $adresseEsc);
+    $escape->setEscapeToCreate($idEsc, $nameEsc, $lvlEsc, $idTypeEsc, $cpEsc, $villeEsc, $adresseEsc);
+}
+
+
 
 require("../public/views/catalogue.php");
 

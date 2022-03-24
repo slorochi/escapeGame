@@ -75,7 +75,8 @@ class EscapeRepo extends BddConnection{
 
     public function setEscapeToCreate($idEscape, $nom, $niveau, $idType, $adresse, $cp, $ville){
         $this->escapeToCreate = $this->getEscapeToCreate($idEscape, $nom, $niveau, $idType, $adresse, $cp, $ville);
-        $this->createEscape("Escape", $this->escapeToCreate); 
+        var_dump($this->escapeToCreate->getIdEscape());
+        $this->createEscape("escape", $this->escapeToCreate->getIdEscape(), $this->escapeToCreate->getNom(), $this->escapeToCreate->getNiveau(), $this->escapeToCreate->getIdType(), $this->escapeToCreate->getAdresse(), $this->escapeToCreate->getCp(), $this->escapeToCreate->getVille());   
     }
 
     public function deleteEscape($id){

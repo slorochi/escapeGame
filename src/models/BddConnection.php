@@ -64,6 +64,7 @@ class BddConnection{
 		$db = $this->getconnect();
 		$sql = "INSERT INTO $table SET idUser = :idUser, nom = :nom, email = :email, mdp = :mdp, niveau = :niveau, adresse = :adresse, cp = :cp, ville = :ville" ;
 		$rst = $db->prepare($sql);
+		var_dump($elementToCreate->getIdUser());
 		$rst->execute(
 			[":idUser" => $elementToCreate->getIdUser(), ":nom" => $elementToCreate->getNom(), ":email" => $elementToCreate->getMail(), ":mdp" => $elementToCreate->getMdp(), ":niveau" => $elementToCreate->getNiveau(), ":adresse" => $elementToCreate->getAdresse(), ":cp" => $elementToCreate->getCp(), ":ville" => $elementToCreate->getVille()]);
 		return  $rst->fetchAll(PDO::FETCH_ASSOC); 
@@ -71,13 +72,14 @@ class BddConnection{
 
 		//////////////ESCAPE GAME//////////////
 
-	public function createEscape(string $table, $escapeToCreate){
+	public function createEscape(string $table, $idEsc, $nom, $niveau, $idType ,$adresse, $cp , $ville){
 		$db = $this->getconnect();
 		$sql = "INSERT INTO $table SET idEscape = :idEscape, nom = :nom, niveau = :niveau, idType = :idType, adresse = :adresse, cp = :cp, ville = :ville" ;
 		$rst = $db->prepare($sql);
 		$rst->execute(
-			[":idEscape" => $escapeToCreate->getIdEscape(), ":nom" => $escapeToCreate->getNom(), ":niveau" => $escapeToCreate->getNiveau(), ":idType" => $escapeToCreate->getidType(), ":adresse" => $escapeToCreate->getAdresse(), ":cp" => $escapeToCreate->getCp(), ":ville" => $escapeToCreate->getVille()]);
+			[":idEscape" => $idEsc, ":nom" => $nom, ":niveau" => $niveau, ":idType" => $idType, ":adresse" => $adresse, ":cp" => $cp, ":ville" => $ville]);
 		return  $rst->fetchAll(PDO::FETCH_ASSOC); 
+
 	}
 
 
