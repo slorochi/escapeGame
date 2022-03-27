@@ -1,11 +1,10 @@
 <?php
 
-use App\models\repository\UserRepo;
-
 use App\core\Session;
-use App\core\Leaderboard;
+
+require("../core/LeaderManager.php");
+use App\models\repository\UserRepo;
 require("../core/Session.php");
-require("../core/Leaderboard.php");
 
 
 
@@ -28,10 +27,10 @@ require("../core/Leaderboard.php");
 Gestion des pages
 */
 
-$leaderboard = new Leaderboard("../core/dataleaderboard.dt","r+");
+$leaderboard = new LeaderManager("../core/dataleaderboard.dt","r+");
 $session = new Session();
 $session->start();
-$leaderboard->SetNumberConnexions("");
+$leaderboard->SetNumberConnexions();
 var_dump($leaderboard->getNumberConnexions());
 
 

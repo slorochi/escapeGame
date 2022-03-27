@@ -6,38 +6,49 @@ use App\models\repository\UserRepo;
 
 class Leaderboard {
 
+    /////////////////////////////////////////////////////////
+    ////////////////////// ATTRIBUTS /////////////////////////
+    /////////////////////////////////////////////////////////
 
-    protected $file;
-    protected $ressource;
-    protected $mode;
+    protected $accounts;
     protected $connexions;
-    protected $writeMode = ["r+","w","w+","a","a+","x","x+","c","c+"];
+    protected $accountCreated;
 
     /////////////////////////////////////////////////////////
     ////////////////////// METHODES /////////////////////////
     /////////////////////////////////////////////////////////
 
-    public function __construct(string $file, string $mode){
-        $this->file = $file;
-        $this->mode = $mode;
-        $this->ressource = $this->open($this->mode);
+
+    //interface reliée à l'encodage json
+    public function jsonSerialize(): mixed{
+        return (object)get_object_vars($this);
     }
 
-    private function open(string $mode){
-        return fopen($this->file, $mode); 
+    private function getAccounts(){
+        return $this->accounts; 
     }
   
-    public function getNumberConnexions(){
-        return fgets($this->ressource);
+    private function setAccounts($accounts){
+        $this->accounts = $accounts;
+        return $this; 
     }
-    
-    public function setNumberConnexions($msg){
-        if($this->getNumberConnexions()==false){
-            file_put_contents($this->file, 1);
-        }
-        // si file empty; commence à un
-        // else : fait un get NumberConnexions, le lis, ajoute +1 à la varible, puis réécrit dedans.
-        file_put_contents($this->file, $msg);
+
+    private function getConnexions(){
+        return $this->accounts; 
+    }
+  
+    private function setConnexions($connexions){
+        $this->connexions = $connexions;
+        return $this; 
+    }
+
+    private function getAccountsCreated(){
+        return $this->accountsCreated; 
+    }
+  
+    private function setAccountsCreated($accountsCreated){
+        $this->accountsCreated = $accountsCreated;
+        return $this; 
     }
 
 } 
