@@ -4,15 +4,15 @@ namespace App\core;
 // utiliser FIle pour les méthodes files et écrire des objets dans le dataleaderboard.dt pour récupérer par la suite 
 use App\models\repository\UserRepo;
 
-class Leaderboard {
+class Leaderboard /* implements JsonSerializable */{
 
     /////////////////////////////////////////////////////////
     ////////////////////// ATTRIBUTS /////////////////////////
     /////////////////////////////////////////////////////////
 
-    protected $accounts;
-    protected $connexions;
-    protected $accountCreated;
+    public $accounts;
+    public $connexions;
+    public $accountsCreated;
 
     /////////////////////////////////////////////////////////
     ////////////////////// METHODES /////////////////////////
@@ -24,29 +24,29 @@ class Leaderboard {
         return (object)get_object_vars($this);
     }
 
-    private function getAccounts(){
+    public function getAccounts(){
         return $this->accounts; 
     }
   
-    private function setAccounts($accounts){
+    public function setAccounts($accounts){
         $this->accounts = $accounts;
         return $this; 
     }
 
-    private function getConnexions(){
-        return $this->accounts; 
+    public function getConnexions(){
+        return $this->connexions; 
     }
   
-    private function setConnexions($connexions){
+    public function setConnexions($connexions){
         $this->connexions = $connexions;
         return $this; 
     }
 
-    private function getAccountsCreated(){
+    public function getAccountsCreated(){
         return $this->accountsCreated; 
     }
   
-    private function setAccountsCreated($accountsCreated){
+    public function setAccountsCreated($accountsCreated){
         $this->accountsCreated = $accountsCreated;
         return $this; 
     }
