@@ -27,11 +27,17 @@ require("../core/Session.php");
 Gestion des pages
 */
 
-$leaderboard = new LeaderManager("../core/dataleaderboard.dt","r+");
+$leaderboard = new LeaderManager(new File("../core/dataleaderboard.dt","r+"));
 $session = new Session();
 $session->start();
-$leaderboard->SetNumberConnexions();
-var_dump($leaderboard->getNumberConnexions());
+/* $leaderboard->getNumberAccounts(new UserRepo());
+var_dump($leaderboard->getNumberAccounts(new UserRepo()));  */
+
+/* var_dump($leaderboard->addFirstObject(new UserRepo())); */
+/* var_dump($leaderboard->getLeaderboard()); */
+$leaderboard->setNumberConnexions();
+
+
 
 
 $p = "";

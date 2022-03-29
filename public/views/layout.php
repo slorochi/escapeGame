@@ -45,9 +45,9 @@
                 $compte = $_SESSION['compte'] ?? "";
                 
                 if($compte) :
-                    /* $userRepo = new UserRepo();
+                    $userRepo = new UserRepo();
                     $userRepo->setUserByChamp("email",$session->GetCompte()["email"] );
-                    $try = $userRepo->getDataUserSelected(); */  ?>
+                    $try = $userRepo->getDataUserSelected();   ?>
                 <!-- Si connecté -->
                         <div class="col-2 connecter">
                             <a href="?p=infos" class="avatar">
