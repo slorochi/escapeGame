@@ -46,10 +46,11 @@ class Session {
         }
         // si le compte n'existe pas
         if ($accExist == false){
-            /* $userRepo->setUserToCreate("idUser", "nom", $postMail, $postMdp,"niveau", "adresse", "cp", "ville"); */
+            $userRepo = new UserRepo();
+            $userRepo->setUserToCreate("nom", $postMail, $postMdp,"1", "adresse", "28000", "ville",); 
             $compte = ["email"=> $postMail, "mdp"=> $postMdp];
             $this->setCompte($compte);
-            header("Location:" .$this->getBackpage()); 
+            header("Location:" .$this->getBackpage()) ;
         }
     }
 

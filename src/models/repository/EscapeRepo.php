@@ -61,9 +61,14 @@ class EscapeRepo extends BddConnection{
     }
 
     //Création d'un escape game dans la base de données
-    protected function getEscapeToCreate($idEscape, $nom, $niveau, $idType, $adresse, $cp, $ville){
+    protected function getEscapeToCreate($nom, $niveau, $idType, $adresse, $cp, $ville){
         $escapeToC = new Escapegame();
-        $escapeToC->setIdEscape($idEscape);
+        $all = $this->setAllEscape()->getTabEscape();
+        foreach($all as $key => $value){}
+
+        $maxId = ($value->getIdEscape());
+        $incrId= $maxId+1;
+        $escapeToC->setIdEscape($incrId); 
         $escapeToC->setNom($nom);
         $escapeToC->setNiveau($niveau);
         $escapeToC->setIdType($idType);
@@ -73,10 +78,9 @@ class EscapeRepo extends BddConnection{
         return $escapeToC;
     }
 
-    public function setEscapeToCreate($idEscape, $nom, $niveau, $idType, $adresse, $cp, $ville){
-        $this->escapeToCreate = $this->getEscapeToCreate($idEscape, $nom, $niveau, $idType, $adresse, $cp, $ville);
-        var_dump($this->escapeToCreate->getIdEscape());
-        $this->createEscape("escape", $this->escapeToCreate->getIdEscape(), $this->escapeToCreate->getNom(), $this->escapeToCreate->getNiveau(), $this->escapeToCreate->getIdType(), $this->escapeToCreate->getAdresse(), $this->escapeToCreate->getCp(), $this->escapeToCreate->getVille());   
+    public function setEscapeToCreate($nom, $niveau, $idType, $adresse, $cp, $ville){
+        $this->escapeToCreate = $this->getEscapeToCreate($nom, $niveau, $idType, $adresse, $cp, $ville);
+        $this->createEscape("escapegame", $this->escapeToCreate); 
     }
 
     public function deleteEscape($id){

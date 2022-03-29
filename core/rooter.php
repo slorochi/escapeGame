@@ -36,7 +36,7 @@ var_dump($leaderboard->getNumberAccounts(new UserRepo()));  */
 /* var_dump($leaderboard->addFirstObject(new UserRepo())); */
 /* var_dump($leaderboard->getLeaderboard()); */
 $leaderboard->setNumberConnexions();
-
+var_dump($_SESSION);
 
 
 
