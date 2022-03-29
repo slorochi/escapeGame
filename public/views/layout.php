@@ -21,7 +21,7 @@
 
 <body>
 <!-- common header -->
-<header>
+<header class="container-fluid">
     <div class="header">
         <div class="row AZERTY">
             <div class="col-10 menu">

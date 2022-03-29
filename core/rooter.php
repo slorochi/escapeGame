@@ -1,8 +1,11 @@
 <?php
+namespace App;
 
-use App\core\Session;
+use File;
 
 require("../core/LeaderManager.php");
+use LeaderManager;
+use App\core\Session;
 use App\models\repository\UserRepo;
 require("../core/Session.php");
 
@@ -35,7 +38,7 @@ var_dump($leaderboard->getNumberAccounts(new UserRepo()));  */
 
 /* var_dump($leaderboard->addFirstObject(new UserRepo())); */
 /* var_dump($leaderboard->getLeaderboard()); */
-$leaderboard->setNumberConnexions();
+/* $leaderboard->setNumberConnexions(); */
 
 
 
