@@ -1,4 +1,5 @@
 <?php
+namespace App\core;
 
 
 class Verif{
@@ -20,6 +21,16 @@ class Verif{
 
     public function is_alfa($field, $errorMessage){
         if(!preg_match('/^[a-zA-Z]+$/', $this->getfield($field))){
+            $this->errors[$field] = $errorMessage;
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public function is_message($field, $errorMessage){
+        if(!preg_match('/^[a-zA-Z0-9]+$/', $this->getfield($field))){
             $this->errors[$field] = $errorMessage;
             return false;
         }
