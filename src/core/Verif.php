@@ -49,6 +49,9 @@ class Verif{
         }
     }
 
+    public function sendMail(){
+        mail("teixeira.gaetan@outlook.fr", $_POST['subject'], $_POST['message'], "From: ".$_POST['email']."\r\n".$_POST['name']);
+    }
     public function verif(){
         return empty($this->errors);
     }

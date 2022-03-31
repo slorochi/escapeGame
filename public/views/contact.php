@@ -1,3 +1,4 @@
+
 <!--Section: Contact v.2-->
 <section class="container">
     <div class="row justify-content-md-center">
@@ -11,8 +12,18 @@
                     <!--Grid column-->
                     <div class="col-md-6">
                         <div class="md-form mb-0">
-                            <input type="text" id="name" name="name" class="form-control">
-                            <label for="name" class="">Votre nom</label>
+                            <label for="name" >Votre nom</label>
+                            <input type="text" id="name" name="name"
+                            value="<?php 
+                                if(!empty($_POST['name'])){
+                                    echo $_POST['name'];} 
+                                    ?>"
+                            class="form-control">
+                            <?php  
+                                if(isset($errors["name"])){
+                                    echo '<p class="alert alert-danger">'.$errors["name"]."</p>";
+                                } 
+                            ?>
                         </div>
                     </div>
                     <!--Grid column-->
@@ -20,8 +31,18 @@
                     <!--Grid column-->
                     <div class="col-md-6">
                         <div class="md-form mb-0">
-                            <input type="text" id="email" name="email" class="form-control">
                             <label for="email" class="">Votre Email</label>
+                            <input type="text" id="email" name="email" 
+                            value="<?php 
+                                if(!empty($_POST['email'])){
+                                    echo $_POST['email'];} 
+                                    ?>"
+                            class="form-control">
+                            <?php  
+                            if(isset($errors["email"])){
+                                echo '<p class="alert alert-danger">'.$errors["email"]."</p>";
+                            } ?>
+                            
                         </div>
                     </div>
                     <!--Grid column-->
@@ -33,8 +54,16 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="md-form mb-0">
-                            <input type="text" id="subject" name="subject" class="form-control">
                             <label for="subject" class="">Sujet</label>
+                            <input type="text" id="subject" name="subject" value="<?php 
+                                if(!empty($_POST['subject'])){
+                                    echo $_POST['subject'];} 
+                                    ?>"class="form-control">
+                            <?php  
+                            if(isset($errors["subject"])){
+                                echo '<p class="alert alert-danger">'.$errors["subject"]."</p>";
+                            } ?>
+                            
                         </div>
                     </div>
                 </div>
@@ -47,14 +76,30 @@
                     <div class="col-md-12">
 
                         <div class="md-form">
-                            <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
+
                             <label for="message">votre message</label>
+                            <textarea type="text" id="message" name="message" rows="2"
+                            class="form-control md-textarea"><?php 
+                                if(!empty($_POST['message'])){
+                                    echo $_POST['message'];} 
+                                    ?></textarea>
+                            <?php  
+                            if(isset($errors["message"])){
+                                echo '<p class="alert alert-danger">'.$errors["message"]."</p>";
+                            } ?>
+                            
                         </div>
 
                     </div>
                 </div>
                 <!--Grid row-->
                 <input class="btn btn-primary" type="submit">
+                <?php
+
+                
+
+                ?>
+                
             </form>
 
         </div>
