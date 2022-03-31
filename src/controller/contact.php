@@ -13,11 +13,7 @@ if(!empty($_POST)){
     $verfContact->is_mail('email', 'Votre email n\'est pas valide');
 
     if($verfContact->verif()){
-
-        if (isset($_POST['message'])) {
-            mail("teixeira.gaetan@outlook.fr", $_POST['subject'], $_POST['message'], "From: ".$_POST['email']."\r\n".$_POST['name']);
-        }
-
+        $verfContact->sendMail('subject','message','email','name');
     }
     else{
         $errors = $verfContact->getErrors();

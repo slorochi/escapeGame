@@ -40,7 +40,7 @@ class Verif{
     }
 
     public function is_mail($field, $errorMessage){
-        if(!filter_var($this->getfield($field), FILTER_VALIDATE_EMAIL)){
+        if(!filter_var($this->getfield($field), FILTER_VALIDATE_EMAIL )){
             $this->errors[$field] = $errorMessage;
             return false;
         }
@@ -56,6 +56,8 @@ class Verif{
     public function getErrors(){
         return $this->errors; 
     }
-
+    public function sendMail($sujet,$message,$mail,$name){
+            mail("teixeira.gaetan@outlook.fr", $sujet, $message, "From: ".$mail."\r\n".$name);
+    }
 }
 ?>
