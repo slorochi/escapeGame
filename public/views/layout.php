@@ -39,7 +39,6 @@
                     </div>
                 </div>
 
-                
                 <?php  
                 
                 $compte = $_SESSION['compte'] ?? "";
