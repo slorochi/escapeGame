@@ -10,12 +10,12 @@ $verif ="";
 
 if(!empty($_POST)){
     
-   $errors = [];
+    $errors = [];
     $verfContact = new Verif($_POST);
     $verfContact->is_mail('email', 'Votre email n\'est pas valide');
     $verfContact->is_message('message', 'Votre message n\'est pas valide');
-    $verfContact->is_alfa('name', 'Votre nom n\'est pas valide');
-    $verfContact->is_alfa('subject', 'Votre sujet n\'est pas valide');
+    $verfContact->is_name('name', 'Votre nom n\'est pas valide');
+    $verfContact->is_message('subject', 'Votre sujet n\'est pas valide');
 
     if($verfContact->verif()){
         $verfContact->sendMail($_POST['subject'],$_POST['message'],$_POST['email'],$_POST['name']);
