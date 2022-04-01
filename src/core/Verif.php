@@ -49,8 +49,8 @@ class Verif{
         }
     }
 
-    public function sendMail(){
-        mail("teixeira.gaetan@outlook.fr", $_POST['subject'], $_POST['message'], "From: ".$_POST['email']."\r\n".$_POST['name']);
+    public function sendMail($subject,$message,$email,$name){
+        mail("teixeira.gaetan@outlook.fr", $subject, $message, "From: ".$email."\r\n".$name);
     }
     public function verif(){
         return empty($this->errors);
@@ -58,9 +58,6 @@ class Verif{
 
     public function getErrors(){
         return $this->errors; 
-    }
-    public function sendMail($sujet,$message,$mail,$name){
-            mail("teixeira.gaetan@outlook.fr", $sujet, $message, "From: ".$mail."\r\n".$name);
     }
 }
 ?>

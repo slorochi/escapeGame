@@ -6,10 +6,10 @@ use App\core\Verif;
 $backpage = "?p=" .str_replace(".php","", basename(__FILE__));
 $session->setBackpage($backpage);
 
-
+$verif ="";
 
 if(!empty($_POST)){
-
+    
    $errors = [];
     $verfContact = new Verif($_POST);
     $verfContact->is_mail('email', 'Votre email n\'est pas valide');
@@ -18,10 +18,12 @@ if(!empty($_POST)){
     $verfContact->is_alfa('subject', 'Votre sujet n\'est pas valide');
 
     if($verfContact->verif()){
-        $verfContact->sendMail();
+        $verfContact->sendMail($_POST['subject'],$_POST['message'],$_POST['email'],$_POST['name']);
+        $verif = '<p class="alert alert-success">Votre message a bien été envoyé</p>';
     }
     else{
-     $errors = $verfContact->getErrors();
+        $errors = $verfContact->getErrors();
+        
     }
 
 }

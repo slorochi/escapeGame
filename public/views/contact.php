@@ -8,7 +8,9 @@
 
                 <!--Grid row-->
                 <div class="row">
-
+                    <?php
+                    echo $verif;
+                    ?>
                     <!--Grid column-->
                     <div class="col-md-6">
                         <div class="md-form mb-0">
