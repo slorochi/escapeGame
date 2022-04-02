@@ -38,7 +38,7 @@ class UserRepo extends BddConnection{
 
     // récupère les infos d'un utilisateur selon un champ sélectionné
 
-    public function getUserByChamp($typeChamp, $valueToSearch){
+    protected function getUserByChamp($typeChamp, $valueToSearch){
         return $this->specifique("user", $typeChamp, $valueToSearch);
         
     }
