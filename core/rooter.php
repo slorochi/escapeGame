@@ -38,6 +38,8 @@ var_dump($leaderboard->getNumberAccounts(new UserRepo()));  */
 /* $leaderboard->setNumberConnexions(); */
 /* var_dump($_SESSION); */
 
+var_dump($_SESSION);
+
 
 
 $p = "";
