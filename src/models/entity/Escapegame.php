@@ -12,6 +12,7 @@ class Escapegame{
     protected $adresse;
     protected $cp;
     protected $ville;
+    protected $description;
 
     /**
      * Get the value of idEscape
@@ -149,6 +150,26 @@ class Escapegame{
     public function setVille($ville)
     {
         $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of description
+     */ 
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set the value of description
+     *
+     * @return  self
+     */ 
+    public function setDescription($description)
+    {
+        $this->description = $description;
 
         return $this;
     }

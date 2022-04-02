@@ -6,7 +6,7 @@ class Verif{
     protected $errors = [];
     protected $data;
     protected $regexName = "/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u";
-    protected $regexMail = "/^[a-zA-Z0-9àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð+ ,.'-]+$/u";
+    protected $regexMessage = "/^[a-zA-Z0-9àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð+ ,.'-]+$/u";
 
     public function __construct($data){
         $this->data = $data;
@@ -31,7 +31,7 @@ class Verif{
     }
 
     public function is_message($field, $errorMessage){
-        if(!preg_match($this->regexMail, $this->getfield($field))){
+        if(!preg_match($this->regexMessage, $this->getfield($field))){
             $this->errors[$field] = $errorMessage;
             return false;
         }

@@ -19,7 +19,8 @@ class BddConnection{
 
 		try{
 			//connect à la base
-			$db = new PDO("mysql:host=$this->serveur;dbname=$this->bdd",$this->user,$this->password);
+			$db = new PDO("mysql:host=$this->serveur;dbname=$this->bdd;charset=utf8",$this->user,$this->password);
+
 			return $db;
 		}
 		//si connect impossible

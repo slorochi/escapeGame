@@ -60,6 +60,9 @@ switch($p){
 	case "stats":
 		require("../src/controller/stats.php");
 	break;
+	case 'escapegame':
+		require("../src/controller/escapegame.php");
+	break;
 	case "infos":
 		require("../src/controller/infos.php");
 	break;
