@@ -1,12 +1,12 @@
 <?php
-/* namespace App\core;
- */
+namespace App\core;
+
+
 // utiliser FIle pour les méthodes files et écrire des objets dans le dataleaderboard.dt pour récupérer par la suite 
 /* use App\models\repository\UserRepo;
  */
-require_once("../core/Leaderboard.php");
-require_once("../core/File.php");
-//namespace use UserRepo;   
+//namespace use UserRepo;
+use App\core\File;
 use App\core\Leaderboard;
 use App\models\repository\UserRepo;
 

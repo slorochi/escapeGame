@@ -27,7 +27,8 @@ class EscapeRepo extends BddConnection{
                     ->setIdType($tab[$i]["idType"])
                     ->setAdresse($tab[$i]["adresse"])
                     ->setCp($tab[$i]["cp"])
-                    ->setVille($tab[$i]["ville"]);
+                    ->setVille($tab[$i]["ville"])
+                    ->setDescription($tab[$i]["description"]);
 
             array_push($this->tabEscape,$escape); 
         }
@@ -39,7 +40,7 @@ class EscapeRepo extends BddConnection{
     }
 
     //Récupère les infos d'un escape selon tri par champ
-    protected function getEscapeByChamp($champ, $id){
+    public function getEscapeByChamp($champ, $id){
         return $this->specifique("escapegame", $champ, $id);
     }
 
@@ -52,7 +53,8 @@ class EscapeRepo extends BddConnection{
                  ->setIdType($tab[0]["idType"])
                  ->setAdresse($tab[0]["adresse"])
                  ->setCp($tab[0]["cp"])
-                 ->setVille($tab[0]["ville"]);  
+                 ->setVille($tab[0]["ville"])
+                 ->setDescription($tab[0]["description"]);
          return $this;
     }
 
@@ -61,7 +63,7 @@ class EscapeRepo extends BddConnection{
     }
 
     //Création d'un escape game dans la base de données
-    protected function getEscapeToCreate($nom, $niveau, $idType, $adresse, $cp, $ville){
+    protected function getEscapeToCreate($nom, $niveau, $idType, $adresse, $cp, $ville,$description){
         $escapeToC = new Escapegame();
         $all = $this->setAllEscape()->getTabEscape();
         foreach($all as $key => $value){}
@@ -74,12 +76,13 @@ class EscapeRepo extends BddConnection{
         $escapeToC->setIdType($idType);
         $escapeToC->setAdresse($adresse);
         $escapeToC->setCp($cp);
-        $escapeToC->setVille($ville); 
+        $escapeToC->setVille($ville);
+        $escapeToC->setDescription($description); 
         return $escapeToC;
     }
 
-    public function setEscapeToCreate($nom, $niveau, $idType, $adresse, $cp, $ville){
-        $this->escapeToCreate = $this->getEscapeToCreate($nom, $niveau, $idType, $adresse, $cp, $ville);
+    public function setEscapeToCreate($nom, $niveau, $idType, $adresse, $cp, $ville,$description){
+        $this->escapeToCreate = $this->getEscapeToCreate($nom, $niveau, $idType, $adresse, $cp, $ville, $description);
         $this->createEscape("escapegame", $this->escapeToCreate); 
     }
 
@@ -107,13 +110,6 @@ class EscapeRepo extends BddConnection{
             }
         }
     }
-
-    /* public function deleteEscape($table, $dataEscapeSelected){
-
-    } */
-
-
-
 
     //Modification d'un champ de la table escapeGame
     /* public function modifyEscapeElement($table, $champ, $element){

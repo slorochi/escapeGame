@@ -19,7 +19,8 @@ class BddConnection{
 
 		try{
 			//connect à la base
-			$db = new PDO("mysql:host=$this->serveur;dbname=$this->bdd",$this->user,$this->password);
+			$db = new PDO("mysql:host=$this->serveur;dbname=$this->bdd;charset=utf8",$this->user,$this->password);
+
 			return $db;
 		}
 		//si connect impossible
@@ -73,10 +74,10 @@ class BddConnection{
 
 	public function createEscape(string $table, $elementToCreate){
 		$db = $this->getconnect();
-		$sql = "INSERT INTO $table SET idEscape = :idEscape, nom = :nom, niveau = :niveau, idType = :idType, adresse = :adresse, cp = :cp, ville = :ville" ;
+		$sql = "INSERT INTO $table SET idEscape = :idEscape, nom = :nom, niveau = :niveau, idType = :idType, adresse = :adresse, cp = :cp, ville = :ville, description = :description" ;
 		$rst = $db->prepare($sql);
 		$rst->execute(
-			[":idEscape" => $elementToCreate->getIdEscape(), ":nom" => $elementToCreate->getNom(), ":niveau" => $elementToCreate->getNiveau(), ":idType" => $elementToCreate->getIdType(), ":adresse" => $elementToCreate->getAdresse(), ":cp" => $elementToCreate->getCp(), ":ville" => $elementToCreate->getVille()]);
+			[":idEscape" => $elementToCreate->getIdEscape(), ":nom" => $elementToCreate->getNom(), ":niveau" => $elementToCreate->getNiveau(), ":idType" => $elementToCreate->getIdType(), ":adresse" => $elementToCreate->getAdresse(), ":cp" => $elementToCreate->getCp(), ":ville" => $elementToCreate->getVille(), ":description" => $elementToCreate->getDescription()]);
 		return  $rst->fetchAll(PDO::FETCH_ASSOC); 
 
 	}

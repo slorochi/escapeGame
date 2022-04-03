@@ -1,8 +1,6 @@
 <?php
 
-
 use App\models\repository\UserRepo;
-
 
 // si $session ne fonctionne pas, rester sur isset($_SESSION['compte'])
 if(!($session->getCompte())){
@@ -30,4 +28,5 @@ else {
 if(isset($_POST['submit'])){
     echo "coucou";
 }
+
 ?>

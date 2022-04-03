@@ -1,10 +1,9 @@
 <?php
+namespace App\core;
 
+use App\core\File;
 use App\core\Session;
-
-require("../core/LeaderManager.php");
-use App\models\repository\UserRepo;
-require("../core/Session.php");
+use App\core\LeaderManager;
 
 
 
@@ -26,7 +25,8 @@ require("../core/Session.php");
 /*
 Gestion des pages
 */
-$leaderboard = new LeaderManager(new File("../core/dataleaderboard.dt","r+"));
+
+$leaderboard = new LeaderManager(new File("../src/core/dataleaderboard.dt","r+"));
 $session = new Session();
 $session->start();
 var_dump($_SESSION);
@@ -36,7 +36,6 @@ var_dump($leaderboard->getNumberAccounts(new UserRepo()));  */
 /* var_dump($leaderboard->addFirstObject(new UserRepo())); */
 /* var_dump($leaderboard->getLeaderboard()); */
 /* $leaderboard->setNumberConnexions(); */
-/* var_dump($_SESSION); */
 
 var_dump($_SESSION);
 
@@ -62,6 +61,9 @@ switch($p){
 	break;
 	case "stats":
 		require("../src/controller/stats.php");
+	break;
+	case 'escapegame':
+		require("../src/controller/escapegame.php");
 	break;
 	case "infos":
 		require("../src/controller/infos.php");
