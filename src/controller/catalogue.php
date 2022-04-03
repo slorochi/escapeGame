@@ -100,23 +100,23 @@ else{
 
 /* if admin */
 $admin = " <form method='post' class=' d-flex flex-column justify-content-evenly' style='width:300px; height:400px'action='?p=catalogue'> 
-<input text='text' name='nomAdmin' class='text-center' placeholder='escape name' style='width:auto'> 
-<input text='text' name='lvlAdmin' class='text-center' placeholder='escape lvl' style='width:auto'> 
-<input text='text' name='idAdmin' class='text-center' placeholder='escape type' style='width:auto'> 
-<input text='text' name='adresseAdmin' class='text-center' placeholder='escape adresse' style='width:auto'> 
-<input text='text' name='cpAdmin' class='text-center' placeholder='escape cp' style='width:auto'> 
-<input text='text' name='villeAdmin' class='text-center' placeholder='escape ville' style='width:auto'>
-<textarea name='descAdmin' class='text-center' placeholder='escape description' style='width:auto'></textarea>
-<button type='submit' class='btn btn-primary btn-lg'
-style='padding-left: 2.5rem; padding-right: 2.5rem;' name='submitAdmin' >ajouter </button>
+            <input text='text' name='nomAdmin' class='text-center' placeholder='escape name' style='width:auto'> 
+            <input text='text' name='lvlAdmin' class='text-center' placeholder='escape lvl' style='width:auto'> 
+            <input text='text' name='idAdmin' class='text-center' placeholder='escape type' style='width:auto'> 
+            <input text='text' name='adresseAdmin' class='text-center' placeholder='escape adresse' style='width:auto'> 
+            <input text='text' name='cpAdmin' class='text-center' placeholder='escape cp' style='width:auto'> 
+            <input text='text' name='villeAdmin' class='text-center' placeholder='escape ville' style='width:auto'>
+            <textarea name='descAdmin' class='text-center' placeholder='Description' style='width:auto'></textarea>
+            <button type='submit' class='btn btn-primary btn-lg'
+            style='padding-left: 2.5rem; padding-right: 2.5rem;' name='submitAdmin' >ajouter </button>
 </form>";
 
 if(isset($_POST['submitAdmin'])){
-    foreach($esc as $key=>$value){
+    /* foreach($esc as $key=>$value){
         $idEscape= $value->getIdEscape();
     }
     $idEsc = strval($idEscape + 1);
-    var_dump($idEsc);
+     */
     $nameEsc = $_POST['nomAdmin'];
     $lvlEsc = $_POST['lvlAdmin'];
     $idTypeEsc = $_POST['idAdmin'];
@@ -124,8 +124,8 @@ if(isset($_POST['submitAdmin'])){
     $cpEsc = $_POST['cpAdmin'];
     $villeEsc = $_POST['villeAdmin'];
     $descEsc = $_POST['descAdmin'];
-    var_dump($idEsc, $nameEsc, $lvlEsc, $idTypeEsc, $cpEsc, $villeEsc, $adresseEsc, $descEsc);
-    $escape->setEscapeToCreate($idEsc, $nameEsc, $lvlEsc, $idTypeEsc, $cpEsc, $villeEsc, $adresseEsc, $descEsc);
+    var_dump($nameEsc, $lvlEsc, $idTypeEsc, $adresseEsc,$cpEsc, $villeEsc,  $descEsc,);
+    $escape->setEscapeToCreate($nameEsc, $lvlEsc, $idTypeEsc, $adresseEsc,$cpEsc, $villeEsc,  $descEsc,);
 }
 
 
