@@ -20,6 +20,7 @@ if(isset($_POST['submit'])){
             $adresse = $value->getAdresse();
             $cp = $value->getCp();
             $ville = $value->getVille();
+            
             if($villePost=="ville"){
                 if($value->getNiveau()==$lvlPost){
                     $htmlEscp .= 
@@ -105,7 +106,7 @@ $admin = " <form method='post' class=' d-flex flex-column justify-content-evenly
 <input text='text' name='adresseAdmin' class='text-center' placeholder='escape adresse' style='width:auto'> 
 <input text='text' name='cpAdmin' class='text-center' placeholder='escape cp' style='width:auto'> 
 <input text='text' name='villeAdmin' class='text-center' placeholder='escape ville' style='width:auto'>
-<input text='text' name='descAdmin' class='text-center' placeholder='escape description' style='width:auto'> 
+<textarea name='descAdmin' class='text-center' placeholder='escape description' style='width:auto'></textarea>
 <button type='submit' class='btn btn-primary btn-lg'
 style='padding-left: 2.5rem; padding-right: 2.5rem;' name='submitAdmin' >ajouter </button>
 </form>";
