@@ -3,17 +3,16 @@
 use App\models\repository\UserRepo;
 if (isset($_SESSION['compte'])){
     $userRepo = new UserRepo();
-    $user = $userRepo->getUserByChamp("email",$session->GetCompte()["email"])[0];
     $userRepo->setUserByChamp("email",$session->GetCompte()["email"] );
     $try = $userRepo->getDataUserSelected();
     $lvl = $try->getNiveau();
     $id = $try->getIdUser();
     $pseudo = $try->getNom();
-    $email = $user["email"];
-    $mdp = $user["mdp"];
-    $adresse = $user["adresse"];
-    $cp = $user["cp"];
-    $ville = $user["ville"];
+    $email = $try->getMail();
+    $mdp = $try->getMdp();
+    $adresse = $try->getAdresse();
+    $cp = $try->getCp();
+    $ville = $try->getVille();
 
     /* $editPseudo ="<div class='row col-md-6 justify-content-evenly'> 
         <input type='text' name ='pseudo' class='' style='width:250px'

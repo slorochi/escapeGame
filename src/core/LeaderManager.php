@@ -45,9 +45,12 @@ class LeaderManager {
         $ldboard = $this->file->readLigne();
         $stdObject = json_decode($ldboard); 
         $leaderboard = new Leaderboard();
-        $leaderboard->setConnexions($stdObject->connexions);
-        $leaderboard->setAccountsCreated($stdObject->accountsCreated);
-        $leaderboard->setAccounts($stdObject->accounts);
+        $co = $stdObject->connexions;
+        $accCrea = $stdObject->accountsCreated;
+        $acc = $stdObject->accounts;
+        $leaderboard->setConnexions($co);
+        $leaderboard->setAccountsCreated($accCrea);
+        $leaderboard->setAccounts($acc);
         $this->leaderboard = $leaderboard;
         //sinon return un false
     }
