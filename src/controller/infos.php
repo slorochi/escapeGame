@@ -9,7 +9,7 @@ if (isset($_SESSION['compte'])){
     $id = $try->getIdUser();
     $pseudo = $try->getNom();
     $email = $try->getMail();
-    $mdp = $try->getNiveau();
+    $mdp = $try->getMdp();
     $adresse = $try->getAdresse();
     $cp = $try->getCp();
     $ville = $try->getVille();

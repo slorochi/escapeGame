@@ -9,7 +9,7 @@ if (isset($_SESSION['compte'])){
     $currentUser = ($userRepo->getDataUserSelected());
     $id = $currentUser->getIdUser();
     $jouer = new JouerRepo($id);
-    var_dump($jouer->setPlayedCurrentUser());
+    $jouer->setPlayedCurrentUser();
     var_dump($jouer->getStatsPlayer());
     require("../public/views/stats.php");
 }

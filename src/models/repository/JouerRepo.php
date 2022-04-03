@@ -12,7 +12,7 @@ class JouerRepo extends BddConnection{
 
     protected $statsPlayer = [];
     protected $statsAll;
-    protected $currentUser;
+    protected $currentUserId;
 
     public function __construct($currentUserId){
         $this->currentUserId = $currentUserId;
@@ -24,7 +24,6 @@ class JouerRepo extends BddConnection{
     public function setPlayedCurrentUser(){
 
         $tab = $this->getPlayedCurrentUser();
-        $jouer = new Jouer();
         foreach ($tab as $key =>$value){
             $jouer = new Jouer();
             $jouer->setIdUser($value["idUser"]);
