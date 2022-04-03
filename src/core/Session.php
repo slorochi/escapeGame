@@ -27,7 +27,8 @@ class Session {
         foreach ($tabUser as $i=>$info){
             $currentMail= $info->getMail();
             $currentMdp = $info->getMdp();
-            $compte = ["email"=> $postMail, "mdp"=> $postMdp];
+            $currentAdmin = $info->getAdmin();
+            $compte = ["email"=> $postMail, "mdp"=> $postMdp, "admin"=> $currentAdmin];
             if($postMail === $currentMail && $postMdp === $currentMdp){
                 $this->setCompte($compte);
                 header("Location:" .$this->getBackpage()); 
@@ -74,6 +75,7 @@ class Session {
 
     ////////////////////// COMPTE ////////////////////////
     public function getCompte(){
+
         if(isset($_SESSION['compte'])){
             return $_SESSION['compte'];
         }

@@ -99,7 +99,8 @@ else{
 
 
 /* if admin */
-$admin = " <form method='post' class=' d-flex flex-column justify-content-evenly' style='width:300px; height:400px'action='?p=catalogue'> 
+
+$CrudsAdmin = " <form method='post' class=' d-flex flex-column justify-content-evenly' style='width:300px; height:400px'action='?p=catalogue'> 
             <input text='text' name='nomAdmin' class='text-center' placeholder='escape name' style='width:auto'> 
             <input text='text' name='lvlAdmin' class='text-center' placeholder='escape lvl' style='width:auto'> 
             <input text='text' name='idAdmin' class='text-center' placeholder='escape type' style='width:auto'> 
@@ -112,11 +113,6 @@ $admin = " <form method='post' class=' d-flex flex-column justify-content-evenly
 </form>";
 
 if(isset($_POST['submitAdmin'])){
-    /* foreach($esc as $key=>$value){
-        $idEscape= $value->getIdEscape();
-    }
-    $idEsc = strval($idEscape + 1);
-     */
     $nameEsc = $_POST['nomAdmin'];
     $lvlEsc = $_POST['lvlAdmin'];
     $idTypeEsc = $_POST['idAdmin'];

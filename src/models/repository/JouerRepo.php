@@ -7,14 +7,13 @@ use App\models\BddConnection;
 use App\models\entity\Jouer;
 
 
-
 class JouerRepo extends BddConnection{
 
     protected $statsPlayer = [];
     protected $statsAll;
     protected $currentUserId;
 
-    public function __construct($currentUserId){
+    public function __construct($currentUserId = null){
         $this->currentUserId = $currentUserId;
     }
 
@@ -40,5 +39,10 @@ class JouerRepo extends BddConnection{
     public function getStatsPlayer(){
         return $this->statsPlayer;
     }
+
+    public function StatsAll(){
+        return $this->createLeaderboard();
+    }
+    
 }
 ?>

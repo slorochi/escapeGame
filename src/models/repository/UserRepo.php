@@ -26,7 +26,8 @@ class UserRepo extends BddConnection{
                 ->setNiveau($tab[$i]["niveau"])
                 ->setAdresse($tab[$i]["adresse"])
                 ->setCp($tab[$i]["cp"])
-                ->setVille($tab[$i]["ville"]); 
+                ->setVille($tab[$i]["ville"])
+                ->setAdmin($tab[$i]["admin"]); 
             array_push($this->tabUser,$user);
         }
         return $this;
@@ -55,7 +56,8 @@ class UserRepo extends BddConnection{
                 ->setNiveau($tab[0]["niveau"])
                 ->setAdresse($tab[0]["adresse"])
                 ->setCp($tab[0]["cp"])
-                ->setVille($tab[0]["ville"]);  
+                ->setVille($tab[0]["ville"])
+                ->setAdmin($tab[0]["admin"]);
         return $this; 
    }
 
@@ -81,7 +83,8 @@ class UserRepo extends BddConnection{
         $userToC->setNiveau($niveau);
         $userToC->setAdresse($adresse);
         $userToC->setCp($cp);
-        $userToC->setVille($ville);  
+        $userToC->setVille($ville);
+        $userToC->setAdmin(0); 
         return $userToC;
     }
 
@@ -92,43 +95,5 @@ class UserRepo extends BddConnection{
         // requête sql afin de créer un 
     }
    
-  /*   public function modifyUserElement($table, $champ, $element){
-        $this->modifyChamp($table, $champ, $element);
-    }
-
-   */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-/* // Controller
-class UserController{
-    // attributs
-    private UserRepo $userRepo;
-
-    puclic function __construct()
-    {
-        $this->userRepo = new UserRepo();
-    }
-}
-
-// Routeur
-$userController = new userController();
-$userController->getUserRepo()->getAllUsers();
-print_r($userController->getUserRepo()->getTabUser()); */
-
 } 
 ?>

@@ -96,6 +96,18 @@ class BddConnection{
 		return  $rst->fetchAll(PDO::FETCH_ASSOC); 
 		//requête sql pour modifier le champ de la table sélectionnée
 	}
-}
 
+	//////////////LEADER BOARD//////////////
+	public function createLeaderboard(){
+
+		$db = $this->getconnect();
+		$sql = "SELECT user.nom as nomuser,escapegame.nom as nomescape,jouer.temps,jouer.date FROM `jouer` 
+		INNER JOIN `escapegame` ON jouer.idEscape =escapegame.idEscape 
+		INNER JOIN `user` ON jouer.idUser = user.idUser;";
+		$rst = $db->prepare($sql);
+		$rst->execute();
+		return  $rst->fetchAll(PDO::FETCH_ASSOC); 
+
+	}
+}
 ?>

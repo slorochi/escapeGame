@@ -22,7 +22,12 @@
         <div class="row">
             <?= $htmlEscp ?> 
         </div>
-        <?= $admin ?>
+
+        <?php $admin = $_SESSION['compte']['admin'] ?? "";
+        if($admin == 1) : ?>
+        <?= $CrudsAdmin ?>
+        <?php endif ?>
+        
     </div>
     
 </section>

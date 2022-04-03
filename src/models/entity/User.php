@@ -13,19 +13,7 @@ class User{
     protected $adresse;
     protected $cp;
     protected $ville;
-
-
-    /* public function __construct($idUser, $nom, $mail, $mdp, $niveau ,$adresse, $cp, $ville
-    ){
-        $this->idUser = $idUser;
-        $this->nom = $nom;
-        $this->mail = $mail;
-        $this->mdp = $mdp;
-        $this->niveau = $niveau;
-        $this->adresse = $adresse;
-        $this->cp = $cp;
-        $this->ville = $ville;
-    } */
+    protected $admin;
     
     /**
      * Get the value of idUser
@@ -183,6 +171,26 @@ class User{
     public function setVille($ville)
     {
         $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of admin
+     */ 
+    public function getAdmin()
+    {
+        return $this->admin;
+    }
+
+    /**
+     * Set the value of admin
+     *
+     * @return  self
+     */ 
+    public function setAdmin($admin)
+    {
+        $this->admin = $admin;
 
         return $this;
     }
