@@ -11,17 +11,18 @@
                     <div class="col-md-12" style="font-size:1.25em;"><?=$connexions?></div>
                 </div>
             </section>
-    <table class="container table table-dark table-hover">
-        <thead>
-            <tr>
+    
+<?php endif ?>
+<table class="container table table-dark table-hover">
+    <thead>
+        <tr>
             <th scope="col">Nom du joueur</th>
             <th scope="col">Escape game</th>
             <th scope="col">Temps</th>
             <th scope="col">Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?= $htmlLeaderboard ?>
-        </tbody>
-    </table>
-<?php endif ?>
+        </tr>
+    </thead>
+    <tbody>
+        <?= $htmlLeaderboard ?>
+    </tbody>
+</table>
