@@ -11,6 +11,7 @@
                     <div class="col-md-12" style="font-size:1.25em;"><?=$connexions?></div>
                 </div>
             </section>
+<?php endif ?>       
     <table class="container table table-dark table-hover">
         <thead>
             <tr>
@@ -24,4 +25,3 @@
             <?= $htmlLeaderboard ?>
         </tbody>
     </table>
-<?php endif ?>

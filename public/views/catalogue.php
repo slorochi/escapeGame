@@ -1,7 +1,15 @@
 
 <section id="Catalogue">
+    
     <div class="container">
+
+        <?php $admin = $_SESSION['compte']['admin'] ?? "";
+        if($admin == 1) : ?>
+            <?= $CrudsAdmin ?>
+        <?php endif ?>
+        
         <form method="post" action="?p=catalogue">
+            
             <select name="ville">
                 <option value="ville">ville</option>
                 <option value="Dreux">Dreux</option>
@@ -23,10 +31,7 @@
             <?= $htmlEscp ?> 
         </div>
 
-        <?php $admin = $_SESSION['compte']['admin'] ?? "";
-        if($admin == 1) : ?>
-        <?= $CrudsAdmin ?>
-        <?php endif ?>
+        
         
     </div>
     

@@ -103,7 +103,7 @@ class BddConnection{
 		$db = $this->getconnect();
 		$sql = "SELECT user.nom as nomuser,escapegame.nom as nomescape,jouer.temps,jouer.date FROM `jouer` 
 		INNER JOIN `escapegame` ON jouer.idEscape =escapegame.idEscape 
-		INNER JOIN `user` ON jouer.idUser = user.idUser;";
+		INNER JOIN `user` ON jouer.idUser = user.idUser ORDER BY jouer.temps;";
 		$rst = $db->prepare($sql);
 		$rst->execute();
 		return  $rst->fetchAll(PDO::FETCH_ASSOC); 

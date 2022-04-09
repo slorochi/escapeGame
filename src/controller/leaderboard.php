@@ -6,8 +6,6 @@ use App\models\entity\Jouer;
 use App\models\repository\JouerRepo;
 
 
-
-
 $backpage = "?p=" .str_replace(".php","", basename(__FILE__));
 $session->setBackpage($backpage);
     

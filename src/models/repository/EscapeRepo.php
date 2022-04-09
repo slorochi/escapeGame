@@ -1,12 +1,8 @@
 <?php
 namespace App\models\repository;
 
-
-use PDO;
 use App\models\BddConnection;
 use App\models\entity\Escapegame;
-
-
 
 class EscapeRepo extends BddConnection{
 
@@ -83,7 +79,8 @@ class EscapeRepo extends BddConnection{
 
     public function setEscapeToCreate($nom, $niveau, $idType, $adresse, $cp, $ville,$description){
         $this->escapeToCreate = $this->getEscapeToCreate($nom, $niveau, $idType, $adresse, $cp, $ville, $description);
-        $this->createEscape("escapegame", $this->escapeToCreate); 
+        $this->createEscape("escapegame", $this->escapeToCreate);
+        header("Location: ?p=catalogue");
     }
 
     public function deleteEscape($id){
@@ -100,13 +97,8 @@ class EscapeRepo extends BddConnection{
                 //prepare la requête avant de l'executer
                 $rst = $db->prepare($sql);
                 //execute la requête
-                $rstok = $rst->execute([":id" => $id]);
-                if($rstok){
-                    return "cool";
-                }
-                else{
-                    return "pas cool";
-                }
+                $rst->execute([":id" => $id]);
+
             }
         }
     }

@@ -23,7 +23,6 @@ if(!empty($_POST)){
     }
     else{
         $errors = $verfContact->getErrors();
-        
     }
 
 }
