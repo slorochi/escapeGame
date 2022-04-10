@@ -1,9 +1,10 @@
 <?php
 
-use App\models\entity\Escapegame;
 use App\models\entity\User;
 use App\models\entity\Jouer;
+use App\models\entity\Escapegame;
 use App\models\repository\JouerRepo;
+use App\models\repository\EscapeRepo;
 
 
 $backpage = "?p=" .str_replace(".php","", basename(__FILE__));
@@ -16,9 +17,24 @@ $connexions = $var->getConnexions();
 
 
 $Leaderboard = [];
+$escape = new EscapeRepo;
+$escape->SetAllEscape();
+$esc = $escape->getTabEscape();
+$htmlOption = "";
+foreach($esc as $key=>$value){
+    $nomEscape =($value->getNom());
+    $htmlOption .= "<option value='$nomEscape'>$nomEscape</option>";
+}
+
+if(empty($_POST['SelectOption'])){
+    $option = "";
+}else{
+    $option = $_POST['SelectOption'];
+}
+
 
 $appelbdd = new JouerRepo();
-$leaderboard = $appelbdd->StatsAll();
+$leaderboard = $appelbdd->StatsAll($option);
 foreach ($leaderboard as $key => $value){
     
     $jouer = new Jouer();

@@ -11,7 +11,14 @@
                     <div class="col-md-12" style="font-size:1.25em;"><?=$connexions?></div>
                 </div>
             </section>
-<?php endif ?>       
+<?php endif ?>
+
+            <form method="POST">
+                <select name="SelectOption" id="SelectOption">
+                    <option value="">--Please choose an option--</option>
+                    <?= $htmlOption ?>
+                </select>
+            </form>
     <table class="container table table-dark table-hover">
         <thead>
             <tr>

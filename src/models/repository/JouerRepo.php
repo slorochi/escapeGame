@@ -40,8 +40,8 @@ class JouerRepo extends BddConnection{
         return $this->statsPlayer;
     }
 
-    public function StatsAll(){
-        return $this->createLeaderboard();
+    public function StatsAll($filtre = ""){
+        return $this->createLeaderboard($filtre);
     }
     
 }
