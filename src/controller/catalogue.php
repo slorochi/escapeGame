@@ -166,13 +166,13 @@ else{
 
 $CrudsAdmin = " 
 <form method='post' class=' d-flex flex-column justify-content-evenly' style='width:300px; height:400px'action='?p=catalogue'>
-            <input text='text' value='$nomAdmin' name='nomAdmin' class='text-center' placeholder='escape name' style='width:auto'> 
-            <input text='text' value='$lvlAdmin' name='lvlAdmin' class='text-center' placeholder='escape lvl' style='width:auto'> 
-            <input text='text' value='$idAdmin' name='idAdmin' class='text-center' placeholder='escape type' style='width:auto'> 
-            <input text='text' value='$adresseAdmin' name='adresseAdmin' class='text-center' placeholder='escape adresse' style='width:auto'> 
-            <input text='text' value='$cpAdmin' name='cpAdmin' class='text-center' placeholder='escape cp' style='width:auto'> 
-            <input text='text' value='$villeAdmin' name='villeAdmin' class='text-center' placeholder='escape ville' style='width:auto'>
-            <textarea name='descAdmin' class='text-center' placeholder='Description' style='width:auto'>$descAdmin</textarea>
+            <input text='text' value='$nomAdmin' name='nomAdmin' class='form-control text-center' placeholder='escape name' style='width:auto'> 
+            <input text='text' value='$lvlAdmin' name='lvlAdmin' class='form-control text-center' placeholder='escape lvl' style='width:auto'> 
+            <input text='text' value='$idAdmin' name='idAdmin' class='form-control text-center' placeholder='escape type' style='width:auto'> 
+            <input text='text' value='$adresseAdmin' name='adresseAdmin' class='form-control text-center' placeholder='escape adresse' style='width:auto'> 
+            <input text='text' value='$cpAdmin' name='cpAdmin' class='form-control text-center' placeholder='escape cp' style='width:auto'> 
+            <input text='text' value='$villeAdmin' name='villeAdmin' class='form-control text-center' placeholder='escape ville' style='width:auto'>
+            <textarea name='descAdmin' class='form-control text-center' placeholder='Description' style='width:auto'>$descAdmin</textarea>
             <button type='submit' class='btn btn-primary btn-lg'
             style='padding-left: 2.5rem; padding-right: 2.5rem;' name='submitAdmin' >ajouter</button>
 </form>";

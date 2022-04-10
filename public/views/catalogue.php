@@ -10,11 +10,11 @@
         
         <form method="post" action="?p=catalogue">
             
-            <select name="ville">
+            <select class='form-select text-center' name="ville">
                 <option value="">Toutes les villes</option>
                 <?= $htmlOptionViles ?>
             </select>
-            <select id="level" name="level">
+            <select class='form-select text-center' id="level" name="level">
                 <option value="">level</option>
                 <option value="1">lvl 1</option>
                 <option value="2">lvl 2</option>

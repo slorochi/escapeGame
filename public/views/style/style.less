@@ -208,8 +208,25 @@ header{
     }
     
 }
-
+.btn-primary {
+            color: #fff;
+            background-color: #c52630;
+            border-color: #c52630;
+            
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #8d1b23;
+    border-color: #8d1b23;
+}
+.btn-check:focus+.btn-primary, .btn-primary:focus {
+    color: #fff;
+    background-color: #c52630;
+    border-color: #c52630;
+    box-shadow: 0 0 0 0.25rem #962129;
+}
 #quisom{
+
     height: 100vh;
     .elem{
         justify-content: center;
@@ -237,6 +254,7 @@ header{
             border-radius: 15px;
         }
     }
+
     /* Scroll */
     svg{
         position: absolute;
@@ -293,6 +311,7 @@ header{
 
 #Catalogue{
     .row{
+
         justify-content: space-around;
         .card {
             width: 40%;
@@ -304,28 +323,16 @@ header{
             width: auto;
             height: 250px;
         }
-            
-        .btn-primary {
-            color: #fff;
-            background-color: #c52630;
-            border-color: #c52630;
-            
-        }
-        .btn-check:focus+.btn-primary, .btn-primary:focus {
-            color: #fff;
-            background-color: #c52630;
-            border-color: #c52630;
-            box-shadow: 0 0 0 0.25rem #962129;
-        }
-        
+
     }
 }
+
 /* Fin Catalogue */
 /* page des escape game*/
 .card{
     width: 100%;
     margin: 10px 0;
-    background-color: #191919!important;
+    background-color: #191919 !important;
     img{
         margin-top: 10px;
     }

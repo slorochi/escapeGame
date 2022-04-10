@@ -34,7 +34,7 @@
                     <div class="col-md-6">
                         <div class="md-form mb-0">
                             <label for="email" class="">Votre Email</label>
-                            <input type="text" id="email" name="email" 
+                            <input type="text" id="email" class="form-control" name="email" 
                             value="<?php 
                                 if(!empty($_POST['email'])){
                                     echo $_POST['email'];} 
@@ -57,7 +57,7 @@
                     <div class="col-md-12">
                         <div class="md-form mb-0">
                             <label for="subject" class="">Sujet</label>
-                            <input type="text" id="subject" name="subject" value="<?php 
+                            <input type="text" class="form-control" id="subject" name="subject" value="<?php 
                                 if(!empty($_POST['subject'])){
                                     echo $_POST['subject'];} 
                                     ?>"class="form-control">

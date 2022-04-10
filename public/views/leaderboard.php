@@ -14,7 +14,7 @@
 <?php endif ?>
 
             <form method="POST" id="form">
-                <select name="SelectOption" id="SelectOption"?>
+                <select name="SelectOption" class="form-select text-center" id="SelectOption"?>
                     <option value="" >Tous les Escapes Games </option>
                     <?= $htmlOption ?>
                 </select>
