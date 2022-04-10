@@ -15,7 +15,7 @@
     <link rel="stylesheet/less" href="views/style/style.less">
     <script src="https://cdn.jsdelivr.net/npm/less@4.1.1" ></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../../script.js" async></script>
+    <script src="../script.js" async></script>
 
 </head>
 

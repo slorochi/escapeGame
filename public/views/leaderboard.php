@@ -1,4 +1,4 @@
-
+<section class="container">
 <?php $admin = $_SESSION['compte']['admin'] ?? "";
         if($admin == 1) : ?>
             <section>
@@ -13,13 +13,13 @@
             </section>
 <?php endif ?>
 
-            <form method="POST">
-                <select name="SelectOption" id="SelectOption">
-                    <option value="">--Please choose an option--</option>
+            <form method="POST" id="form">
+                <select name="SelectOption" id="SelectOption" value='<?= $_POST["SelectOption"] ?>'>
+                    <option name ="" value="">--Please choose an option--</option>
                     <?= $htmlOption ?>
                 </select>
             </form>
-    <table class="container table table-dark table-hover">
+    <table class="table table-dark table-hover">
         <thead>
             <tr>
             <th scope="col">Nom du joueur</th>
@@ -32,3 +32,4 @@
             <?= $htmlLeaderboard ?>
         </tbody>
     </table>
+</section>

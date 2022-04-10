@@ -6,7 +6,6 @@ use App\models\entity\Escapegame;
 use App\models\repository\JouerRepo;
 use App\models\repository\EscapeRepo;
 
-
 $backpage = "?p=" .str_replace(".php","", basename(__FILE__));
 $session->setBackpage($backpage);
     
@@ -15,7 +14,9 @@ $accounts = $var->getAccounts();
 $accountsCreated = $var->getAccountsCreated(); 
 $connexions = $var->getConnexions(); 
 
+var_dump($_POST);
 
+// Permet de créer les options de la liste déroulante avec tout les noms des escapegames de la bdd
 $Leaderboard = [];
 $escape = new EscapeRepo;
 $escape->SetAllEscape();
@@ -32,7 +33,7 @@ if(empty($_POST['SelectOption'])){
     $option = $_POST['SelectOption'];
 }
 
-
+//Recupere tout les joueurs qui ont joué dans la escapegame selectionnée et les affiche dans le tableau
 $appelbdd = new JouerRepo();
 $leaderboard = $appelbdd->StatsAll($option);
 foreach ($leaderboard as $key => $value){
