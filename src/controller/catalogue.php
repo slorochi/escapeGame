@@ -1,11 +1,21 @@
 <?php
 
 use App\core\Verif;
+use App\models\BddConnection;
 use App\models\repository\EscapeRepo;
 $backpage = "?p=" .str_replace(".php","", basename(__FILE__));
 $session->setBackpage($backpage);
 
 // Com Gaetan : eviter la repetion de code dans les cartes en html
+
+$appelbdd = new BddConnection();
+$leaderboard = $appelbdd->recupeVille();
+$htmlOptionViles='';
+foreach ($leaderboard as $key => $value){
+
+    $htmlOptionViles .= '<option value="'.$value['ville'].'">'.$value['ville'].'</option>';
+
+}
 
 $escape = new EscapeRepo;
 $escape->SetAllEscape();
@@ -13,9 +23,12 @@ $esc = $escape->getTabEscape();
 $admin = $_SESSION['compte']['admin'] ?? "";
 $htmlEscp="";
 
-if(isset($_POST['submit'])){
-    if (isset($_POST['ville'] ) ) {
+
+if(!empty($_POST) && (($_POST["ville"] && $_POST["ville"] != "") || ($_POST["level"] && $_POST["level"] != ""))){
+
+    if (isset($_POST['ville'])) {
         foreach($esc as $key => $value){
+
             $villePost = ($_POST['ville']);
             $lvlPost = ($_POST['level']);
             $lvl = ($value->getNiveau());
@@ -23,62 +36,40 @@ if(isset($_POST['submit'])){
             $adresse = $value->getAdresse();
             $cp = $value->getCp();
             $ville = $value->getVille();
-            
-            if($villePost=="ville"){
-                if($value->getNiveau()==$lvlPost){
-                    $htmlEscp .= 
-                    "<div class='card col-md-6'>
-                        <img class='card-img-top' src='views/style/img/be4be3e0-5dae-11ec-bfae-50d2ca6eaeba.jfif' alt='Card image cap'>
-                        <div class='card-body'>
-                            <h5 class='card-title'>Nom&nbsp:&nbsp$nomEscape level:&nbsp$lvl</h5>
-                            <p class='card-text'>$adresse $cp $ville.</p>
-                            <a href='?p=escapegame?nom=$nomEscape' class='btn btn-primary'>Voir plus</a>
-                        </div>
-                    </div>";
+
+            if($admin == 1){
+                $boutonDelete ="<form class='col-6' method='post'>
+                    <input type='hidden' name='deleteEscapeName' value='$nomEscape'>
+                    <input class='btn btn-danger' type='submit' value='Supprimer'>
+                </form>";
+                // si deleteEscapeName est dans le post alors on supprime l'escape
+                //puis reviens sur la page
+                if(isset($_POST['deleteEscapeName'])){
+                    $escape->deleteEscape($_POST['deleteEscapeName']);
+                    header("Location: ?p=catalogue");
                 }
-                else if ($lvlPost=="level"){
-                    $htmlEscp .= 
-                    "<div class='card col-md-6'>
-                        <img class='card-img-top' src='views/style/img/be4be3e0-5dae-11ec-bfae-50d2ca6eaeba.jfif' alt='Card image cap'>
-                        <div class='card-body'>
-                            <h5 class='card-title'>$nomEscape</h5>
-                            <p class='card-text'>$adresse $cp $ville.</p>
-                            <a href='' class='btn btn-primary'>Voir plus</a>
-                        </div>
-                    </div>";
+                
+            }
+            else{
+                $boutonDelete ="";
+            }
+            
+            if($villePost==""){
+                if($value->getNiveau()==$lvlPost){
+                    $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
+                }
+                else if ($lvlPost==""){
+                    $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
                 }
             }
             else if($value->getVille()==$villePost){
-                if($lvlPost=="level"){
-                    $htmlEscp .= 
-                    "<div class='card col-md-6'>
-                        <img class='card-img-top' src='views/style/img/be4be3e0-5dae-11ec-bfae-50d2ca6eaeba.jfif' alt='Card image cap'>
-                        <div class='card-body'>
-                            <h5 class='card-title'>$nomEscape</h5>
-                            <p class='card-text'>$adresse $cp $ville.</p>
-                            <a href='' class='btn btn-primary'>Voir plus</a>
-                        </div>
-                    </div>";
+                if($lvlPost==""){
+                    $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
                 }
                 else if ($value->getNiveau()==$lvlPost){
-                    $htmlEscp .= 
-                    "<div class='card col-md-6'>
-                        <img class='card-img-top' src='views/style/img/be4be3e0-5dae-11ec-bfae-50d2ca6eaeba.jfif' alt='Card image cap'>
-                        <div class='card-body'>
-                        <h5 class='card-title'>Nom&nbsp:&nbsp$nomEscape level:&nbsp$lvl</h5>
-                            <p class='card-text'>$adresse $cp $ville.</p>
-                            
-                            <form action='?p=escapegame' method='post'>
-                                <input type='hidden' name='nomEscape' value='$nomEscape'>
-                                <input class='btn btn-primary' type='submit' value='Voir plus'>
-                            </form>
-
-                        </div>
-                    </div>";
+                    $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
                 }
-
             }
-
         }
     }
 }
@@ -108,24 +99,7 @@ else{
             $boutonDelete ="";
         }
 
-        $htmlEscp .= 
-        "<div class='card col-md-6'>
-            <img class='card-img-top' src='views/style/img/be4be3e0-5dae-11ec-bfae-50d2ca6eaeba.jfif' alt='Card image cap'>
-            <div class='card-body'>
-            <h5 class='card-title'>Nom&nbsp:&nbsp$nomEscape level:&nbsp$lvl</h5>
-                <p class='card-text'>$adresse $cp $ville.</p>
-                <div class='row'>
-                    <form action='?p=escapegame' class='col-6' method='post'>
-                        <input type='hidden' name='nomEscape' value='$nomEscape'>
-                        <input class='btn btn-primary' type='submit' value='Voir plus'>
-                    </form>
-                    
-                    $boutonDelete
-                </div>
-                
-                
-            </div>
-        </div>";
+        $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
     }
 }
 
@@ -192,21 +166,13 @@ else{
 
 $CrudsAdmin = " 
 <form method='post' class=' d-flex flex-column justify-content-evenly' style='width:300px; height:400px'action='?p=catalogue'>
-
             <input text='text' value='$nomAdmin' name='nomAdmin' class='text-center' placeholder='escape name' style='width:auto'> 
-
             <input text='text' value='$lvlAdmin' name='lvlAdmin' class='text-center' placeholder='escape lvl' style='width:auto'> 
-
             <input text='text' value='$idAdmin' name='idAdmin' class='text-center' placeholder='escape type' style='width:auto'> 
-
             <input text='text' value='$adresseAdmin' name='adresseAdmin' class='text-center' placeholder='escape adresse' style='width:auto'> 
-
             <input text='text' value='$cpAdmin' name='cpAdmin' class='text-center' placeholder='escape cp' style='width:auto'> 
-
             <input text='text' value='$villeAdmin' name='villeAdmin' class='text-center' placeholder='escape ville' style='width:auto'>
-
             <textarea name='descAdmin' class='text-center' placeholder='Description' style='width:auto'>$descAdmin</textarea>
-
             <button type='submit' class='btn btn-primary btn-lg'
             style='padding-left: 2.5rem; padding-right: 2.5rem;' name='submitAdmin' >ajouter</button>
 </form>";
@@ -241,9 +207,6 @@ if(!empty($_POST)){
     }
 
 }
-
-
-
 
 require("../public/views/catalogue.php");
 

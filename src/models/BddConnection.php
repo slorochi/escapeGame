@@ -120,5 +120,15 @@ class BddConnection{
 		return  $rst->fetchAll(PDO::FETCH_ASSOC);
 
 	}
+
+	//////////////VILLES//////////////
+	public function recupeVille(){
+		$db = $this->getconnect();
+		$sql = "SELECT DISTINCT escapegame.ville 
+		FROM `escapegame`;" ;
+		$rst = $db->prepare($sql);
+		$rst->execute();
+		return  $rst->fetchAll(PDO::FETCH_ASSOC); 
+	}
 }
 ?>

@@ -14,8 +14,8 @@
 <?php endif ?>
 
             <form method="POST" id="form">
-                <select name="SelectOption" id="SelectOption" value='<?= $_POST["SelectOption"] ?>'>
-                    <option name ="" value="">--Please choose an option--</option>
+                <select name="SelectOption" id="SelectOption"?>
+                    <option value="" >Tous les Escapes Games </option>
                     <?= $htmlOption ?>
                 </select>
             </form>

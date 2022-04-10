@@ -103,6 +103,24 @@ class EscapeRepo extends BddConnection{
         }
     }
 
+
+    public static function createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete){
+
+       return "<div class='card col-md-6'>
+            <img class='card-img-top' src='views/style/img/be4be3e0-5dae-11ec-bfae-50d2ca6eaeba.jfif' alt='Card image cap'>
+            <div class='card-body'>
+            <h5 class='card-title'>Nom&nbsp:&nbsp$nomEscape level:&nbsp$lvl</h5>
+                <p class='card-text'>$adresse $cp $ville.</p>
+                <div class='row'>
+                    <form action='?p=escapegame' class='col-6' method='post'>
+                        <input type='hidden' name='nomEscape' value='$nomEscape'>
+                        <input class='btn btn-primary' type='submit' value='Voir plus'>
+                    </form>
+                    $boutonDelete
+                </div>
+            </div>
+        </div>";
+    }
     //Modification d'un champ de la table escapeGame
     /* public function modifyEscapeElement($table, $champ, $element){
         $this->modifyChamp($table, $champ, $element);

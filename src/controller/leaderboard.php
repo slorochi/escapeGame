@@ -14,7 +14,7 @@ $accounts = $var->getAccounts();
 $accountsCreated = $var->getAccountsCreated(); 
 $connexions = $var->getConnexions(); 
 
-var_dump($_POST);
+
 
 // Permet de créer les options de la liste déroulante avec tout les noms des escapegames de la bdd
 $Leaderboard = [];
@@ -22,9 +22,16 @@ $escape = new EscapeRepo;
 $escape->SetAllEscape();
 $esc = $escape->getTabEscape();
 $htmlOption = "";
+
 foreach($esc as $key=>$value){
-    $nomEscape =($value->getNom());
-    $htmlOption .= "<option value='$nomEscape'>$nomEscape</option>";
+
+    $nomEscape = ($value->getNom());
+    if(isset($_POST['SelectOption']) && $_POST['SelectOption'] == $nomEscape){
+        $htmlOption .= "<option value='$nomEscape' selected>$nomEscape</option>";
+    }else{
+       $htmlOption .= "<option value='$nomEscape'>$nomEscape</option>"; 
+    }
+    
 }
 
 if(empty($_POST['SelectOption'])){
