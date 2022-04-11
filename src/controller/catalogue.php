@@ -6,8 +6,6 @@ use App\models\repository\EscapeRepo;
 $backpage = "?p=" .str_replace(".php","", basename(__FILE__));
 $session->setBackpage($backpage);
 
-// Com Gaetan : eviter la repetion de code dans les cartes en html
-
 $appelbdd = new BddConnection();
 $leaderboard = $appelbdd->recupeVille();
 $htmlOptionViles='';
@@ -24,7 +22,7 @@ $admin = $_SESSION['compte']['admin'] ?? "";
 $htmlEscp="";
 
 
-if(!empty($_POST) && (($_POST["ville"] && $_POST["ville"] != "") || ($_POST["level"] && $_POST["level"] != ""))){
+if(!empty($_POST['submit']) && (($_POST["ville"] && $_POST["ville"] != "") || ($_POST["level"] && $_POST["level"] != ""))){
 
     if (isset($_POST['ville'])) {
         foreach($esc as $key => $value){
@@ -88,7 +86,7 @@ else{
                 <input class='btn btn-danger' type='submit' value='Supprimer'>
             </form>";
             // si deleteEscapeName est dans le post alors on supprime l'escape
-            //puis reviens sur la page
+            //puis revient sur la page
             if(isset($_POST['deleteEscapeName'])){
                 $escape->deleteEscape($_POST['deleteEscapeName']);
                 header("Location: ?p=catalogue");
@@ -104,75 +102,18 @@ else{
 }
 
 
-/* if admin */
- if(!empty($_POST['nomAdmin']))
-{
-   $nomAdmin = $_POST['nomAdmin'];
-}
-else
-{
-   $nomAdmin = "";
-}
-
-if(!empty($_POST['lvlAdmin']))
-{
-   $lvlAdmin = $_POST['lvlAdmin'];
-}
-else
-{
-   $lvlAdmin = "";
-}
-
-if(!empty($_POST['idAdmin']))
-{
-   $idAdmin = $_POST['idAdmin'];
-}
-else
-{
-   $idAdmin = "";
-}
-
-if(!empty($_POST['adresseAdmin']))
-{
-   $adresseAdmin = $_POST['adresseAdmin'];
-}else
-{
-   $adresseAdmin = "";
-}
-
-if(!empty($_POST['cpAdmin']))
-{
-   $cpAdmin = $_POST['cpAdmin'];
-}else
-{
-   $cpAdmin = "";
-}
-
-if(!empty($_POST['villeAdmin']))
-{
-   $villeAdmin = $_POST['villeAdmin'];
-}
-else
-{
-   $villeAdmin = "";
-}
-if(!empty($_POST['descAdmin']))
-{
-   $descAdmin = $_POST['descAdmin'];
-}
-else{
-    $descAdmin = "";
-}
+if(empty($arrayAdmin)){$arrayPost = ['nomAdmin','lvlAdmin','idAdmin','adresseAdmin','cpAdmin','villeAdmin','descAdmin'];}
+$arrayAdmin = EscapeRepo::keepPreviousChamp($arrayPost);
 
 $CrudsAdmin = " 
 <form method='post' class=' d-flex flex-column justify-content-evenly' style='width:300px; height:400px'action='?p=catalogue'>
-            <input text='text' value='$nomAdmin' name='nomAdmin' class='form-control text-center' placeholder='escape name' style='width:auto'> 
-            <input text='text' value='$lvlAdmin' name='lvlAdmin' class='form-control text-center' placeholder='escape lvl' style='width:auto'> 
-            <input text='text' value='$idAdmin' name='idAdmin' class='form-control text-center' placeholder='escape type' style='width:auto'> 
-            <input text='text' value='$adresseAdmin' name='adresseAdmin' class='form-control text-center' placeholder='escape adresse' style='width:auto'> 
-            <input text='text' value='$cpAdmin' name='cpAdmin' class='form-control text-center' placeholder='escape cp' style='width:auto'> 
-            <input text='text' value='$villeAdmin' name='villeAdmin' class='form-control text-center' placeholder='escape ville' style='width:auto'>
-            <textarea name='descAdmin' class='form-control text-center' placeholder='Description' style='width:auto'>$descAdmin</textarea>
+            <input text='text' value='$arrayAdmin[0]' name='nomAdmin' class='form-control text-center' placeholder='escape name' style='width:auto'> 
+            <input text='text' value='$arrayAdmin[1]' name='lvlAdmin' class='form-control text-center' placeholder='escape lvl' style='width:auto'> 
+            <input text='text' value='$arrayAdmin[2]' name='idAdmin' class='form-control text-center' placeholder='escape type' style='width:auto'> 
+            <input text='text' value='$arrayAdmin[3]' name='adresseAdmin' class='form-control text-center' placeholder='escape adresse' style='width:auto'> 
+            <input text='text' value='$arrayAdmin[4]' name='cpAdmin' class='form-control text-center' placeholder='escape cp' style='width:auto'> 
+            <input text='text' value='$arrayAdmin[5]' name='villeAdmin' class='form-control text-center' placeholder='escape ville' style='width:auto'>
+            <textarea name='descAdmin' class='form-control text-center' placeholder='Description' style='width:auto'>$arrayAdmin[6]</textarea>
             <button type='submit' class='btn btn-primary btn-lg'
             style='padding-left: 2.5rem; padding-right: 2.5rem;' name='submitAdmin' >ajouter</button>
 </form>";
@@ -191,21 +132,20 @@ if(!empty($_POST)){
 
     if($verfCrudsAdmin->verif()){
         if(isset($_POST['submitAdmin'])){
-        $nameEsc = $_POST['nomAdmin'];
-        $lvlEsc = $_POST['lvlAdmin'];
-        $idTypeEsc = $_POST['idAdmin'];
-        $adresseEsc = $_POST['adresseAdmin'];
-        $cpEsc = $_POST['cpAdmin'];
-        $villeEsc = $_POST['villeAdmin'];
-        $descEsc = $_POST['descAdmin'];
-        var_dump($nameEsc, $lvlEsc, $idTypeEsc, $adresseEsc,$cpEsc, $villeEsc,  $descEsc,);
-        $escape->setEscapeToCreate($nameEsc, $lvlEsc, $idTypeEsc, $adresseEsc,$cpEsc, $villeEsc,  $descEsc,);
-}
+            $nameEsc = $_POST['nomAdmin'];
+            $lvlEsc = $_POST['lvlAdmin'];
+            $idTypeEsc = $_POST['idAdmin'];
+            $adresseEsc = $_POST['adresseAdmin'];
+            $cpEsc = $_POST['cpAdmin'];
+            $villeEsc = $_POST['villeAdmin'];
+            $descEsc = $_POST['descAdmin'];
+            var_dump($nameEsc, $lvlEsc, $idTypeEsc, $adresseEsc,$cpEsc, $villeEsc,  $descEsc,);
+            $escape->setEscapeToCreate($nameEsc, $lvlEsc, $idTypeEsc, $adresseEsc,$cpEsc, $villeEsc,  $descEsc,);
+        }
     }
     else{
         $errors = $verfCrudsAdmin->getErrors();
     }
-
 }
 
 require("../public/views/catalogue.php");

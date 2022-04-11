@@ -15,6 +15,9 @@ if(!($session->getCompte())){
 
         if(isset($_POST['checkbox']))
         {
+            // password_hash() retourne une version cryptée du mot de passe
+            // $compte["pwd"] = password_hash($_POST["pwd"], PASSWORD_BCRYPT);
+            
             $session->signUp($tabUser, $_POST['email'], $_POST['password']);
         }
         else{
@@ -25,8 +28,4 @@ if(!($session->getCompte())){
 else {
     require ("../src/controller/logout.php"); 
 }
-if(isset($_POST['submit'])){
-    echo "coucou";
-}
-
 ?>
