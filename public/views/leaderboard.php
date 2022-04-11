@@ -1,16 +1,19 @@
 <section class="container">
 <?php $admin = $_SESSION['compte']['admin'] ?? "";
         if($admin == 1) : ?>
+        <div class="row adminPanel">
+            <h3 class="text-center">Panel Admin</h3>
             <section>
-                <div class="row text-center ">
-                    <div class="col-md-12" style="font-weight:800; font-size:2em; text-shadow:1px 1px 13px black; margin-bottom:20px;margin-top:20px;">Nombre total de comptes créés depuis la création</div>
-                    <div class="col-md-12" style="font-size:1.25em;"><?=$accountsCreated?></div>
-                    <div class="col-md-12" style="font-weight:800; font-size:2em; text-shadow:1px 1px 13px black!important; margin-bottom:20px; margin-top:20px;">Nombre actuel de comptes</div>
-                    <div class="col-md-12" style="font-size:1.25em;"><?=$accounts?></div>
-                    <div class="col-md-12" style="font-weight:800; font-size:2em; text-shadow:1px 1px 13px black;  margin-bottom:20px;margin-top:20px;">Nombre total de connexions depuis la création</div>
-                    <div class="col-md-12" style="font-size:1.25em;"><?=$connexions?></div>
+                <div class="row">
+                    <p class="col-md-6">Nombre total de comptes créés depuis la création</p>
+                    <p class="col-md-6"><?=$accountsCreated?></p>
+                    <p class="col-md-6">Nombre actuel de comptes</p>
+                    <p class="col-md-6"><?=$accounts?></p>
+                    <p class="col-md-6">Nombre total de connexions depuis la création</p>
+                    <p class="col-md-6" ><?=$connexions?></p>
                 </div>
             </section>
+        </div>
 <?php endif ?>
 
             <form method="POST" id="form">
@@ -19,7 +22,7 @@
                     <?= $htmlOption ?>
                 </select>
             </form>
-    <table class="table table-dark table-hover">
+    <table class="table">
         <thead>
             <tr>
             <th scope="col">Nom du joueur</th>
