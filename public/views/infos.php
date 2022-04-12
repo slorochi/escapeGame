@@ -16,8 +16,9 @@
 
         <div style="height:80px;margin-bottom:15px" class="row d-flex flex-column justify-content-evenly  align-items-center">
             <span class="col-md-5 text-center">mot de passe :</span>
-            <input type="text" name="mdp" class="form-control text-center" style='width:auto'value=<?= $mdp?> >
+            <input type="password" name="mdp" class="form-control text-center" style='width:auto'value=<?= $mdp?>>
         </div>
+        <button type="submit" name="submitPwd" class=" col-md-2 btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" >Modifier mdp </button>    
 
         <div style="height:80px;margin-bottom:15px" class="row d-flex flex-column justify-content-evenly  align-items-center">
             <span class="col-md-5 text-center">adresse :</span>
