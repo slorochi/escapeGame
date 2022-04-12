@@ -28,4 +28,6 @@ if(!($session->getCompte())){
 else {
     require ("../src/controller/logout.php"); 
 }
+
+
 ?>
