@@ -121,6 +121,37 @@ class BddConnection{
 
 	}
 
+	//////////////STATISTIQUE JOUEUR//////////////
+	public function createStatsJoueur($NomUser){
+		$db = $this->getconnect();
+
+		$sql = "SELECT user.idUser,escapegame.idEscape,user.nom as nomuser,escapegame.nom as nomescape,jouer.temps,jouer.date,jouer.note,jouer.message 
+		FROM `jouer` 
+		INNER JOIN `escapegame` ON jouer.idEscape =escapegame.idEscape 
+		INNER JOIN `user` ON jouer.idUser = user.idUser 
+		WHERE user.nom = 'anthony'
+		ORDER BY jouer.temps;";
+
+		$rst = $db->prepare($sql);
+		$rst->execute();
+		return  $rst->fetchAll(PDO::FETCH_ASSOC);
+
+	}
+
+	//////////////MODIFY STATS JOUEUR//////////////
+	// méthode pour modifier les infos dans la base de données
+	public function modifyChampStatsJoueur($table, $elementToPush, $nomChamp, $idEscape, $idUser){
+		$db = $this->getconnect();	
+		/* $sql = " ALTER TABLE $table MODIFY $champ $element "; */
+		/* UPDATE `user` SET `nom` = 'Theop' WHERE `user`.`idUser` = 2 */
+		$sql = " UPDATE $table SET $nomChamp = :elementToPush WHERE idEscape = :idEscape AND idUser = :idUser";
+		$rst = $db->prepare($sql);
+		$rst->execute(
+			[":elementToPush" => $elementToPush, ":idEscape" => $idEscape, ":idUser" => $idUser]);
+		return  $rst->fetchAll(PDO::FETCH_ASSOC); 
+		//requête sql pour modifier le champ de la table sélectionnée
+	}
+
 	//////////////VILLES//////////////
 	public function recupeVille(){
 		$db = $this->getconnect();
