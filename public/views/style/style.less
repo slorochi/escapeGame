@@ -417,8 +417,8 @@ header {
     }
 }
 
-.form-select,
-.form-control {
+.form-select {
+    cursor: pointer;
     margin: 5px 0;
     background-color: rgba(34, 34, 34, 0.766);
     font-weight: bold;
@@ -437,6 +437,86 @@ header {
         }
     }
 }
+
+.form-contener {
+    position: relative;
+    padding: 10px;
+    font-size: 20px;
+    width: 100%;
+
+    .form-escape {
+        border: 0;
+        background: #191919;
+        padding: 14px;
+        width: 100%;
+        color: #ffffff;
+        
+        &~label {
+            position: absolute;
+            top: calc(50% - 10px);
+            left: 25px;
+            color: #ffffff;
+            transition: linear 0.2s;
+        }
+
+        &:valid~label,
+        &:focus~label {
+            font-size: 14px;
+            top: -10px;
+            transition: linear 0.2s;
+        }
+    }
+
+}
+
+////////////////CHEAKBOX////////////////////
+.form-check-label {
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    height: 52px;
+
+    input[type=checkbox] {
+        display: none;
+    }
+
+    input[type=checkbox] {
+        
+        &+span {
+            position: relative;
+            display: block;
+            border: #191919 5px solid;
+            height: 40px;
+            width: 80px;
+            border-radius: 50px;
+            background: #8d1b23;
+            transition: all 0.5s linear;
+            margin-right: 5px;
+        }
+
+        &:checked+span {
+            background: green;
+        }
+
+        &+span>span {
+            position: absolute;
+            display: block;
+            border: #191919 5px solid;
+            height: 40px;
+            width: 40px;
+            top: -5px;
+            left: -5px;
+            border-radius: 50px;
+            background: #191919;
+            transition: 0.3s linear;
+        }
+        &:checked+span>span {
+            left: 35px;
+        }
+    }
+
+}
+
 
 /* Fin Catalogue */
 /* page des escape game*/

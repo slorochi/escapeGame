@@ -1,18 +1,17 @@
-
 <section id="Catalogue">
-    
+
     <div class="container">
 
         <?php $admin = $_SESSION['compte']['admin'] ?? "";
-        if($admin == 1) : ?>
+        if ($admin == 1) : ?>
 
-        <div class="row adminPanel">
-            <h3 class="text-center">Panel Admin</h3>
-            <?= $CrudsAdmin ?>
-        </div>
+            <div class="row adminPanel">
+                <h3 class="text-center">Panel Admin</h3>
+                <?= $CrudsAdmin ?>
+            </div>
 
         <?php endif ?>
-        <form method="post" class="row"  action="?p=catalogue">
+        <form method="post" class="row" action="?p=catalogue">
             <div class="col-4">
                 <select class='form-select text-center' name="ville">
                     <option value="">Toutes les villes</option>
@@ -29,14 +28,12 @@
                     <option value="5">lvl 5</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg col-4"
-                style="padding-left: 2.5rem; padding-right: 2.5rem;" name="submit" >filtrer </button>
+            <button type="submit" class="btn btn-primary btn-lg col-4" style="padding-left: 2.5rem; padding-right: 2.5rem;" name="submit">filtrer </button>
         </form>
         <div class="row">
-            <?= $htmlEscp ?> 
+            <?= $htmlEscp ?>
         </div>
 
     </div>
-    
+
 </section>
-    
