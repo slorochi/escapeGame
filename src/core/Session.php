@@ -26,10 +26,11 @@ class Session {
     public function login($tabUser, $postMail, $postMdp){
         foreach ($tabUser as $i=>$info){
             $currentMail= $info->getMail();
+            //get currentMdp = $info->getMdp() but with the password_verify() function
             $currentMdp = $info->getMdp();
             $currentAdmin = $info->getAdmin();
-            $compte = ["email"=> $postMail, "mdp"=> $postMdp, "admin"=> $currentAdmin];
-            if($postMail === $currentMail && $postMdp === $currentMdp){
+            $compte = ["email"=> $postMail, "admin"=> $currentAdmin];
+            if($postMail === $currentMail && password_verify($postMdp, $currentMdp)){
                 $this->setCompte($compte);
                 header("Location:" .$this->getBackpage()); 
             }
@@ -48,11 +49,13 @@ class Session {
                 $accExist = true;
             }
         }
+        //comm 12/04/2022
         // si le compte n'existe pas
         if ($accExist == false){
             $userRepo = new UserRepo();
-            $userRepo->setUserToCreate("nom", $postMail, $postMdp,"1", "adresse", "28000", "ville",); 
-            $compte = ["email"=> $postMail, "mdp"=> $postMdp];
+            $mdpHash = password_hash($postMdp, PASSWORD_BCRYPT);
+            $userRepo->setUserToCreate("nom", $postMail, $mdpHash,"1", "adresse", "28000", "ville",); 
+            $compte = ["email"=> $postMail,"password"=> $mdpHash];
             $this->setCompte($compte);
             header("Location:" .$this->getBackpage()) ;
         }

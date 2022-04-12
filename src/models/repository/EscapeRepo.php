@@ -121,6 +121,15 @@ class EscapeRepo extends BddConnection{
             </div>
         </div>";
     }
+
+    public static function keepPreviousChamp(array $arrayPost){
+        $arrayAdmin =[];
+        foreach($arrayPost as $key){
+            !empty($_POST[$key]) ? $key = $_POST[$key] : $key = "";
+            array_push($arrayAdmin, $key);
+        }
+        return $arrayAdmin;
+    }
     //Modification d'un champ de la table escapeGame
     /* public function modifyEscapeElement($table, $champ, $element){
         $this->modifyChamp($table, $champ, $element);
