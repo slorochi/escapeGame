@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 03 avr. 2022 à 12:31
+-- Généré le : dim. 10 avr. 2022 à 12:49
 -- Version du serveur : 5.7.36
 -- Version de PHP : 8.0.13
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `escapegame` (
   PRIMARY KEY (`idEscape`),
   KEY `idType` (`idType`),
   KEY `niveau` (`niveau`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `escapegame`
@@ -49,8 +49,8 @@ CREATE TABLE IF NOT EXISTS `escapegame` (
 INSERT INTO `escapegame` (`idEscape`, `nom`, `niveau`, `idType`, `adresse`, `cp`, `ville`, `description`) VALUES
 (1, 'EscapePierre', 1, 1, '2 route des barbue qui pue', 28100, 'Dreux', 'Le monde du western est pourtant un univers iconique que toutes les générations sont capables de se représenter en une fraction de seconde, un terreau fertile sur lequel il y a tant à imaginer. Un revolver Colt, un chapeau Stetson, une étoile de shérif, un verre de gnôle et des éperons… Rien que ces quelques accessoires suffisent à transporter au pays de Lucky Luke. Ajoutez un joli et immersif décor comme The Game a l’habitude d’en produire, et vous retrouverez notre équipe en train de s’exercer au lasso et de danser la country !'),
 (2, 'EscapePasla', 3, 3, '2 rue des chateau', 75000, 'Paris', 'Le mythique Orient-Express poursuit son voyage en direction d’Istanbul dans le luxe et le calme. Tout d\'un coup, un cri, suivi d’un bruit sourd en provenance de la cabine de Samuel Lioretti, viennent briser le silence de la nuit. Il est mort ! Assassiné… Mais comment est-ce possible ? Sa cabine est fermée de l\'intérieur. Vous êtes les seuls passagers de ce train, le meurtrier ne peut être que parmi vous ! Vous incarnerez les suspects et tous les soupçons pèseront sur vous. Préparez-vous à vivre un huis clos éprouvant et… prenez garde, les apparences sont parfois trompeuses... Saurez-vous être à la hauteur ?'),
-(3, 'La pierre de lumiere', 1, 1, '11 rue Desprez', 75014, 'Paris', 'Pandore & Associés s’occupe du gardiennage du monde des contes. Cet univers est un subtil mélange de magie, de technologie et de personnages hauts en couleur. Mais ce monde est plus fragile qu’il n’en a l’air… Le moindre dysfonctionnement peut perturber son équilibre. Pour s’assurer qu\'il ne s’effondre pas, Pandore a créé l’unité LXR, garante de sa protection et de son bon fonctionnement. Vous êtes embauché pour de simples opérations de maintenance. Mais si les choses venaient à s’envenimer, nous comptons sur vous pour faire preuve de courage et d’ingéniosité.'),
-(4, 'mission yakuza', 2, 2, '23 rue servan', 75011, 'Paris', 'Kinechi Shonida, célèbre parrain de la mafia japonaise à la tête d\'un réseau mêlant trafic d\'armes et de drogue, est introuvable. L\'inspecteur principal chargé de l\'arrêter a été retrouvé mort dans une planque sordide. Le ministre de l\'Intérieur a besoin des meilleures recrues pour trouver Shonida avant qu\'il ne s\'enfuie au Japon. Incarnez une équipe de la police scientifique à la recherche d\'indices au cœur d\'un casse-tête en milieu hostile.');
+(3, 'La pierre de lumière', 1, 1, '11 rue Desprez', 75014, 'Paris', 'Pandore & Associés s’occupe du gardiennage du monde des contes. Cet univers est un subtil mélange de magie, de technologie et de personnages hauts en couleur. Mais ce monde est plus fragile qu’il n’en a l’air… Le moindre dysfonctionnement peut perturber son équilibre. Pour s’assurer qu\'il ne s’effondre pas, Pandore a créé l’unité LXR, garante de sa protection et de son bon fonctionnement. Vous êtes embauché pour de simples opérations de maintenance. Mais si les choses venaient à s’envenimer, nous comptons sur vous pour faire preuve de courage et d’ingéniosité.'),
+(4, 'coucou', 2, 2, '2rue des patate', 23489548, 'Dreuxcaze', 'zerzertzerazera');
 
 -- --------------------------------------------------------
 
@@ -76,7 +76,9 @@ CREATE TABLE IF NOT EXISTS `jouer` (
 
 INSERT INTO `jouer` (`idUser`, `idEscape`, `date`, `temps`, `note`, `message`) VALUES
 (2, 1, '2022-04-01', '01:18.06', 4, ''),
-(3, 3, '2022-04-14', '00:56.18', 4, '');
+(3, 3, '2022-04-14', '00:56.18', 4, ''),
+(1, 1, '2022-04-09', '00:48.12', NULL, NULL),
+(4, 2, '2022-04-08', '00:48.12', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -146,7 +148,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `admin` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`idUser`),
   KEY `niveau` (`niveau`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `user`
@@ -156,7 +158,8 @@ INSERT INTO `user` (`idUser`, `nom`, `email`, `mdp`, `niveau`, `adresse`, `cp`, 
 (1, 'Anthony', 'Anthony@gmail.com', '123', 2, '2 rue des champs de blé', 28120, 'Dreux', NULL),
 (2, 'Theo', 'Theo@gmail.com', '456', 1, '5rue des league of legend', 28100, 'Blizzard', NULL),
 (3, 'Gaétan', 'Gaetan@gmail.com', '324', 5, '22', 28800, 'Bonneval', NULL),
-(4, 'Océane', 'Oceane@gmail.com', 'motdepasse', 3, '2 rue des nenufard', 28100, 'Dauville', NULL);
+(4, 'Océane', 'Oceane@gmail.com', 'motdepasse', 3, '2 rue des nenufard', 28100, 'Dauville', NULL),
+(5, 'admin', 'admin@admin.com', 'admin', 5, '2 rue des dieux', 0, 'Partout', 1);
 
 --
 -- Contraintes pour les tables déchargées

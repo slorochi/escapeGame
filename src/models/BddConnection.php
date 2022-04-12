@@ -96,6 +96,39 @@ class BddConnection{
 		return  $rst->fetchAll(PDO::FETCH_ASSOC); 
 		//requête sql pour modifier le champ de la table sélectionnée
 	}
-}
 
+	//////////////LEADER BOARD//////////////
+	public function createLeaderboard($filtre){
+		$db = $this->getconnect();
+		if($filtre == ""){
+			$sql = "SELECT user.nom as nomuser,escapegame.nom as nomescape,jouer.temps,jouer.date 
+			FROM `jouer` 
+			INNER JOIN `escapegame` ON jouer.idEscape =escapegame.idEscape 
+			INNER JOIN `user` ON jouer.idUser = user.idUser
+			ORDER BY jouer.temps;";
+		}
+		else{
+			$sql = "SELECT user.nom as nomuser,escapegame.nom as nomescape,jouer.temps,jouer.date 
+			FROM `jouer` 
+			INNER JOIN `escapegame` ON jouer.idEscape =escapegame.idEscape 
+			INNER JOIN `user` ON jouer.idUser = user.idUser 
+			WHERE escapegame.nom = '$filtre'
+			ORDER BY jouer.temps;";
+		}
+		$rst = $db->prepare($sql);
+		$rst->execute();
+		return  $rst->fetchAll(PDO::FETCH_ASSOC);
+
+	}
+
+	//////////////VILLES//////////////
+	public function recupeVille(){
+		$db = $this->getconnect();
+		$sql = "SELECT DISTINCT escapegame.ville 
+		FROM `escapegame`;" ;
+		$rst = $db->prepare($sql);
+		$rst->execute();
+		return  $rst->fetchAll(PDO::FETCH_ASSOC); 
+	}
+}
 ?>

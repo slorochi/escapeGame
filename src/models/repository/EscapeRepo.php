@@ -1,12 +1,8 @@
 <?php
 namespace App\models\repository;
 
-
-use PDO;
 use App\models\BddConnection;
 use App\models\entity\Escapegame;
-
-
 
 class EscapeRepo extends BddConnection{
 
@@ -83,7 +79,8 @@ class EscapeRepo extends BddConnection{
 
     public function setEscapeToCreate($nom, $niveau, $idType, $adresse, $cp, $ville,$description){
         $this->escapeToCreate = $this->getEscapeToCreate($nom, $niveau, $idType, $adresse, $cp, $ville, $description);
-        $this->createEscape("escapegame", $this->escapeToCreate); 
+        $this->createEscape("escapegame", $this->escapeToCreate);
+        header("Location: ?p=catalogue");
     }
 
     public function deleteEscape($id){
@@ -100,17 +97,39 @@ class EscapeRepo extends BddConnection{
                 //prepare la requête avant de l'executer
                 $rst = $db->prepare($sql);
                 //execute la requête
-                $rstok = $rst->execute([":id" => $id]);
-                if($rstok){
-                    return "cool";
-                }
-                else{
-                    return "pas cool";
-                }
+                $rst->execute([":id" => $id]);
+
             }
         }
     }
 
+
+    public static function createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete){
+
+       return "<div class='card col-md-6'>
+            <img class='card-img-top' src='views/style/img/be4be3e0-5dae-11ec-bfae-50d2ca6eaeba.jfif' alt='Card image cap'>
+            <div class='card-body'>
+            <h5 class='card-title'>Nom&nbsp:&nbsp$nomEscape level:&nbsp$lvl</h5>
+                <p class='card-text'>$adresse $cp $ville.</p>
+                <div class='row'>
+                    <form action='?p=escapegame' class='col-6' method='post'>
+                        <input type='hidden' name='nomEscape' value='$nomEscape'>
+                        <input class='btn btn-primary' type='submit' value='Voir plus'>
+                    </form>
+                    $boutonDelete
+                </div>
+            </div>
+        </div>";
+    }
+
+    public static function keepPreviousChamp(array $arrayPost){
+        $arrayAdmin =[];
+        foreach($arrayPost as $key){
+            !empty($_POST[$key]) ? $key = $_POST[$key] : $key = "";
+            array_push($arrayAdmin, $key);
+        }
+        return $arrayAdmin;
+    }
     //Modification d'un champ de la table escapeGame
     /* public function modifyEscapeElement($table, $champ, $element){
         $this->modifyChamp($table, $champ, $element);
