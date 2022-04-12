@@ -8,7 +8,7 @@ use App\models\repository\JouerRepo;
 use App\models\repository\EscapeRepo;
 
 
-if (isset($_SESSION['compte'])){
+if (isset($_SESSION['compte']) && !(isset($_SESSION['compte']['admin']))){
     $user1 = new UserRepo;
     $user1->setUserByChamp("email",$_SESSION['compte']['email']);
     $nomUser = $user1->getDataUserSelected();
@@ -68,7 +68,8 @@ if (isset($_SESSION['compte'])){
 }
 
 else{
-    header("Location:?p=login"); 
+    $htmlLeaderboard = "Vous n'avez jamais fait d'Escape Game";
+    require("../public/views/stats.php");
 }
 
 ?>
