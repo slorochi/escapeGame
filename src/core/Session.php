@@ -56,6 +56,7 @@ class Session {
         // si le compte n'existe pas
         if ($accExist == false){
             $userRepo = new UserRepo();
+            // password_hash() retourne une version cryptée du mot de passe
             $mdpHash = password_hash($postMdp, PASSWORD_BCRYPT);
             $userRepo->setUserToCreate("nom", $postMail, $mdpHash,"1", "adresse", "28000", "ville",); 
             $compte = ["email"=> $postMail,"password"=> $mdpHash];
