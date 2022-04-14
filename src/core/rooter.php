@@ -5,14 +5,6 @@ use App\core\File;
 use App\core\Session;
 use App\core\LeaderManager;
 
-if (isset($_SESSION['compte'])){
-    $user1 = new UserRepo;
-    $user1->setUserByChamp("email",$_SESSION['compte']['email']);
-    $nomUser = $user1->getDataUserSelected();
-
-    var_dump("coucou");
-}
-
 /* function afficher($view){
 	if($view == "header"){
 		require("controllers/header.php");
