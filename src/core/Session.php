@@ -30,11 +30,7 @@ class Session {
             $currentMdp = $info->getMdp();
             $currentAdmin = $info->getAdmin();
             $compte = ["email"=> $postMail, "admin"=> $currentAdmin];
-            /* if($postMail === $currentMail && password_verify($postMdp, $currentMdp)){
-                $this->setCompte($compte);
-                header("Location:" .$this->getBackpage()); 
-            } */
-            if($postMail === $currentMail && $postMdp === $currentMdp){
+            if($postMail === $currentMail && password_verify($postMdp, $currentMdp)){
                 $this->setCompte($compte);
                 $leaderboard = new LeaderManager(new File("../src/core/dataleaderboard.dt","r+"));
                 $leaderboard->setNumberConnexions();
