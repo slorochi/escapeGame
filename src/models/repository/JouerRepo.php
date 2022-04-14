@@ -41,7 +41,11 @@ class JouerRepo extends BddConnection{
     }
 
     public function setStatsPlayer($table, $elementToPush, $nomChamp, $idEscape, $idUser){
-        return $this->modifyChampStatsJoueur($table, $elementToPush, $nomChamp, $idEscape, $idUser);
+        return $this->modifyStatsJoueur($table, $elementToPush, $nomChamp, $idEscape, $idUser);
+    }
+
+    public function setChampStatsPlayer($table, $elementToPush, $nomChamp, $idUser){
+        return $this->modifyChampStatsJoueur($table, $elementToPush, $nomChamp, $idUser);
     }
 
     public function StatsAll($filtre = ""){
@@ -50,6 +54,10 @@ class JouerRepo extends BddConnection{
 
     public function StatsJoueur($NomUser = ""){
         return $this->createStatsJoueur($NomUser);
+    }
+
+    public function NumberEscapeGameJoueur($NomUser = ""){
+        return $this->getNumberEscapeGameJoueur($NomUser);
     }
     
 }

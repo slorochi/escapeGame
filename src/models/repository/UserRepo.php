@@ -63,7 +63,6 @@ class UserRepo extends BddConnection{
 
    public function modifyInfoUser($elementToPush, $nomChamp, $valeurChamp){
        $this->modifyChamp("user", $elementToPush, $nomChamp, $valeurChamp);
-
    }
 
     public function getDataUserSelected(){

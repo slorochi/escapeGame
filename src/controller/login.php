@@ -20,13 +20,11 @@ if(!($session->getCompte())){
         else{
             $session->login($tabUser, $_POST['email'], $_POST['password']);
         }
+        require ("../src/core/LvlUser.php");
     }
 }
 else {
     require ("../src/controller/logout.php"); 
-}
-if(isset($_POST['submit'])){
-    echo "coucou";
 }
 
 ?>

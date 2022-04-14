@@ -6,6 +6,20 @@ use App\core\Session;
 use App\core\LeaderManager;
 
 
+use App\models\entity\User;
+use App\models\entity\Jouer;
+use App\models\entity\Escapegame;
+use App\models\repository\UserRepo;
+use App\models\repository\JouerRepo;
+use App\models\repository\EscapeRepo;
+
+if (isset($_SESSION['compte'])){
+    $user1 = new UserRepo;
+    $user1->setUserByChamp("email",$_SESSION['compte']['email']);
+    $nomUser = $user1->getDataUserSelected();
+
+    var_dump("coucou");
+}
 
 /* function afficher($view){
 	if($view == "header"){
