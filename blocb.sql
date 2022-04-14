@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 10 avr. 2022 à 12:49
+-- Généré le : jeu. 14 avr. 2022 à 19:40
 -- Version du serveur : 5.7.36
--- Version de PHP : 8.0.13
+-- Version de PHP : 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `escapegame` (
   PRIMARY KEY (`idEscape`),
   KEY `idType` (`idType`),
   KEY `niveau` (`niveau`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `escapegame`
@@ -75,10 +75,11 @@ CREATE TABLE IF NOT EXISTS `jouer` (
 --
 
 INSERT INTO `jouer` (`idUser`, `idEscape`, `date`, `temps`, `note`, `message`) VALUES
-(2, 1, '2022-04-01', '01:18.06', 4, ''),
+(2, 1, '2022-04-01', '01:18.06', 1, ''),
 (3, 3, '2022-04-14', '00:56.18', 4, ''),
-(1, 1, '2022-04-09', '00:48.12', NULL, NULL),
-(4, 2, '2022-04-08', '00:48.12', NULL, NULL);
+(1, 1, '2022-04-09', '00:48.12', 3, 'Pas trop mal, à tester'),
+(4, 2, '2022-04-08', '00:48.12', 5, 'Excellent, j\'adore !'),
+(1, 3, '2022-04-11', '00:50:54', 5, 'Incroyable !!');
 
 -- --------------------------------------------------------
 
@@ -155,11 +156,11 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`idUser`, `nom`, `email`, `mdp`, `niveau`, `adresse`, `cp`, `ville`, `admin`) VALUES
-(1, 'Anthony', 'Anthony@gmail.com', '123', 2, '2 rue des champs de blé', 28120, 'Dreux', NULL),
+(1, 'Anthony', 'Anthony@gmail.com', '123', 2, '2 rue des antho', 28120, 'Dreux', NULL),
 (2, 'Theo', 'Theo@gmail.com', '456', 1, '5rue des league of legend', 28100, 'Blizzard', NULL),
-(3, 'Gaétan', 'Gaetan@gmail.com', '324', 5, '22', 28800, 'Bonneval', NULL),
-(4, 'Océane', 'Oceane@gmail.com', 'motdepasse', 3, '2 rue des nenufard', 28100, 'Dauville', NULL),
-(5, 'admin', 'admin@admin.com', 'admin', 5, '2 rue des dieux', 0, 'Partout', 1);
+(3, 'Gaétan', 'Gaetan@gmail.com', '324', 2, '22', 28800, 'Bonneval', NULL),
+(4, 'Océane', 'Oceane@gmail.com', 'motdepasse', 4, '2 rue des nenufard', 28100, 'Dauville', NULL),
+(5, 'admin', 'admin@admin.com', 'admin', 1, '2 rue des dieux', 0, 'Partout', 1);
 
 --
 -- Contraintes pour les tables déchargées
