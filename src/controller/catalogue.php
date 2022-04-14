@@ -20,17 +20,20 @@ $escape->SetAllEscape();
 $esc = $escape->getTabEscape();
 $admin = $_SESSION['compte']['admin'] ?? "";
 $htmlEscp="";
-if(isset($_POST['submit'])){
 
+
+if(isset($_POST['submit'])){
+    
+    
     if((($_POST["ville"] && $_POST["ville"] != "") || ($_POST["level"] && $_POST["level"] != ""))){
 
-        if (isset($_POST['ville'])) {
             foreach($esc as $key => $value){
 
                 $villePost = ($_POST['ville']);
                 $lvlPost = ($_POST['level']);
                 $lvl = ($value->getNiveau());
                 $nomEscape =($value->getNom());
+                $idTypeEsc = ($value->getIdType());
                 $adresse = $value->getAdresse();
                 $cp = $value->getCp();
                 $ville = $value->getVille();
@@ -54,22 +57,21 @@ if(isset($_POST['submit'])){
                 
                 if($villePost==""){
                     if($value->getNiveau()==$lvlPost){
-                        $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
+                        $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville,$idTypeEsc, $boutonDelete);
                     }
                     else if ($lvlPost==""){
-                        $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
+                        $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville,$idTypeEsc, $boutonDelete);
                     }
                 }
                 else if($value->getVille()==$villePost){
                     if($lvlPost==""){
-                        $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
+                        $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville,$idTypeEsc, $boutonDelete);
                     }
                     else if ($value->getNiveau()==$lvlPost){
-                        $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
+                        $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville,$idTypeEsc, $boutonDelete);
                     }
                 }
             }
-        }
     }
 
     else{
@@ -79,6 +81,7 @@ if(isset($_POST['submit'])){
             $adresse = $value->getAdresse();
             $cp = $value->getCp();
             $ville = $value->getVille();
+            $idTypeEsc = ($value->getIdType());
             
             if($admin == 1){
                 $boutonDelete ="<form class='col-6' method='post'>
@@ -97,7 +100,7 @@ if(isset($_POST['submit'])){
                 $boutonDelete ="";
             }
 
-            $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
+            $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville,$idTypeEsc, $boutonDelete);
         }
     }
 }
@@ -109,6 +112,7 @@ else{
         $adresse = $value->getAdresse();
         $cp = $value->getCp();
         $ville = $value->getVille();
+        $idTypeEsc = ($value->getIdType());
         
         if($admin == 1){
             $boutonDelete ="<form class='col-6' method='post'>
@@ -127,7 +131,7 @@ else{
             $boutonDelete ="";
         }
 
-        $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
+        $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville,$idTypeEsc, $boutonDelete);
     }
 }
 
@@ -169,8 +173,8 @@ if(!empty($_POST)){
             $cpEsc = $_POST['cpAdmin'];
             $villeEsc = $_POST['villeAdmin'];
             $descEsc = $_POST['descAdmin'];
-            var_dump($nameEsc, $lvlEsc, $idTypeEsc, $adresseEsc,$cpEsc, $villeEsc,  $descEsc,);
-            $escape->setEscapeToCreate($nameEsc, $lvlEsc, $idTypeEsc, $adresseEsc,$cpEsc, $villeEsc,  $descEsc,);
+            
+            $escape->setEscapeToCreate($nameEsc, $lvlEsc, $idTypeEsc, $adresseEsc,$cpEsc, $villeEsc,  $descEsc);
         }
     }
     else{

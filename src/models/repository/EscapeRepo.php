@@ -104,10 +104,9 @@ class EscapeRepo extends BddConnection{
     }
 
 
-    public static function createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete){
-
+    public static function createCard($nomEscape, $lvl, $adresse, $cp, $ville,$idTypeEsc, $boutonDelete){
        return "<div class='card col-md-6'>
-            <img class='card-img-top' src='views/style/img/be4be3e0-5dae-11ec-bfae-50d2ca6eaeba.jfif' alt='Card image cap'>
+            <img class='card-img-top' src='views/style/img/escgame$idTypeEsc.jpg' alt='Card image cap'>
             <div class='card-body'>
             <h5 class='card-title'>Nom&nbsp:&nbsp$nomEscape level:&nbsp$lvl</h5>
                 <p class='card-text'>$adresse $cp $ville.</p>
