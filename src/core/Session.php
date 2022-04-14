@@ -2,7 +2,7 @@
 namespace App\core;
 
 use App\models\repository\UserRepo;
-
+use App\core\LeaderboardManager;
 class Session {
 
     
@@ -36,6 +36,9 @@ class Session {
             } */
             if($postMail === $currentMail && $postMdp === $currentMdp){
                 $this->setCompte($compte);
+                $leaderboard = new LeaderManager(new File("../src/core/dataleaderboard.dt","r+"));
+                $leaderboard->setNumberConnexions();
+                $leaderboard->setNumberAccounts(new userRepo());
                 header("Location:" .$this->getBackpage()); 
             }
         }
@@ -57,9 +60,14 @@ class Session {
         // si le compte n'existe pas
         if ($accExist == false){
             $userRepo = new UserRepo();
+            // password_hash() retourne une version cryptée du mot de passe
             $mdpHash = password_hash($postMdp, PASSWORD_BCRYPT);
             $userRepo->setUserToCreate("nom", $postMail, $mdpHash,"1", "adresse", "28000", "ville",); 
             $compte = ["email"=> $postMail,"password"=> $mdpHash];
+            $leaderboard = new LeaderManager(new File("../src/core/dataleaderboard.dt","r+"));
+            $leaderboard->setNumberConnexions();
+            $leaderboard->setNumberAccountsCreated();
+            $leaderboard->setNumberAccounts();
             $this->setCompte($compte);
             header("Location:" .$this->getBackpage()) ;
         }

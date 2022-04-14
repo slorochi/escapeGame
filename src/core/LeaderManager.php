@@ -29,8 +29,9 @@ class LeaderManager {
     public function addFirstObject(UserRepo $userRepo){
         $leaderboard = new Leaderboard();
         $leaderboard->setConnexions(0);
-        $leaderboard->setAccounts($this->getNumberAccounts($userRepo));
-        $leaderboard->setAccountsCreated($this->getNumberAccounts($userRepo));
+        $acc = $this->getNumberAccounts($userRepo);
+        $leaderboard->setAccounts($acc);
+        $leaderboard->setAccountsCreated($acc);
         $valeurEncode = json_encode($leaderboard);
         $this->file->write($valeurEncode);
     }
@@ -42,6 +43,7 @@ class LeaderManager {
     protected function decodeLeaderboard(){
         // lis dans le dataleaderboard, récupère l'objet json et le transforme en objet Leaderboard , puis return l'objet pour qu'on puisse lire les getConnexions etc  //         
         // si le fichier est créé et rempli  :
+        $this->file->rewind();
         $ldboard = $this->file->readLigne();
         $stdObject = json_decode($ldboard); 
         $leaderboard = new Leaderboard();
@@ -92,9 +94,8 @@ class LeaderManager {
 
 
     public function setNumberAccountsCreated(){
-        // si le fichier est créé et rempli :
         $this->decodeLeaderboard();
-        $newAccCrea = ($this->leaderboard)->getAccountsCeated() + 1;
+        $newAccCrea = ($this->leaderboard)->getAccountsCreated() + 1;
         $this->leaderboard->setAccountsCreated($newAccCrea);
         $this->encodeLeaderboard();
         //sinon;

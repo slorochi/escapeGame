@@ -14,13 +14,13 @@
         <form method="post" class="row" action="?p=catalogue">
             <div class="col-4">
                 <select class='form-select text-center' name="ville">
-                    <option value="">Toutes les villes</option>
+                    <option value="all">Toutes les villes</option>
                     <?= $htmlOptionViles ?>
                 </select>
             </div>
             <div class="col-4">
                 <select class='form-select text-center col-4' id="level" name="level">
-                    <option value="">level</option>
+                    <option value="all">level</option>
                     <option value="1">lvl 1</option>
                     <option value="2">lvl 2</option>
                     <option value="3">lvl 3</option>
