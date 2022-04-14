@@ -129,10 +129,7 @@ class EscapeRepo extends BddConnection{
         }
         return $arrayAdmin;
     }
-    //Modification d'un champ de la table escapeGame
-    /* public function modifyEscapeElement($table, $champ, $element){
-        $this->modifyChamp($table, $champ, $element);
-    } */
+
 
 } 
 ?>
