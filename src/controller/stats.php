@@ -55,7 +55,6 @@ if (isset($_SESSION['compte']) && !(isset($_SESSION['compte']['admin']))){
         
     }
 
-    // var_dump($nomUser->getIdUser());
     if(isset($_POST["idEscape"])){
         $newNote = $_POST['note'];
         $newMessage = $_POST['message'];
@@ -71,5 +70,4 @@ else{
     $htmlLeaderboard = "Vous n'avez jamais fait d'Escape Game";
     require("../public/views/stats.php");
 }
-
 ?>
