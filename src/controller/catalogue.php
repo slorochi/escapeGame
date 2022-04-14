@@ -21,10 +21,14 @@ $esc = $escape->getTabEscape();
 $admin = $_SESSION['compte']['admin'] ?? "";
 $htmlEscp="";
 if(isset($_POST['submit'])){
+// cas ville all + lvl all
+// cas ville + lvl all 
+// cas ville all + lvl 
+// cas ville + lvl 
 
-    if((($_POST["ville"] && $_POST["ville"] != "") || ($_POST["level"] && $_POST["level"] != ""))){
+    // cas 1 si ville est remplie mais =/ de all                 //cas 2 lvl mais =/ de all
+    if((($_POST["ville"] && $_POST["ville"] != "all") || ($_POST["level"] && $_POST["level"] != "all"))){
 
-        if (isset($_POST['ville'])) {
             foreach($esc as $key => $value){
 
                 $villePost = ($_POST['ville']);
@@ -51,28 +55,29 @@ if(isset($_POST['submit'])){
                 else{
                     $boutonDelete ="";
                 }
-                
-                if($villePost==""){
+                // si toutes les villes sélectionnées
+                // cas 2
+                if($villePost=="all"){
                     if($value->getNiveau()==$lvlPost){
-                        $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
-                    }
-                    else if ($lvlPost==""){
                         $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
                     }
                 }
                 else if($value->getVille()==$villePost){
-                    if($lvlPost==""){
+                    if($lvlPost=="all"){
                         $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
+                        var_dump("la ville est set mais lvl = all");
                     }
                     else if ($value->getNiveau()==$lvlPost){
                         $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
+                        var_dump("la ville est set et le lvl est set ");
+
                     }
                 }
             }
-        }
     }
 
     else{
+        var_dump("rentre dans le all pour les deux");
         foreach($esc as $key=>$value){
             $lvl = ($value->getNiveau());
             $nomEscape =($value->getNom());

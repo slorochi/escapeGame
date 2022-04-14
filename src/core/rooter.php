@@ -4,7 +4,7 @@ namespace App\core;
 use App\core\File;
 use App\core\Session;
 use App\core\LeaderManager;
-
+use App\models\repository\UserRepo;
 
 
 /* function afficher($view){
@@ -29,14 +29,7 @@ Gestion des pages
 $leaderboard = new LeaderManager(new File("../src/core/dataleaderboard.dt","r+"));
 $session = new Session();
 $session->start();
-/* var_dump($_SESSION); */
-/* $leaderboard->getNumberAccounts(new UserRepo());
-var_dump($leaderboard->getNumberAccounts(new UserRepo()));  */
-
-/* var_dump($leaderboard->addFirstObject(new UserRepo())); */
-/* var_dump($leaderboard->getLeaderboard()); */
-/* $leaderboard->setNumberConnexions(); */
-
+/* $leaderboard->addFirstObject(new UserRepo());*/
 
 
 $p = "";
