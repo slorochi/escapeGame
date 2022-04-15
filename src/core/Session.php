@@ -3,6 +3,8 @@ namespace App\core;
 
 use App\models\repository\UserRepo;
 use App\core\LeaderboardManager;
+use App\models\repository\JouerRepo;
+
 class Session {
 
     
@@ -31,11 +33,13 @@ class Session {
             $currentAdmin = $info->getAdmin();
             $compte = ["email"=> $postMail, "admin"=> $currentAdmin];
             if($postMail === $currentMail && password_verify($postMdp, $currentMdp)){
+                $userRepo = new UserRepo();
                 $this->setCompte($compte);
                 $leaderboard = new LeaderManager(new File("../src/core/dataleaderboard.dt","r+"));
                 $leaderboard->setNumberConnexions();
                 $leaderboard->setNumberAccounts(new userRepo());
-                header("Location:" .$this->getBackpage()); 
+                $userRepo->setLvlByEscapeGameDone(new JouerRepo());
+                header("Location:" .$this->getBackpage());  
             }
         }
     }
@@ -65,6 +69,7 @@ class Session {
             $leaderboard->setNumberAccountsCreated();
             $leaderboard->setNumberAccounts(new userRepo());
             $this->setCompte($compte);
+            $userRepo->setLvlEscapeGameDone(new JouerRepo());
             header("Location:" .$this->getBackpage()) ;
         }
     }

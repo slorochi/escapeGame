@@ -140,13 +140,6 @@ class BddConnection{
 
 	public function getNumberEscapeGameJoueur($NomUser){
 		$db = $this->getconnect();
-
-		// $sql = "SELECT escapegame.idEscape 
-		// FROM `jouer` 
-		// INNER JOIN `escapegame` ON jouer.idEscape =escapegame.idEscape 
-		// INNER JOIN `user` ON jouer.idUser = user.idUser 
-		// WHERE user.nom = '$NomUser'
-		// ORDER BY escapegame.idEscape DESC;";
 		$sql = "SELECT escapegame.idEscape, escapegame.niveau, user.nom
 		FROM `jouer` 
 		INNER JOIN `escapegame` ON jouer.idEscape =escapegame.idEscape 
@@ -168,16 +161,6 @@ class BddConnection{
 		$rst = $db->prepare($sql);
 		$rst->execute(
 			[":elementToPush" => $elementToPush, ":idEscape" => $idEscape, ":idUser" => $idUser]);
-		return  $rst->fetchAll(PDO::FETCH_ASSOC); 
-		//requête sql pour modifier le champ de la table sélectionnée
-	}
-	// méthode pour modifier une info dans la base de données
-	public function modifyChampStatsJoueur($table, $elementToPush, $nomChamp, $idUser){
-		$db = $this->getconnect();	
-		$sql = " UPDATE $table SET $nomChamp = :elementToPush WHERE idUser = :idUser";
-		$rst = $db->prepare($sql);
-		$rst->execute(
-			[":elementToPush" => $elementToPush, ":idUser" => $idUser]);
 		return  $rst->fetchAll(PDO::FETCH_ASSOC); 
 		//requête sql pour modifier le champ de la table sélectionnée
 	}
