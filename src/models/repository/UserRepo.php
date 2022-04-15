@@ -93,6 +93,40 @@ class UserRepo extends BddConnection{
         $this->createUser("user", $this->userToCreate); 
         // requête sql afin de créer un 
     }
+
+   public function setLvlByEscapeGameDone(JouerRepo $jouerRepo){
+       //select info User
+        $this->setUserByChamp("email",$_SESSION['compte']['email']);
+        $currentUser = $this->getDataUserSelected();
+        var_dump($currentUser);
+        if(empty($currentUser->getNom())){
+            // si nv compte
+            $option = "";
+        }else{
+            $option = $currentUser->getNom();
+        }
+
+        // get escp done by user
+        $nbEscapeGameDone = $jouerRepo->NumberEscapeGameJoueur($option);
+        var_dump($nbEscapeGameDone);
+        if(empty($nbEscapeGameDone)){
+            $newNiveau = 0;
+        }else{
+            //return array of the highest escape game lvl done
+            $newNiveau = max($nbEscapeGameDone);
+            //transform to int
+            $newNiveau = intval($newNiveau['niveau']); 
+        }
+
+        // add a level
+        if($newNiveau < 5){
+            $newNiveau += 1;
+        }
+
+        $this->modifyInfoUser($newNiveau, "niveau", $currentUser->getIdUser()); 
+        } 
    
-} 
+    
+}
+
 ?>

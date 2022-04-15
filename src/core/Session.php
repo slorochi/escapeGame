@@ -2,6 +2,7 @@
 namespace App\core;
 
 use App\models\repository\UserRepo;
+use App\models\repository\JouerRepo;
 
 class Session {
 
@@ -30,8 +31,11 @@ class Session {
             $currentAdmin = $info->getAdmin();
             $compte = ["email"=> $postMail, "mdp"=> $postMdp, "admin"=> $currentAdmin];
             if($postMail === $currentMail && $postMdp === $currentMdp){
+                var_dump("0cc il est bien co ");
+                $userRepo = new UserRepo();
                 $this->setCompte($compte);
-                header("Location:" .$this->getBackpage()); 
+                $userRepo->setLvlByEscapeGameDone(new JouerRepo());
+                header("Location:" .$this->getBackpage());  
             }
         }
     }
@@ -54,6 +58,7 @@ class Session {
             $userRepo->setUserToCreate("nom", $postMail, $postMdp,"1", "adresse", "28000", "ville",); 
             $compte = ["email"=> $postMail, "mdp"=> $postMdp];
             $this->setCompte($compte);
+            $userRepo->setLvlEscapeGameDone(new JouerRepo());
             header("Location:" .$this->getBackpage()) ;
         }
     }
