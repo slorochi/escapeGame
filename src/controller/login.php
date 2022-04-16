@@ -4,8 +4,7 @@ use App\models\repository\UserRepo;
 
 // si $session ne fonctionne pas, rester sur isset($_SESSION['compte'])
 if(!($session->getCompte())){
-    require("../public/views/login.php");
-    
+    require("../public/views/login.php"); 
 
     if (isset($_POST["email"]) && !empty($_POST["email"]) &&(isset($_POST["password"])) && !empty($_POST["password"])){
 
@@ -15,7 +14,6 @@ if(!($session->getCompte())){
 
         if(isset($_POST['checkbox']))
         {
-            
             $session->signUp($tabUser, $_POST['email'], $_POST['password']);
         }
         else{

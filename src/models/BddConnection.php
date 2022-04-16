@@ -5,7 +5,8 @@ namespace App\models;
 use PDO;
 use PDOException;
 
-class BddConnection{
+class BddConnection
+{
 
 
 	//construct ou fichier config
@@ -13,25 +14,26 @@ class BddConnection{
 	protected $bdd 	= "blocb";
 	protected $user = "root";
 	protected $password = "";
-	
-	//test la connect.
-	protected function getconnect(){
 
-		try{
+	//test la connect.
+	protected function getconnect()
+	{
+
+		try {
 			//connect à la base
-			$db = new PDO("mysql:host=$this->serveur;dbname=$this->bdd;charset=utf8",$this->user,$this->password);
+			$db = new PDO("mysql:host=$this->serveur;dbname=$this->bdd;charset=utf8", $this->user, $this->password);
 
 			return $db;
 		}
 		//si connect impossible
-		catch(PDOException $erreur){
-		//affichage du message d'erreur
-		return "Erreur : ". $erreur->getMessage();
+		catch (PDOException $erreur) {
+			//affichage du message d'erreur
+			return "Erreur : " . $erreur->getMessage();
 		}
-
 	}
 
-	public function tous($table){
+	public function tous($table)
+	{
 		$db = $this->getconnect();
 		//recupère l'objet global (car une variable dans le programme principal 
 		//n'arrive pas dans une fx
@@ -44,7 +46,8 @@ class BddConnection{
 		return $rst->fetchAll(PDO::FETCH_ASSOC);
 	}
 
-	public function specifique($table,$champ,$id){
+	public function specifique($table, $champ, $id)
+	{
 		$db = $this->getconnect();
 		$sql = "SELECT * FROM $table WHERE $champ = :id";
 		//echo $sql;
@@ -55,74 +58,83 @@ class BddConnection{
 		//conversion format OBJ en tableau assoc.
 		return  $rst->fetchAll(PDO::FETCH_ASSOC);
 	}
-	
+
 
 	// méthode pour créer un élément d'une table dans la base de données
 
-		//////////////USER//////////////
-
-	public function createUser(string $table, $elementToCreate){
+	//////////////USER//////////////
+	//méthode pour créer un utilisateur
+	public function createUser(string $table, $elementToCreate)
+	{
 		$db = $this->getconnect();
-		$sql = "INSERT INTO $table SET idUser = :idUser, nom = :nom, email = :email, mdp = :mdp, niveau = :niveau, adresse = :adresse, cp = :cp, ville = :ville" ;
+		$sql = "INSERT INTO $table SET idUser = :idUser, nom = :nom, email = :email, mdp = :mdp, niveau = :niveau, adresse = :adresse, cp = :cp, ville = :ville";
 		$rst = $db->prepare($sql);
 		$rst->execute(
-			[":idUser" => $elementToCreate->getIdUser(), ":nom" => $elementToCreate->getNom(), ":email" => $elementToCreate->getMail(), ":mdp" => $elementToCreate->getMdp(), ":niveau" => $elementToCreate->getNiveau(), ":adresse" => $elementToCreate->getAdresse(), ":cp" => $elementToCreate->getCp(), ":ville" => $elementToCreate->getVille()]);
-		return  $rst->fetchAll(PDO::FETCH_ASSOC); 
+			[":idUser" => $elementToCreate->getIdUser(), ":nom" => $elementToCreate->getNom(), ":email" => $elementToCreate->getMail(), ":mdp" => $elementToCreate->getMdp(), ":niveau" => $elementToCreate->getNiveau(), ":adresse" => $elementToCreate->getAdresse(), ":cp" => $elementToCreate->getCp(), ":ville" => $elementToCreate->getVille()]
+		);
+		return  $rst->fetchAll(PDO::FETCH_ASSOC);
 	}
 
-		//////////////ESCAPE GAME//////////////
-
-	public function createEscape(string $table, $elementToCreate){
+	//////////////ESCAPE GAME//////////////
+	//méthode pour créer un escape game
+	public function createEscape(string $table, $elementToCreate)
+	{
 		$db = $this->getconnect();
-		$sql = "INSERT INTO $table SET idEscape = :idEscape, nom = :nom, niveau = :niveau, idType = :idType, adresse = :adresse, cp = :cp, ville = :ville, description = :description" ;
+		$sql = "INSERT INTO $table SET idEscape = :idEscape, nom = :nom, niveau = :niveau, idType = :idType, adresse = :adresse, cp = :cp, ville = :ville, description = :description";
 		$rst = $db->prepare($sql);
 		$rst->execute(
-			[":idEscape" => $elementToCreate->getIdEscape(), ":nom" => $elementToCreate->getNom(), ":niveau" => $elementToCreate->getNiveau(), ":idType" => $elementToCreate->getIdType(), ":adresse" => $elementToCreate->getAdresse(), ":cp" => $elementToCreate->getCp(), ":ville" => $elementToCreate->getVille(), ":description" => $elementToCreate->getDescription()]);
-		return  $rst->fetchAll(PDO::FETCH_ASSOC); 
-
+			[":idEscape" => $elementToCreate->getIdEscape(), ":nom" => $elementToCreate->getNom(), ":niveau" => $elementToCreate->getNiveau(), ":idType" => $elementToCreate->getIdType(), ":adresse" => $elementToCreate->getAdresse(), ":cp" => $elementToCreate->getCp(), ":ville" => $elementToCreate->getVille(), ":description" => $elementToCreate->getDescription()]
+		);
+		return  $rst->fetchAll(PDO::FETCH_ASSOC);
 	}
 
 
 	// méthode pour modifier les infos dans la base de données
 	// fonction à valider
-	public function modifyChamp($table, $elementToPush, $nomChamp, $valeurChamp){
-		$db = $this->getconnect();	
+	public function modifyChamp($table, $elementToPush, $nomChamp, $valeurChamp)
+	{
+		$db = $this->getconnect();
 		/* $sql = " ALTER TABLE $table MODIFY $champ $element "; */
 		/* UPDATE `user` SET `nom` = 'Theop' WHERE `user`.`idUser` = 2 */
 		$sql = " UPDATE $table SET $nomChamp = :elementToPush WHERE idUser = :valeurChamp";
 		$rst = $db->prepare($sql);
 		$rst->execute(
-			[":elementToPush" => $elementToPush, ":valeurChamp" => $valeurChamp]);
-		return  $rst->fetchAll(PDO::FETCH_ASSOC); 
+			[":elementToPush" => $elementToPush, ":valeurChamp" => $valeurChamp]
+		);
+		return  $rst->fetchAll(PDO::FETCH_ASSOC);
 		//requête sql pour modifier le champ de la table sélectionnée
 	}
 
 	//////////////LEADER BOARD//////////////
-	public function createLeaderboard($filtre){
+	//méthode pour créer un leader board selon un filtre
+	public function createLeaderboard($filtre)
+	{
 		$db = $this->getconnect();
-		if($filtre == ""){
+		if ($filtre == "") {
 			$sql = "SELECT user.nom as nomuser,escapegame.nom as nomescape,jouer.temps,jouer.date 
 			FROM `jouer` 
 			INNER JOIN `escapegame` ON jouer.idEscape =escapegame.idEscape 
 			INNER JOIN `user` ON jouer.idUser = user.idUser
 			ORDER BY jouer.temps;";
-		}
-		else{
+			$rst = $db->prepare($sql);
+			$rst->execute();
+		} else {
 			$sql = "SELECT user.nom as nomuser,escapegame.nom as nomescape,jouer.temps,jouer.date 
 			FROM `jouer` 
 			INNER JOIN `escapegame` ON jouer.idEscape =escapegame.idEscape 
 			INNER JOIN `user` ON jouer.idUser = user.idUser 
-			WHERE escapegame.nom = '$filtre'
+			WHERE escapegame.nom = :filtre
 			ORDER BY jouer.temps;";
+			$rst = $db->prepare($sql);
+			$rst->execute([":filtre" => $filtre]);
 		}
-		$rst = $db->prepare($sql);
-		$rst->execute();
 		return  $rst->fetchAll(PDO::FETCH_ASSOC);
-
 	}
 
 	//////////////STATISTIQUE JOUEUR//////////////
-	public function createStatsJoueur($NomUser){
+	//méthode pour créer un leader board selon le nom d'un joueur 
+	public function createStatsJoueur($NomUser)
+	{
 		$db = $this->getconnect();
 
 		$sql = "SELECT user.idUser,escapegame.idEscape,user.nom as nomuser,escapegame.nom as nomescape,jouer.temps,jouer.date,jouer.note,jouer.message 
@@ -135,10 +147,12 @@ class BddConnection{
 		$rst = $db->prepare($sql);
 		$rst->execute();
 		return  $rst->fetchAll(PDO::FETCH_ASSOC);
-
 	}
 
-	public function getNumberEscapeGameJoueur($NomUser){
+
+	public function getNumberEscapeGameJoueur($NomUser)
+	{
+
 		$db = $this->getconnect();
 		$sql = "SELECT escapegame.idEscape, escapegame.niveau, user.nom
 		FROM `jouer` 
@@ -150,29 +164,30 @@ class BddConnection{
 		$rst = $db->prepare($sql);
 		$rst->execute();
 		return  $rst->fetchAll(PDO::FETCH_ASSOC);
-
 	}
 
 	//////////////MODIFY STATS JOUEUR//////////////
 	// méthode pour modifier les infos dans la base de données
-	public function modifyStatsJoueur($table, $elementToPush, $nomChamp, $idEscape, $idUser){
-		$db = $this->getconnect();	
+	public function modifyStatsJoueur($table, $elementToPush, $nomChamp, $idEscape, $idUser)
+	{
+		$db = $this->getconnect();
 		$sql = " UPDATE $table SET $nomChamp = :elementToPush WHERE idEscape = :idEscape AND idUser = :idUser";
 		$rst = $db->prepare($sql);
 		$rst->execute(
-			[":elementToPush" => $elementToPush, ":idEscape" => $idEscape, ":idUser" => $idUser]);
-		return  $rst->fetchAll(PDO::FETCH_ASSOC); 
+			[":elementToPush" => $elementToPush, ":idEscape" => $idEscape, ":idUser" => $idUser]
+		);
+		return  $rst->fetchAll(PDO::FETCH_ASSOC);
 		//requête sql pour modifier le champ de la table sélectionnée
 	}
 
 	//////////////VILLES//////////////
-	public function recupeVille(){
+	public function recupeVille()
+	{
 		$db = $this->getconnect();
 		$sql = "SELECT DISTINCT escapegame.ville 
-		FROM `escapegame`;" ;
+		FROM `escapegame`;";
 		$rst = $db->prepare($sql);
 		$rst->execute();
-		return  $rst->fetchAll(PDO::FETCH_ASSOC); 
+		return  $rst->fetchAll(PDO::FETCH_ASSOC);
 	}
 }
-?>

@@ -4,8 +4,6 @@ namespace App\core;
 use App\core\File;
 use App\core\Session;
 use App\core\LeaderManager;
-use App\models\repository\UserRepo;
-
 
 /* function afficher($view){
 	if($view == "header"){
