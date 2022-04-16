@@ -1,26 +1,43 @@
-<section id="quisom">
-    <div class="container-fluid">
-        <div class="row elem">
-            <div class="col-sm-6">
-                <h2>QUI SOMMES NOUS ? </h2>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perferendis fugit molestiae officia voluptatum ipsam amet possimus corrupti eaque alias excepturi sequi similique, dolor velit dolorum dignissimos consequuntur. Asperiores mollitia dignissimos optio obcaecati inventore, rem dicta at ad laboriosam quia placeat assumenda reiciendis excepturi natus, libero temporibus earum sit, commodi vitae?</p>
+<section class="carteAccueil" >
+    <div class="container">
+        <div class="row">
+            <div class="col-4 image">
+                <img src="views/style/img/4129209.jpg" alt="">
             </div>
-            <img src="views/style/img/4129209.jpg" class="col-sm-6" alt="">
+            <div class="col-8 text">
+                <div>
+                    <h1>Bienvenue chez LEVEL GAME</h1>
+                    <p>
+                        Avec level Game, découvrez l'ensemble des escape games disponibles et parcourez le catalogue pour progresser dans des casse-têtes qui vous correspondent!<br>
+                        Au fur et à mesure que vous réaliserez des escape games, vous aurez accès à des casse-têtes de plus en plus durs à résoudre.
+                    </p>
+                    <a href="?p=catalogue">Commencez l'aventure mainenant !</a>
+                </div>
+                
+            </div>
         </div>
     </div>
-    <div id="souris">
-        <a href="#section1">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 161.09">
-                <g id="Calque_2" data-name="Calque 2">
-                    <g id="Calque_1-2" data-name="Calque 1">
-                        <rect class="rond" x="1.5" y="1.5" width="69" height="107" rx="30" />
-                        <path class="scoll" d="M36,23.1v20" />
-                        <polyline class="fleche" points="19 119.22 36 130.72 53 119.22" />
-                        <polyline class="fleche2" points="19 133.5 36 145 53 133.5" />
-                        <polyline class="fleche3" points="19 147.78 36 159.28 53 147.78" />
-                    </g>
-                </g>
-            </svg>
-        </a>
+</section>
+<section class="carteAccueil">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 text">
+                <div>
+                    <h2>Le top des meilleurs</h2>
+                    <p>
+                    Parcourez le classement des joueurs les plus audacieux et tentez également de faire partie des plus perspicaces !<br>
+                    Vous souhaitez découvrir et commencer l'aventure de level game ?<br>
+                    Visualisez quels joueurs ont été les plus ingénieux pour résoudre de véritables casse-têtes.
+
+                    </p>
+                    <a href="?p=leaderboard">VOIR LE LEADERBOARD</a>
+                </div>
+                
+            </div>
+            <div class="col-4 image">
+                <img src="views/style/img/un-crime-presque-parfait-escape-game-lock-academy.jpg" alt="">
+            </div>
+            
+        </div>
     </div>
 </section>

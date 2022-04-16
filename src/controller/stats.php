@@ -51,7 +51,12 @@ if (isset($_SESSION['compte']) && !(isset($_SESSION['compte']['admin']))){
 
     $htmlLeaderboard = "";
     foreach($Leaderboard as $key => $value){
-        $htmlLeaderboard .= "<tr>"."<td><form method='post'><input type='hidden' name='idEscape' value='".$value[2]->getIdEscape()."'>".$value[2]->getNom()."</td>"."<td>".$value[0]->getTemps()."</td>"."<td>".$value[0]->getDate()."</td>"."<td>"."<input type='number' name='note' min='0' max='5' value=".$value[0]->getNote().">"."</td>"."<td>"."<textarea name='message'>".$value[0]->getMessage()."</textarea>"."</td>"."<td>"."<input type='submit' value='Envoyer'></form>"."</td>"."</tr>";
+        $htmlLeaderboard .= "<tr>".
+            "<td><form method='post'><input type='hidden' name='idEscape' value='".$value[2]->getIdEscape()."'>".$value[2]->getNom()."</td>".
+                "<td>".$value[0]->getTemps()."</td>"."<td>".$value[0]->getDate()."</td>".
+                "<td>"."<div class='form-contener'><input type='number' class='form-escape' name='note' min='0' max='5' value=".$value[0]->getNote().">"."</div>"."</td>".
+                "<td>"."<div class='form-contener'><input type='text' class='form-escape' name='message' value='".$value[0]->getMessage()."'>"."</div>"."</td>"."<td>"."<input type='submit' class='btn btn-primary' value='Envoyer'></form>"."</td>".
+            "</tr>";
         
     }
 
@@ -70,4 +75,3 @@ else{
     $htmlLeaderboard = "Vous n'avez jamais fait d'Escape Game";
     require("../public/views/stats.php");
 }
-?>

@@ -72,7 +72,7 @@ header {
     width: 100%;
     z-index: 10;
     padding-bottom: 40px;
-
+    
     .header {
         margin: auto;
         width: 55vw;
@@ -271,102 +271,72 @@ header {
     border-color: #c52630;
     box-shadow: 0 0 0 0.25rem #962129;
 }
+///////////////////Accueil/////////////////////
+.carteAccueil{
+    margin-bottom: 30px;
+    .text{
 
-#quisom {
-
-    height: 100vh;
-
-    .elem {
-        justify-content: center;
-
-        div {
-            border-radius: 15px;
-            position: relative;
-            left: 20px;
-            background-color: #c3353e;
+        div{
+            padding: 5px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            background-color: #0000003b;
+            backdrop-filter: blur(8px);
+            
+            border-radius: 40px;
             align-items: center;
-            width: 40vw;
-
-            h2,
-            p {
-                width: 90%;
+            height: 90%;
+            width: 90%;
+            margin: auto;
+            border: solid 2px #ff4747;
+            text-align: center;
+            h1{
+                margin: 0 auto;
+                font-size: 3.4em;
+                color: #c42c36;
+            }
+            h2{
+                margin: 0 auto;
+                font-size: 2.5em;
+                color: #c42c36;
+            }
+            p{
+                padding: 20px;
+                font-size: 1.2em;
+                line-height: 1.5em;
+            }
+            a{
+                border: solid 2px #ff4747;
+                border-radius: 10px;
+                padding: 10px;
+                color: #c42c36;
+                text-decoration: none;
+                &:hover{
+                    background: #ff4747;
+                    color: #fff;
+                }
             }
         }
-
-        img {
-            position: relative;
-            padding: 0;
-            right: 20px;
-            top: 50px;
+        
+    }    
+    .image{
+        height: 50vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        border-radius: 0 0 70px 0;
+        box-shadow: 12px 16px 31px 3px rgba(0,0,0,0.62);
+        img{
+            padding-left: 120px;
+            width: auto;
             height: 100%;
-            width: 40vw;
-            border-radius: 15px;
         }
     }
-
-    /* Scroll */
-    svg {
-        position: absolute;
-        bottom: 10px;
-        left: calc(50% - (55px / 2));
-        z-index: 5;
-        height: 85px;
-        width: auto;
-        padding: 10px;
-        stroke: #ffffff;
-        fill: none;
-        stroke-width: 3px;
-
-        .scoll {
-            animation: linear scoll 2s;
-            animation-iteration-count: infinite;
-        }
-
-        .fleche {
-            animation: linear fleche 1.3s;
-            animation-iteration-count: infinite;
-        }
-
-        .fleche2 {
-            animation: linear fleche 1.3s;
-            animation-iteration-count: infinite;
-            animation-delay: 0.4s;
-        }
-
-        .fleche3 {
-            animation: linear fleche 1.3s;
-            animation-iteration-count: infinite;
-            animation-delay: 0.8s;
-        }
-    }
-
-    @keyframes scoll {
-        0% {
-            transform: translate(0, 0);
-            stroke: #ffffff;
-        }
-
-        100% {
-            transform: translate(0, 10%);
-            stroke: #00000000;
-        }
-    }
-
-    @keyframes fleche {
-        0% {
-            stroke: #ffffff;
-        }
-
-        100% {
-            stroke: #ffffff00;
-        }
-    }
-
-    /* Fin Scroll */
 }
+
+
+
+
 
 /*AdminPanel*/
 .adminPanel {
