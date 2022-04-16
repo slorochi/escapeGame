@@ -56,7 +56,6 @@ class Session {
                 $accExist = true;
             }
         }
-        //comm 12/04/2022
         // si le compte n'existe pas
         if ($accExist == false){
             $userRepo = new UserRepo();
