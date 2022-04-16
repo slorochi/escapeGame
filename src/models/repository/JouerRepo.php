@@ -55,11 +55,6 @@ class JouerRepo extends BddConnection
         return $this->modifyStatsJoueur($table, $elementToPush, $nomChamp, $idEscape, $idUser);
     }
 
-    public function setChampStatsPlayer($table, $elementToPush, $nomChamp, $idUser)
-    {
-        return $this->modifyChampStatsJoueur($table, $elementToPush, $nomChamp, $idUser);
-    }
-
     public function StatsAll($filtre = "")
     {
         return $this->createLeaderboard($filtre);
