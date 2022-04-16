@@ -2,7 +2,7 @@
 namespace App\core;
 
 use App\models\repository\UserRepo;
-
+use App\core\LeaderboardManager;
 class Session {
 
     
@@ -26,11 +26,15 @@ class Session {
     public function login($tabUser, $postMail, $postMdp){
         foreach ($tabUser as $i=>$info){
             $currentMail= $info->getMail();
+            //get currentMdp = $info->getMdp() but with the password_verify() function
             $currentMdp = $info->getMdp();
             $currentAdmin = $info->getAdmin();
-            $compte = ["email"=> $postMail, "mdp"=> $postMdp, "admin"=> $currentAdmin];
-            if($postMail === $currentMail && $postMdp === $currentMdp){
+            $compte = ["email"=> $postMail, "admin"=> $currentAdmin];
+            if($postMail === $currentMail && password_verify($postMdp, $currentMdp)){
                 $this->setCompte($compte);
+                $leaderboard = new LeaderManager(new File("../src/core/dataleaderboard.dt","r+"));
+                $leaderboard->setNumberConnexions();
+                $leaderboard->setNumberAccounts(new userRepo());
                 header("Location:" .$this->getBackpage()); 
             }
         }
@@ -48,11 +52,18 @@ class Session {
                 $accExist = true;
             }
         }
+        //comm 12/04/2022
         // si le compte n'existe pas
         if ($accExist == false){
             $userRepo = new UserRepo();
-            $userRepo->setUserToCreate("nom", $postMail, $postMdp,"1", "adresse", "28000", "ville",); 
-            $compte = ["email"=> $postMail, "mdp"=> $postMdp];
+            // password_hash() retourne une version cryptée du mot de passe
+            $mdpHash = password_hash($postMdp, PASSWORD_BCRYPT);
+            $userRepo->setUserToCreate("nom", $postMail, $mdpHash,"1", "adresse", "28000", "ville",); 
+            $compte = ["email"=> $postMail,"password"=> $mdpHash];
+            $leaderboard = new LeaderManager(new File("../src/core/dataleaderboard.dt","r+"));
+            $leaderboard->setNumberConnexions();
+            $leaderboard->setNumberAccountsCreated();
+            $leaderboard->setNumberAccounts();
             $this->setCompte($compte);
             header("Location:" .$this->getBackpage()) ;
         }

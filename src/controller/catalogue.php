@@ -6,8 +6,6 @@ use App\models\repository\EscapeRepo;
 $backpage = "?p=" .str_replace(".php","", basename(__FILE__));
 $session->setBackpage($backpage);
 
-// Com Gaetan : eviter la repetion de code dans les cartes en html
-
 $appelbdd = new BddConnection();
 $leaderboard = $appelbdd->recupeVille();
 $htmlOptionViles='';
@@ -22,21 +20,71 @@ $escape->SetAllEscape();
 $esc = $escape->getTabEscape();
 $admin = $_SESSION['compte']['admin'] ?? "";
 $htmlEscp="";
+if(isset($_POST['submit'])){
+// cas ville all + lvl all
+// cas ville + lvl all 
+// cas ville all + lvl 
+// cas ville + lvl 
 
+    // cas 1 si ville est remplie mais =/ de all                 //cas 2 lvl mais =/ de all
+    if((($_POST["ville"] && $_POST["ville"] != "all") || ($_POST["level"] && $_POST["level"] != "all"))){
 
-if(!empty($_POST) && (($_POST["ville"] && $_POST["ville"] != "") || ($_POST["level"] && $_POST["level"] != ""))){
+            foreach($esc as $key => $value){
 
-    if (isset($_POST['ville'])) {
-        foreach($esc as $key => $value){
+                $villePost = ($_POST['ville']);
+                $lvlPost = ($_POST['level']);
+                $lvl = ($value->getNiveau());
+                $nomEscape =($value->getNom());
+                $adresse = $value->getAdresse();
+                $cp = $value->getCp();
+                $ville = $value->getVille();
 
-            $villePost = ($_POST['ville']);
-            $lvlPost = ($_POST['level']);
+                if($admin == 1){
+                    $boutonDelete ="<form class='col-6' method='post'>
+                        <input type='hidden' name='deleteEscapeName' value='$nomEscape'>
+                        <input class='btn btn-danger' type='submit' value='Supprimer'>
+                    </form>";
+                    // si deleteEscapeName est dans le post alors on supprime l'escape
+                    //puis reviens sur la page
+                    if(isset($_POST['deleteEscapeName'])){
+                        $escape->deleteEscape($_POST['deleteEscapeName']);
+                        header("Location: ?p=catalogue");
+                    }
+                    
+                }
+                else{
+                    $boutonDelete ="";
+                }
+                // si toutes les villes sélectionnées
+                // cas 2
+                if($villePost=="all"){
+                    if($value->getNiveau()==$lvlPost){
+                        $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
+                    }
+                }
+                else if($value->getVille()==$villePost){
+                    if($lvlPost=="all"){
+                        $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
+                        var_dump("la ville est set mais lvl = all");
+                    }
+                    else if ($value->getNiveau()==$lvlPost){
+                        $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
+                        var_dump("la ville est set et le lvl est set ");
+
+                    }
+                }
+            }
+    }
+
+    else{
+        var_dump("rentre dans le all pour les deux");
+        foreach($esc as $key=>$value){
             $lvl = ($value->getNiveau());
             $nomEscape =($value->getNom());
             $adresse = $value->getAdresse();
             $cp = $value->getCp();
             $ville = $value->getVille();
-
+            
             if($admin == 1){
                 $boutonDelete ="<form class='col-6' method='post'>
                     <input type='hidden' name='deleteEscapeName' value='$nomEscape'>
@@ -53,28 +101,13 @@ if(!empty($_POST) && (($_POST["ville"] && $_POST["ville"] != "") || ($_POST["lev
             else{
                 $boutonDelete ="";
             }
-            
-            if($villePost==""){
-                if($value->getNiveau()==$lvlPost){
-                    $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
-                }
-                else if ($lvlPost==""){
-                    $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
-                }
-            }
-            else if($value->getVille()==$villePost){
-                if($lvlPost==""){
-                    $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
-                }
-                else if ($value->getNiveau()==$lvlPost){
-                    $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
-                }
-            }
+
+            $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $boutonDelete);
         }
     }
 }
-
 else{
+    
     foreach($esc as $key=>$value){
         $lvl = ($value->getNiveau());
         $nomEscape =($value->getNom());
@@ -88,7 +121,7 @@ else{
                 <input class='btn btn-danger' type='submit' value='Supprimer'>
             </form>";
             // si deleteEscapeName est dans le post alors on supprime l'escape
-            //puis reviens sur la page
+            //puis revient sur la page
             if(isset($_POST['deleteEscapeName'])){
                 $escape->deleteEscape($_POST['deleteEscapeName']);
                 header("Location: ?p=catalogue");
@@ -104,75 +137,18 @@ else{
 }
 
 
-/* if admin */
- if(!empty($_POST['nomAdmin']))
-{
-   $nomAdmin = $_POST['nomAdmin'];
-}
-else
-{
-   $nomAdmin = "";
-}
-
-if(!empty($_POST['lvlAdmin']))
-{
-   $lvlAdmin = $_POST['lvlAdmin'];
-}
-else
-{
-   $lvlAdmin = "";
-}
-
-if(!empty($_POST['idAdmin']))
-{
-   $idAdmin = $_POST['idAdmin'];
-}
-else
-{
-   $idAdmin = "";
-}
-
-if(!empty($_POST['adresseAdmin']))
-{
-   $adresseAdmin = $_POST['adresseAdmin'];
-}else
-{
-   $adresseAdmin = "";
-}
-
-if(!empty($_POST['cpAdmin']))
-{
-   $cpAdmin = $_POST['cpAdmin'];
-}else
-{
-   $cpAdmin = "";
-}
-
-if(!empty($_POST['villeAdmin']))
-{
-   $villeAdmin = $_POST['villeAdmin'];
-}
-else
-{
-   $villeAdmin = "";
-}
-if(!empty($_POST['descAdmin']))
-{
-   $descAdmin = $_POST['descAdmin'];
-}
-else{
-    $descAdmin = "";
-}
+if(empty($arrayAdmin)){$arrayPost = ['nomAdmin','lvlAdmin','idAdmin','adresseAdmin','cpAdmin','villeAdmin','descAdmin'];}
+$arrayAdmin = EscapeRepo::keepPreviousChamp($arrayPost);
 
 $CrudsAdmin = " 
 <form method='post' class=' d-flex flex-column justify-content-evenly' style='width:300px; height:400px'action='?p=catalogue'>
-            <input text='text' value='$nomAdmin' name='nomAdmin' class='form-control text-center' placeholder='escape name' style='width:auto'> 
-            <input text='text' value='$lvlAdmin' name='lvlAdmin' class='form-control text-center' placeholder='escape lvl' style='width:auto'> 
-            <input text='text' value='$idAdmin' name='idAdmin' class='form-control text-center' placeholder='escape type' style='width:auto'> 
-            <input text='text' value='$adresseAdmin' name='adresseAdmin' class='form-control text-center' placeholder='escape adresse' style='width:auto'> 
-            <input text='text' value='$cpAdmin' name='cpAdmin' class='form-control text-center' placeholder='escape cp' style='width:auto'> 
-            <input text='text' value='$villeAdmin' name='villeAdmin' class='form-control text-center' placeholder='escape ville' style='width:auto'>
-            <textarea name='descAdmin' class='form-control text-center' placeholder='Description' style='width:auto'>$descAdmin</textarea>
+            <input text='text' value='$arrayAdmin[0]' name='nomAdmin' class='form-control text-center' placeholder='escape name' style='width:auto'> 
+            <input text='text' value='$arrayAdmin[1]' name='lvlAdmin' class='form-control text-center' placeholder='escape lvl' style='width:auto'> 
+            <input text='text' value='$arrayAdmin[2]' name='idAdmin' class='form-control text-center' placeholder='escape type' style='width:auto'> 
+            <input text='text' value='$arrayAdmin[3]' name='adresseAdmin' class='form-control text-center' placeholder='escape adresse' style='width:auto'> 
+            <input text='text' value='$arrayAdmin[4]' name='cpAdmin' class='form-control text-center' placeholder='escape cp' style='width:auto'> 
+            <input text='text' value='$arrayAdmin[5]' name='villeAdmin' class='form-control text-center' placeholder='escape ville' style='width:auto'>
+            <textarea name='descAdmin' class='form-control text-center' placeholder='Description' style='width:auto'>$arrayAdmin[6]</textarea>
             <button type='submit' class='btn btn-primary btn-lg'
             style='padding-left: 2.5rem; padding-right: 2.5rem;' name='submitAdmin' >ajouter</button>
 </form>";
@@ -191,21 +167,20 @@ if(!empty($_POST)){
 
     if($verfCrudsAdmin->verif()){
         if(isset($_POST['submitAdmin'])){
-        $nameEsc = $_POST['nomAdmin'];
-        $lvlEsc = $_POST['lvlAdmin'];
-        $idTypeEsc = $_POST['idAdmin'];
-        $adresseEsc = $_POST['adresseAdmin'];
-        $cpEsc = $_POST['cpAdmin'];
-        $villeEsc = $_POST['villeAdmin'];
-        $descEsc = $_POST['descAdmin'];
-        var_dump($nameEsc, $lvlEsc, $idTypeEsc, $adresseEsc,$cpEsc, $villeEsc,  $descEsc,);
-        $escape->setEscapeToCreate($nameEsc, $lvlEsc, $idTypeEsc, $adresseEsc,$cpEsc, $villeEsc,  $descEsc,);
-}
+            $nameEsc = $_POST['nomAdmin'];
+            $lvlEsc = $_POST['lvlAdmin'];
+            $idTypeEsc = $_POST['idAdmin'];
+            $adresseEsc = $_POST['adresseAdmin'];
+            $cpEsc = $_POST['cpAdmin'];
+            $villeEsc = $_POST['villeAdmin'];
+            $descEsc = $_POST['descAdmin'];
+            var_dump($nameEsc, $lvlEsc, $idTypeEsc, $adresseEsc,$cpEsc, $villeEsc,  $descEsc,);
+            $escape->setEscapeToCreate($nameEsc, $lvlEsc, $idTypeEsc, $adresseEsc,$cpEsc, $villeEsc,  $descEsc,);
+        }
     }
     else{
         $errors = $verfCrudsAdmin->getErrors();
     }
-
 }
 
 require("../public/views/catalogue.php");

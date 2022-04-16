@@ -15,6 +15,7 @@ if(!($session->getCompte())){
 
         if(isset($_POST['checkbox']))
         {
+            
             $session->signUp($tabUser, $_POST['email'], $_POST['password']);
         }
         else{
