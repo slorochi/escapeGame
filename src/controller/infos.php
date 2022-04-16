@@ -19,7 +19,7 @@ if (isset($_SESSION['compte'])){
     /* var_dump($allUsersArray);  */
     foreach ($allUsersArray as $key => $value){
         /* var_dump($key); */
-        $allUsers .="<tr>" ."<td>" .$value->getIdUser()."</td>" ."<td>".$value->getNom()."</td>" ."<td>".$value->getMail()."</td>" ."<td>".$value->getNiveau()."</td>"."<td>" .$value->getCp()."</td>"."<td>" .$value->getVille()."</td>"."<td>".$value->getAdmin()."</td>"."<td><input type='hidden' name='deleteUser' value='" .$value->getIdUser() ."'><button type='submit' name='delete' class='btn btn-primary' >Supprimer </button></td></tr>";
+        $allUsers .="<tr>" ."<td>" .$value->getIdUser()."</td>" ."<td>".$value->getNom()."</td>" ."<td>".$value->getMail()."</td>" ."<td>".$value->getNiveau()."</td>"."<td>" .$value->getCp()."</td>"."<td>" .$value->getVille()."</td>"."<td>".$value->getAdmin()."</td>"."<td><form method='post'><input type='hidden' name='deleteUser' value='" .$value->getIdUser() ."'><button type='submit' name='delete' class='btn btn-primary' >Supprimer </button></form></td></tr>";
        /*  $allUsers .= "<tr>" ."<td>" .$value->getIdUser()."</td>"."<td>".$value->getNom()."</td>"."<td>".$value->getMail()."</td>"."<td>".$value->getNiveau()."</td>"."<td>" .$value->getCp()."</td>"."<td>" .$value->getVille()."</td>"."<td>"$value->getAdmin()."</td>" ."<td>        ."<button type='submit' name='delete' class='btn btn-primary' >Supprimer </button>"    
         "."</tr>"; */
         }
@@ -48,7 +48,7 @@ if (isset($_SESSION['compte'])){
         header("Location:?p=infos"); 
     }
     else if (isset($_POST['deleteUser'])){
-        $userRepo->deleteUserByUserId(7);
+        $userRepo->deleteUserByUserId($_POST['deleteUser']);
         header("Location:?p=infos"); 
     }
 }
