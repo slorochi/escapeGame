@@ -141,6 +141,8 @@ class EscapeRepo extends BddConnection
     {
         $arrayAdmin = [];
         foreach ($arrayPost as $key) {
+            // si le champ de l'envoi précédent est validé, alors conserve le champ, sinon renvoie la variable vide puis push dans un tableau qui nous permettra de re-remplir 
+            // les champs qui ont été précédemment bien remplis
             !empty($_POST[$key]) ? $key = $_POST[$key] : $key = "";
             array_push($arrayAdmin, $key);
         }

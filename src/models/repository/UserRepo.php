@@ -72,6 +72,7 @@ class UserRepo extends BddConnection
         $this->modifyChamp("user", $elementToPush, $nomChamp, $valeurChamp);
     }
 
+    // crée l'objet User avec les infos du user connecté ou sélectionné
     public function getDataUserSelected()
     {
         return $this->dataUserSelected;
@@ -105,6 +106,7 @@ class UserRepo extends BddConnection
         // requête sql afin de créer un 
     }
 
+    // modifie le niveau de l'utilisateur selon les escape games effectués (actualisé dans les méthodes session de connexion/inscription)
    public function setLvlByEscapeGameDone(JouerRepo $jouerRepo){
        //select info User
         $this->setUserByChamp("email",$_SESSION['compte']['email']);

@@ -40,7 +40,7 @@ if(empty($_POST['SelectOption'])){
     $option = $_POST['SelectOption'];
 }
 
-//Recupere tout les joueurs qui ont joué dans la escapegame selectionnée et les affiche dans le tableau
+//Recupere tout les joueurs qui ont joué dans l'escapegame selectionné et les affiche dans le tableau
 $appelbdd = new JouerRepo();
 $leaderboard = $appelbdd->StatsAll($option);
 foreach ($leaderboard as $key => $value){

@@ -95,7 +95,7 @@ if ((isset($_POST['submit']) && ((empty($_POST["ville"]) || $_POST["ville"] == "
     }
 }
 
-
+//création d'un tableau pour garder en mémoire les infos admin sélectionnées si une des infos est mal remplie (pour la création d'un escape game)
 if (empty($arrayAdmin)) {
     $arrayPost = ['nomAdmin', 'lvlAdmin', 'idAdmin', 'adresseAdmin', 'cpAdmin', 'villeAdmin', 'descAdmin'];
 }
