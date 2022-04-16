@@ -272,8 +272,8 @@ header {
     box-shadow: 0 0 0 0.25rem #962129;
 }
 ///////////////////Accueil/////////////////////
-#quisommenous{
-
+.carteAccueil{
+    margin-bottom: 30px;
     .text{
 
         div{
@@ -287,14 +287,32 @@ header {
             width: 90%;
             margin: auto;
             border: solid 2px #ff4747;
+            text-align: center;
             h1{
+                margin: 0 auto;
                 font-size: 3.4em;
+                color: #c42c36;
+            }
+            h2{
+                margin: 0 auto;
+                font-size: 2.5em;
                 color: #c42c36;
             }
             p{
                 padding: 20px;
                 font-size: 1.2em;
-            }  
+            }
+            a{
+                border: solid 2px #ff4747;
+                border-radius: 10px;
+                padding: 10px;
+                color: #c42c36;
+                text-decoration: none;
+                &:hover{
+                    background: #ff4747;
+                    color: #fff;
+                }
+            }
         }
         
     }    
