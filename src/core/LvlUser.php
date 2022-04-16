@@ -9,30 +9,33 @@ use App\models\repository\EscapeRepo;
 
 //LvlUser
 if (isset($_SESSION['compte'])){
-    $user5 = new UserRepo;
-    $user5->setUserByChamp("email",$_SESSION['compte']['email']);
-    $nomUser5 = $user5->getDataUserSelected();
+    $user = new UserRepo;
+    $user->setUserByChamp("email",$_SESSION['compte']['email']);
+    $nomUser = $user->getDataUserSelected();
 
-    if(empty($nomUser5->getNom())){
+    if(empty($nomUser->getNom())){
         $option = "";
     }else{
-        $option = $nomUser5->getNom();
+        $option = $nomUser->getNom();
     }
 
+    // récupère les escpGames effectués par le user
     $appelbdd = new JouerRepo();
     $leaderboard = $appelbdd->NumberEscapeGameJoueur($option);
 
     if(empty($leaderboard)){
         $newNiveau = 0;
     }else{
+        //return array of the highest escape game lvl done
         $newNiveau = max($leaderboard);
+        //transform to int
         $newNiveau = intval($newNiveau['niveau']); 
     }
 
+    // add a level
     if($newNiveau < 5){
         $newNiveau += 1;
     }
 
-    $appelbdd->setChampStatsPlayer("user", $newNiveau, "niveau", $nomUser5->getIdUser());
-}
+    $user->modifyInfoUser($newNiveau, "niveau", $nomUser->getIdUser());}
 ?>

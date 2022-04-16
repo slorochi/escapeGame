@@ -179,18 +179,6 @@ class BddConnection
 		return  $rst->fetchAll(PDO::FETCH_ASSOC);
 		//requête sql pour modifier le champ de la table sélectionnée
 	}
-	// méthode pour modifier une info dans la base de données
-	public function modifyChampStatsJoueur($table, $elementToPush, $nomChamp, $idUser)
-	{
-		$db = $this->getconnect();
-		$sql = " UPDATE $table SET $nomChamp = :elementToPush WHERE idUser = :idUser";
-		$rst = $db->prepare($sql);
-		$rst->execute(
-			[":elementToPush" => $elementToPush, ":idUser" => $idUser]
-		);
-		return  $rst->fetchAll(PDO::FETCH_ASSOC);
-		//requête sql pour modifier le champ de la table sélectionnée
-	}
 
 	//////////////VILLES//////////////
 	public function recupeVille()
