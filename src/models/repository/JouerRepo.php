@@ -43,8 +43,6 @@ class JouerRepo extends BddConnection
         return $this;
     }
 
-
-    //anthony
     public function getStatsPlayer()
     {
         return $this->statsPlayer;
@@ -53,11 +51,6 @@ class JouerRepo extends BddConnection
     public function setStatsPlayer($table, $elementToPush, $nomChamp, $idEscape, $idUser)
     {
         return $this->modifyStatsJoueur($table, $elementToPush, $nomChamp, $idEscape, $idUser);
-    }
-
-    public function setChampStatsPlayer($table, $elementToPush, $nomChamp, $idUser)
-    {
-        return $this->modifyChampStatsJoueur($table, $elementToPush, $nomChamp, $idUser);
     }
 
     public function StatsAll($filtre = "")

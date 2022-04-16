@@ -33,7 +33,7 @@ foreach($esc as $key=>$value){
     }
     
 }
-
+// si rien n'est choisi a la premiere ouverture de la page on affiche le leaderboard par defaut
 if(empty($_POST['SelectOption'])){
     $option = "";
 }else{
@@ -66,5 +66,3 @@ foreach($Leaderboard as $key => $value){
     
 }
 require("../public/views/leaderboard.php");
-
-?>

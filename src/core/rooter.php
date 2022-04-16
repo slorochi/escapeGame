@@ -5,29 +5,10 @@ use App\core\File;
 use App\core\Session;
 use App\core\LeaderManager;
 
-/* function afficher($view){
-	if($view == "header"){
-		require("controllers/header.php");
-	}
-	if($view == "footer"){
-		require("controllers/footer.php");
-	}
-	if($view == "contact"){
-		require("controllers/contact.php");
-	}
-	if($view == "produits"){
-		require("controllers/produits.php");
-	}
-} */
-
-/*
-Gestion des pages
-*/
 
 $leaderboard = new LeaderManager(new File("../src/core/dataleaderboard.dt","r+"));
 $session = new Session();
 $session->start();
-/* $leaderboard->addFirstObject(new UserRepo());*/
 
 
 $p = "";

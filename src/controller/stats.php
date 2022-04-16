@@ -60,6 +60,7 @@ if (isset($_SESSION['compte']) && !(isset($_SESSION['compte']['admin']))){
         
     }
 
+    //Si la personne connecté a effectué des escape game on envoie ce qu'elle a écrit dans message et note dans la bdd lié
     if(isset($_POST["idEscape"])){
         $newNote = $_POST['note'];
         $newMessage = $_POST['message'];

@@ -21,7 +21,7 @@ $escape->SetAllEscape();
 $esc = $escape->getTabEscape();
 $admin = $_SESSION['compte']['admin'] ?? "";
 $htmlEscp = "";
-
+//filtre sur les escapegames selectionnées dans les selects de la page
 if ((isset($_POST['submit']) && ((empty($_POST["ville"]) || $_POST["ville"] == "") && (empty($_POST["level"]) || $_POST["level"] == ""))) || !isset($_POST['submit'])) {
 
     foreach ($esc as $key => $value) {
@@ -31,7 +31,7 @@ if ((isset($_POST['submit']) && ((empty($_POST["ville"]) || $_POST["ville"] == "
         $cp = $value->getCp();
         $ville = $value->getVille();
         $idTypeEsc = ($value->getIdType());
-
+        //verifie si le compte connecter est un admin
         if ($admin == 1) {
             $boutonDelete = "<form class='col-6' method='post'>
                 <input type='hidden' name='deleteEscapeName' value='$nomEscape'>
@@ -46,7 +46,7 @@ if ((isset($_POST['submit']) && ((empty($_POST["ville"]) || $_POST["ville"] == "
         } else {
             $boutonDelete = "";
         }
-
+        
         $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $idTypeEsc, $boutonDelete);
     }
 } elseif (isset($_POST['submit'])) {
@@ -101,6 +101,7 @@ if (empty($arrayAdmin)) {
 }
 $arrayAdmin = EscapeRepo::keepPreviousChamp($arrayPost);
 
+//genere le html du panel admin
 $CrudsAdmin = " 
 <form method='post' class=' d-flex flex-column justify-content-evenly' style='width:300px; height:400px'action='?p=catalogue'>
             <input text='text' value='$arrayAdmin[0]' name='nomAdmin' class='form-control text-center' placeholder='escape name' style='width:auto'> 
@@ -114,6 +115,7 @@ $CrudsAdmin = "
             style='padding-left: 2.5rem; padding-right: 2.5rem;' name='submitAdmin' >ajouter</button>
 </form>";
 
+//verfie si les champs sont remplis et si le bouton submitAdmin est dans le post
 if (!empty($_POST)) {
 
     $errors = [];
