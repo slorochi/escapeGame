@@ -72,10 +72,17 @@ class BddConnection
 		return  $rst->fetchAll(PDO::FETCH_ASSOC);
 	}
 
-	//////////////ESCAPE GAME//////////////
-	//méthode pour créer un escape game
-	public function createEscape(string $table, $elementToCreate)
-	{
+	public function deleteUser($idUser){
+		$db = $this->getconnect();
+		$sql ="DELETE FROM `user` WHERE `user`.`idUser` = :idUser";
+		$rst = $db->prepare($sql);
+		$rst->execute(
+			[":idUser" => $idUser]);
+		return  $rst->fetchAll(PDO::FETCH_ASSOC);
+	}
+		//////////////ESCAPE GAME//////////////
+
+	public function createEscape(string $table, $elementToCreate){
 		$db = $this->getconnect();
 		$sql = "INSERT INTO $table SET idEscape = :idEscape, nom = :nom, niveau = :niveau, idType = :idType, adresse = :adresse, cp = :cp, ville = :ville, description = :description";
 		$rst = $db->prepare($sql);

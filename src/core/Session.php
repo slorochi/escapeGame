@@ -67,9 +67,9 @@ class Session {
             $leaderboard = new LeaderManager(new File("../src/core/dataleaderboard.dt","r+"));
             $leaderboard->setNumberConnexions();
             $leaderboard->setNumberAccountsCreated();
-            $leaderboard->setNumberAccounts(new userRepo());
+            $leaderboard->setNumberAccounts($userRepo);
             $this->setCompte($compte);
-            $userRepo->setLvlEscapeGameDone(new JouerRepo());
+            $userRepo->setLvlByEscapeGameDone(new JouerRepo());
             header("Location:" .$this->getBackpage()) ;
         }
     }
