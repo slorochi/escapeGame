@@ -19,20 +19,25 @@ if (isset($_SESSION['compte'])){
         $option = $nomUser5->getNom();
     }
 
+    // récupère les escpGames effectués par le user
     $appelbdd = new JouerRepo();
     $leaderboard = $appelbdd->NumberEscapeGameJoueur($option);
 
     if(empty($leaderboard)){
         $newNiveau = 0;
     }else{
+        //return array of the highest escape game lvl done
         $newNiveau = max($leaderboard);
+        //transform to int
         $newNiveau = intval($newNiveau['niveau']); 
     }
 
+    // add a level
     if($newNiveau < 5){
         $newNiveau += 1;
     }
 
-    $appelbdd->setChampStatsPlayer("user", $newNiveau, "niveau", $nomUser5->getIdUser());
+    $user5->modifyInfoUser($newNiveau, "niveau", $nomUser5->getIdUser());
+    /* $appelbdd->setChampStatsPlayer("user", $newNiveau, "niveau", $nomUser5->getIdUser()); */
 }
 ?>
