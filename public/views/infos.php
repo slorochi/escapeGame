@@ -1,9 +1,13 @@
 <div class="container" style="width : 100vw;">
     <div class="row adminPanel">
+        <div>
+            <p class="title col-md-12 text-center" style="margin-bottom:10px;font-size:30px">Player <?= $pseudo ?></p>
+            <p class="title col-md-12 text-center" style="margin-bottom:30px;font-size:20px">Niveau : <?= $lvl ?></p>
+        </div>
+        
         <form method="post" action="?p=infos" class="col-6 ">
             <div class="row flex-column align-items-center justify-content-center">
-                <p class="title col-md-12 text-center" style="margin-bottom:10px;font-size:30px">Player <?= $pseudo ?></p>
-                <p class="title col-md-12 text-center" style="margin-bottom:30px;font-size:20px">Niveau : <?= $lvl ?></p>
+                
 
                 <div style="height:80px;margin-bottom:15px" class="row d-flex flex-column justify-content-evenly  align-items-center">
                     <span class="col-md-5 text-center">pseudo :</span>

@@ -19,7 +19,7 @@ class Verif{
             return $this->data[$field];
         }
     }
-
+    //fonction qui vérifie si le champ correspond à la regex
     public function is_name($field, $errorMessage){
         if(!preg_match($this->regexName, $this->getfield($field))){
             $this->errors[$field] = $errorMessage;
@@ -29,7 +29,7 @@ class Verif{
             return true;
         }
     }
-
+    //fonction qui vérifie si le champ correspond à la regex
     public function is_message($field, $errorMessage){
         if(!preg_match($this->regexMessage, $this->getfield($field))){
             $this->errors[$field] = $errorMessage;
@@ -39,7 +39,7 @@ class Verif{
             return true;
         }
     }
-
+    //fonction qui vérifie si le champ correspond à la regex
     public function is_mail($field, $errorMessage){
         if(!filter_var($this->getfield($field), FILTER_VALIDATE_EMAIL )){
             $this->errors[$field] = $errorMessage;
@@ -50,6 +50,7 @@ class Verif{
         }
     }
 
+    //envoie un mail avec des donner du contact 
     public function sendMail($subject,$message,$email,$name){
         mail("teixeira.gaetan@outlook.fr", $subject, $message, "From: ".$email."\r\n".$name);
     }

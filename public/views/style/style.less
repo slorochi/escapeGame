@@ -72,7 +72,7 @@ header {
     width: 100%;
     z-index: 10;
     padding-bottom: 40px;
-
+    
     .header {
         margin: auto;
         width: 55vw;
@@ -272,100 +272,9 @@ header {
     box-shadow: 0 0 0 0.25rem #962129;
 }
 
-#quisom {
+#quisommenous{
+    background-color: #8d1b23;
 
-    height: 100vh;
-
-    .elem {
-        justify-content: center;
-
-        div {
-            border-radius: 15px;
-            position: relative;
-            left: 20px;
-            background-color: #c3353e;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 40vw;
-
-            h2,
-            p {
-                width: 90%;
-            }
-        }
-
-        img {
-            position: relative;
-            padding: 0;
-            right: 20px;
-            top: 50px;
-            height: 100%;
-            width: 40vw;
-            border-radius: 15px;
-        }
-    }
-
-    /* Scroll */
-    svg {
-        position: absolute;
-        bottom: 10px;
-        left: calc(50% - (55px / 2));
-        z-index: 5;
-        height: 85px;
-        width: auto;
-        padding: 10px;
-        stroke: #ffffff;
-        fill: none;
-        stroke-width: 3px;
-
-        .scoll {
-            animation: linear scoll 2s;
-            animation-iteration-count: infinite;
-        }
-
-        .fleche {
-            animation: linear fleche 1.3s;
-            animation-iteration-count: infinite;
-        }
-
-        .fleche2 {
-            animation: linear fleche 1.3s;
-            animation-iteration-count: infinite;
-            animation-delay: 0.4s;
-        }
-
-        .fleche3 {
-            animation: linear fleche 1.3s;
-            animation-iteration-count: infinite;
-            animation-delay: 0.8s;
-        }
-    }
-
-    @keyframes scoll {
-        0% {
-            transform: translate(0, 0);
-            stroke: #ffffff;
-        }
-
-        100% {
-            transform: translate(0, 10%);
-            stroke: #00000000;
-        }
-    }
-
-    @keyframes fleche {
-        0% {
-            stroke: #ffffff;
-        }
-
-        100% {
-            stroke: #ffffff00;
-        }
-    }
-
-    /* Fin Scroll */
 }
 
 /*AdminPanel*/
