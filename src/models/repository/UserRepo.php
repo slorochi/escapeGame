@@ -87,7 +87,9 @@ class UserRepo extends BddConnection{
         $userToC->setAdmin(0); 
         return $userToC;
     }
-
+    public function deleteUserByUserId($idUser){
+        $this->deleteUser($idUser);
+    }
     public function setUserToCreate($nom, $email, $mdp, $niveau, $adresse, $cp, $ville){
         // variables définies dans le controller 
         $this->userToCreate = $this->getUserToCreate($nom, $email, $mdp, $niveau, $adresse, $cp, $ville);

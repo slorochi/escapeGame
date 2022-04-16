@@ -37,5 +37,24 @@
         <button type="submit" name="submit" class=" col-md-2 btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" >Modifier </button>    
 
     </div>
-</form>
+    </form>
+    <!-- bouton pour delete un user -->
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Pseudo</th>
+                <th scope="col">Mail</th>
+                <th scope="col">lvl</th>
+                <th scope="col">Cp</th>
+                <th scope="col">Ville</th>
+                <th scope="col">Admin</th>
+                <th scope="col">Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?= $allUsers ?>
+        </tbody>
+    </table>
+
 </div> 

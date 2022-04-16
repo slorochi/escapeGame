@@ -70,6 +70,14 @@ class BddConnection{
 		return  $rst->fetchAll(PDO::FETCH_ASSOC); 
 	}
 
+	public function deleteUser($idUser){
+		$db = $this->getconnect();
+		$sql ="DELETE FROM `user` WHERE `user`.`idUser` = :idUser";
+		$rst = $db->prepare($sql);
+		$rst->execute(
+			[":idUser" => $idUser]);
+		return  $rst->fetchAll(PDO::FETCH_ASSOC);
+	}
 		//////////////ESCAPE GAME//////////////
 
 	public function createEscape(string $table, $elementToCreate){

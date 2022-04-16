@@ -63,7 +63,7 @@ class Session {
             $leaderboard = new LeaderManager(new File("../src/core/dataleaderboard.dt","r+"));
             $leaderboard->setNumberConnexions();
             $leaderboard->setNumberAccountsCreated();
-            $leaderboard->setNumberAccounts();
+            $leaderboard->setNumberAccounts($userRepo);
             $this->setCompte($compte);
             header("Location:" .$this->getBackpage()) ;
         }
