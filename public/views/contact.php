@@ -63,14 +63,9 @@
                     <div class="col-md-12">
                         <div class="md-form form-contener mb-0">
                             
-                            <input type="text" class="form-escape" id="subject" name="subject" value="<?php 
-                                if(!empty($_POST['subject'])){
-                                    echo $_POST['subject'];} 
-                                    ?>"class="form-escape" required>
+                            <input type="text" class="form-escape" id="subject" name="subject" value="<?php if(!empty($_POST['subject'])){ echo $_POST['subject'];}?>"class="form-escape" required>
                             <?php  
-                            if(isset($errors["subject"])){
-                                echo '<p class="alert alert-danger">'.$errors["subject"]."</p>";
-                            } ?>
+                            if(isset($errors["subject"])){ echo '<p class="alert alert-danger">'.$errors["subject"]."</p>";} ?>
 
                             <label for="subject" class="">Sujet</label>
 
@@ -88,16 +83,11 @@
                         <div class="md-form form-contener">
                         
                             <textarea type="text" id="message" name="message" rows="2"
-                            class="form-escape  md-textarea" required><?php 
-                                if(!empty($_POST['message'])){
-                                    echo $_POST['message'];} 
-                                    ?></textarea>
+                            class="form-escape  md-textarea" required><?php if(!empty($_POST['message'])){echo $_POST['message'];}  ?></textarea>
 
                             <label for="message">Votre message</label>
                             <?php  
-                            if(isset($errors["message"])){
-                                echo '<p class="alert alert-danger">'.$errors["message"]."</p>";
-                            } ?>
+                            if(isset($errors["message"])){ echo '<p class="alert alert-danger">'.$errors["message"]."</p>";} ?>
                             
                         </div>
 
@@ -105,12 +95,7 @@
                 </div>
                 <!--Grid row-->
                 <input class="btn btn-primary" type="submit">
-                <?php
 
-                
-
-                ?>
-                
             </form>
 
         </div>

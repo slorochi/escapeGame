@@ -8,9 +8,10 @@
                 <div>
                     <h1>Bienvenue chez LEVEL GAME</h1>
                     <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda vero vel porro sunt iste eos ullam ipsum autem velit veritatis qui voluptatum blanditiis, quia labore in error sit excepturi, possimus doloribus officiis. Quas quaerat qui pariatur obcaecati? Minus, quos cumque!
+                        Avec level Game, découvrez l'ensemble des escape games disponibles et parcourez le catalogue pour progresser dans des casse-têtes qui vous correspondent!<br>
+                        Au fur et à mesure que vous réaliserez des escape games, vous aurez accès à des casse-têtes de plus en plus durs à résoudre.
                     </p>
-                    <a href="?p=catalogue">VOIR NOS ESCAPES GAMES</a>
+                    <a href="?p=catalogue">Commencez l'aventure mainenant !</a>
                 </div>
                 
             </div>
@@ -24,7 +25,10 @@
                 <div>
                     <h2>Le top des meilleurs</h2>
                     <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda vero vel porro sunt iste eos ullam ipsum autem velit veritatis qui voluptatum blanditiis, quia labore in error sit excepturi, possimus doloribus officiis. Quas quaerat qui pariatur obcaecati? Minus, quos cumque!
+                    Parcourez le classement des joueurs les plus audacieux et tentez également de faire partie des plus perspicaces !<br>
+                    Vous souhaitez découvrir et commencer l'aventure de level game ?<br>
+                    Visualisez quels joueurs ont été les plus ingénieux pour résoudre de véritables casse-têtes.
+
                     </p>
                     <a href="?p=leaderboard">VOIR LE LEADERBOARD</a>
                 </div>
