@@ -28,7 +28,6 @@ class Session {
     public function login($tabUser, $postMail, $postMdp){
         foreach ($tabUser as $i=>$info){
             $currentMail= $info->getMail();
-            //get currentMdp = $info->getMdp() but with the password_verify() function
             $currentMdp = $info->getMdp();
             $currentAdmin = $info->getAdmin();
             $compte = ["email"=> $postMail, "admin"=> $currentAdmin];

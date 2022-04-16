@@ -36,6 +36,9 @@ switch($p){
 		require("../src/controller/escapegame.php");
 	break;
 	case "infos":
+		// appel objet info
+		// $info = newInfo();
+		// $info->methdodes();
 		require("../src/controller/infos.php");
 	break;
 	case "contact":

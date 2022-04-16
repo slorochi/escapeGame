@@ -4,25 +4,24 @@ use App\models\repository\UserRepo;
 if (isset($_SESSION['compte'])){
     $userRepo = new UserRepo();
     $userRepo->setUserByChamp("email",$session->GetCompte()["email"] );
-    $try = $userRepo->getDataUserSelected();
-    $lvl = $try->getNiveau();
-    $id = $try->getIdUser();
-    $pseudo = $try->getNom();
-    $email = $try->getMail();
-    $mdp = $try->getMdp();
-    $adresse = $try->getAdresse();
-    $cp = $try->getCp();
-    $ville = $try->getVille();
-    $userRepo->setAllUsers();
-    $allUsersArray = $userRepo->getTabUser();
-    $allUsers = "";
-    /* var_dump($allUsersArray);  */
-    foreach ($allUsersArray as $key => $value){
-        /* var_dump($key); */
-        $allUsers .="<tr>" ."<td>" .$value->getIdUser()."</td>" ."<td>".$value->getNom()."</td>" ."<td>".$value->getMail()."</td>" ."<td>".$value->getNiveau()."</td>"."<td>" .$value->getCp()."</td>"."<td>" .$value->getVille()."</td>"."<td>".$value->getAdmin()."</td>"."<td><form method='post'><input type='hidden' name='deleteUser' value='" .$value->getIdUser() ."'><button type='submit' name='delete' class='btn btn-primary' >Supprimer </button></form></td></tr>";
-       /*  $allUsers .= "<tr>" ."<td>" .$value->getIdUser()."</td>"."<td>".$value->getNom()."</td>"."<td>".$value->getMail()."</td>"."<td>".$value->getNiveau()."</td>"."<td>" .$value->getCp()."</td>"."<td>" .$value->getVille()."</td>"."<td>"$value->getAdmin()."</td>" ."<td>        ."<button type='submit' name='delete' class='btn btn-primary' >Supprimer </button>"    
-        "."</tr>"; */
+    $userCurrent = $userRepo->getDataUserSelected();
+    $lvl = $userCurrent->getNiveau();
+    $id = $userCurrent->getIdUser();
+    $pseudo = $userCurrent->getNom();
+    $email = $userCurrent->getMail();
+    $mdp = $userCurrent->getMdp();
+    $adresse = $userCurrent->getAdresse();
+    $cp = $userCurrent->getCp();
+    $ville = $userCurrent->getVille();
+    // if admin
+        $userRepo->setAllUsers();
+        $allUsersArray = $userRepo->getTabUser();
+        $allUsers = "";
+        /* var_dump($allUsersArray);  */
+        foreach ($allUsersArray as $key => $value){
+            $allUsers .="<tr>" ."<td>" .$value->getIdUser()."</td>" ."<td>".$value->getNom()."</td>" ."<td>".$value->getMail()."</td>" ."<td>".$value->getNiveau()."</td>"."<td>" .$value->getCp()."</td>"."<td>" .$value->getVille()."</td>"."<td>".$value->getAdmin()."</td>"."<td><form method='post'><input type='hidden' name='deleteUser' value='" .$value->getIdUser() ."'><button type='submit' name='delete' class='btn btn-primary' >Supprimer </button></form></td></tr>";
         }
+   
      
 
     require("../public/views/infos.php");
