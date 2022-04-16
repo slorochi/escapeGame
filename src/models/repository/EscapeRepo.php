@@ -95,7 +95,7 @@ class EscapeRepo extends BddConnection
         $this->createEscape("escapegame", $this->escapeToCreate);
         header("Location: ?p=catalogue");
     }
-    
+
     //Suppression d'un escape game dans la base de données
     public function deleteEscape($id)
     {

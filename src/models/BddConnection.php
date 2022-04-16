@@ -59,9 +59,6 @@ class BddConnection
 		return  $rst->fetchAll(PDO::FETCH_ASSOC);
 	}
 
-
-	// méthode pour créer un élément d'une table dans la base de données
-
 	//////////////USER//////////////
 	//méthode pour créer un utilisateur
 	public function createUser(string $table, $elementToCreate)
@@ -149,7 +146,7 @@ class BddConnection
 		return  $rst->fetchAll(PDO::FETCH_ASSOC);
 	}
 
-
+	//methodes pour récupérer le nombre d'escape game
 	public function getNumberEscapeGameJoueur($NomUser)
 	{
 

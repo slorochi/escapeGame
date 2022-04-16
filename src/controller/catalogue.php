@@ -21,7 +21,7 @@ $escape->SetAllEscape();
 $esc = $escape->getTabEscape();
 $admin = $_SESSION['compte']['admin'] ?? "";
 $htmlEscp = "";
-
+//filtre sur les escapegames selectionnées dans les selects de la page
 if ((isset($_POST['submit']) && ((empty($_POST["ville"]) || $_POST["ville"] == "") && (empty($_POST["level"]) || $_POST["level"] == ""))) || !isset($_POST['submit'])) {
 
     foreach ($esc as $key => $value) {
@@ -46,7 +46,7 @@ if ((isset($_POST['submit']) && ((empty($_POST["ville"]) || $_POST["ville"] == "
         } else {
             $boutonDelete = "";
         }
-
+        
         $htmlEscp .= EscapeRepo::createCard($nomEscape, $lvl, $adresse, $cp, $ville, $idTypeEsc, $boutonDelete);
     }
 } elseif (isset($_POST['submit'])) {
