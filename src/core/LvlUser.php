@@ -9,14 +9,14 @@ use App\models\repository\EscapeRepo;
 
 //LvlUser
 if (isset($_SESSION['compte'])){
-    $user5 = new UserRepo;
-    $user5->setUserByChamp("email",$_SESSION['compte']['email']);
-    $nomUser5 = $user5->getDataUserSelected();
+    $user = new UserRepo;
+    $user->setUserByChamp("email",$_SESSION['compte']['email']);
+    $nomUser = $user->getDataUserSelected();
 
-    if(empty($nomUser5->getNom())){
+    if(empty($nomUser->getNom())){
         $option = "";
     }else{
-        $option = $nomUser5->getNom();
+        $option = $nomUser->getNom();
     }
 
     // récupère les escpGames effectués par le user
@@ -37,7 +37,5 @@ if (isset($_SESSION['compte'])){
         $newNiveau += 1;
     }
 
-    $user5->modifyInfoUser($newNiveau, "niveau", $nomUser5->getIdUser());
-    /* $appelbdd->setChampStatsPlayer("user", $newNiveau, "niveau", $nomUser5->getIdUser()); */
-}
+    $user->modifyInfoUser($newNiveau, "niveau", $nomUser->getIdUser());}
 ?>
