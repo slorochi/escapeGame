@@ -37,5 +37,6 @@ if (isset($_SESSION['compte'])){
         $newNiveau += 1;
     }
 
-    $user->modifyInfoUser($newNiveau, "niveau", $nomUser->getIdUser());}
+    $user->modifyInfoUser($newNiveau, "niveau", $nomUser->getIdUser());
+}
 ?>

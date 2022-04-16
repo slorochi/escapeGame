@@ -44,32 +44,27 @@ class JouerRepo extends BddConnection
     }
 
 
-    //anthony
+    //Permet de récupérer toutes les stats d'un joueur depuis le tableau statsPlayer[]
     public function getStatsPlayer()
     {
         return $this->statsPlayer;
     }
-
+    //Permet de modifier toutes les stats d'un joueur
     public function setStatsPlayer($table, $elementToPush, $nomChamp, $idEscape, $idUser)
     {
         return $this->modifyStatsJoueur($table, $elementToPush, $nomChamp, $idEscape, $idUser);
     }
-
-    public function setChampStatsPlayer($table, $elementToPush, $nomChamp, $idUser)
-    {
-        return $this->modifyChampStatsJoueur($table, $elementToPush, $nomChamp, $idUser);
-    }
-
+    //Récupère les stats des escapes games jouer par les tous joueurs
     public function StatsAll($filtre = "")
     {
         return $this->createLeaderboard($filtre);
     }
-
+    //Créer un leaderboard pour le joueur actuellement connecté
     public function StatsJoueur($NomUser = "")
     {
         return $this->createStatsJoueur($NomUser);
     }
-
+    //Récupère tous les escapes games que le joueur connnecté a fait et les range par niveau d'escape game décroissant
     public function NumberEscapeGameJoueur($NomUser = "")
     {
         return $this->getNumberEscapeGameJoueur($NomUser);

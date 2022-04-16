@@ -149,7 +149,8 @@ class BddConnection
 		return  $rst->fetchAll(PDO::FETCH_ASSOC);
 	}
 
-
+	//////////////LEVEL JOUEUR//////////////
+	//méthode pour afficher tous les Escapes Games qu'un joueur a effectué
 	public function getNumberEscapeGameJoueur($NomUser)
 	{
 

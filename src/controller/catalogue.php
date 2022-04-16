@@ -4,6 +4,7 @@ use App\core\Verif;
 use App\models\BddConnection;
 use App\models\repository\EscapeRepo;
 
+//Met en mémoire la page précédente
 $backpage = "?p=" . str_replace(".php", "", basename(__FILE__));
 $session->setBackpage($backpage);
 
