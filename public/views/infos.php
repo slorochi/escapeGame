@@ -52,4 +52,32 @@
             </div>
         </form>
     </div>
+    <?php $admin = $_SESSION['compte']['admin'] ?? "";
+        if ($admin == 1) : ?>
+
+            <div class="row adminPanel">
+                
+                <h3 class="text-center">Panel Admin</h3>
+                <table class="table table-dark table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">Pseudo</th>
+                            <th scope="col">Mail</th>
+                            <th scope="col">lvl</th>
+                            <th scope="col">Cp</th>
+                            <th scope="col">Ville</th>
+                            <th scope="col">Admin</th>
+                            <th scope="col">Supprimer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?= $allUsers ?>
+                    </tbody>
+                </table>
+            </div>
+
+        <?php endif ?>
+    <!-- bouton pour delete un user -->
+        
 </div>

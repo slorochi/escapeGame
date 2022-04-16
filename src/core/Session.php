@@ -56,7 +56,6 @@ class Session {
                 $accExist = true;
             }
         }
-        //comm 12/04/2022
         // si le compte n'existe pas
         if ($accExist == false){
             $userRepo = new UserRepo();
@@ -67,9 +66,9 @@ class Session {
             $leaderboard = new LeaderManager(new File("../src/core/dataleaderboard.dt","r+"));
             $leaderboard->setNumberConnexions();
             $leaderboard->setNumberAccountsCreated();
-            $leaderboard->setNumberAccounts(new userRepo());
+            $leaderboard->setNumberAccounts($userRepo);
             $this->setCompte($compte);
-            $userRepo->setLvlEscapeGameDone(new JouerRepo());
+            $userRepo->setLvlByEscapeGameDone(new JouerRepo());
             header("Location:" .$this->getBackpage()) ;
         }
     }

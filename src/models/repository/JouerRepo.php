@@ -43,8 +43,6 @@ class JouerRepo extends BddConnection
         return $this;
     }
 
-
-    //anthony
     public function getStatsPlayer()
     {
         return $this->statsPlayer;
